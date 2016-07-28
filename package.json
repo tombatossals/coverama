@@ -43,7 +43,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "dev": "NODE_ENV=development babel-node src/server.js",
+    "dev": "NODE_ENV=development babel-node src/server.js | react-scripts start",
     "prod": "NODE_ENV=production babel-node src/server.js",
     "standard": "standard"
   }

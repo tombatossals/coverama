@@ -1,10 +1,13 @@
 import React from 'react'
+import ToolbarTitle from 'material-ui/Toolbar/ToolbarTitle'
 import styles from './styles'
 
 const Logo = (props) => (
-  <h1 onClick={props.onClick} style={styles.link}>
-    {props.text}
-  </h1>
+  <ToolbarTitle
+    text={props.text}
+    onClick={props.onClick}
+    style={styles.link}
+  />
 )
 
 Logo.propTypes = {

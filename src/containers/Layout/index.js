@@ -5,6 +5,8 @@ import { checkAuthToken } from '../../actions'
 import Header from '../../components/Header'
 import { withRouter } from 'react-router'
 import './styles.css'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 class Layout extends React.Component {
   static propTypes = {
@@ -24,10 +26,12 @@ class Layout extends React.Component {
 
   render () {
     return (
-      <div className="layout">
-        <Header user={this.props.user} onNavigationChange={this.handleNavigate} />
-        {this.props.children}
-      </div>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <div className="layout">
+          <Header user={this.props.user} onNavigationChange={this.handleNavigate} />
+          {this.props.children}
+        </div>
+      </MuiThemeProvider>
     )
   }
 }

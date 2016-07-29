@@ -2,8 +2,19 @@ import React from 'react'
 import Logo from '../Logo'
 import { getUserPropTypes } from '../../../lib/proptypes'
 import { UserStatus } from '../../../lib/constants'
-import { Link } from 'react-router'
-import './styles.css'
+import MenuItemLink from '../Menu/ItemLink'
+
+import Toolbar from 'material-ui/Toolbar'
+import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup'
+import FlatButton from 'material-ui/FlatButton'
+import Popover from 'material-ui/Popover'
+import Menu from 'material-ui/Menu'
+import LogoutIcon from 'material-ui/svg-icons/action/power-settings-new'
+import SettingsIcon from 'material-ui/svg-icons/action/settings'
+import AccountBoxIcon from 'material-ui/svg-icons/action/account-box'
+import AccountCircle from 'material-ui/svg-icons/action/account-circle'
+
+import styles from './styles'
 
 export default class HeaderToolbar extends React.Component {
   static propTypes = {
@@ -41,15 +52,50 @@ export default class HeaderToolbar extends React.Component {
 
   render () {
     return (
-      <div className="header-layout">
-        {this.props.user.status === UserStatus.ANONYMOUS &&
-          <Link className="header-menu" to="/login">Login</Link>
-        }
-        {this.props.user.status === UserStatus.AUTHENTICATED &&
-          <Link className="header-menu" to="/logout">Logout</Link>
-        }
-        <Logo className="header-logo" text="Horizon Oauth" onClick={this.handleNavigateHome} />
-      </div>
+     <Toolbar style={styles.header}>
+        <Logo text="React Dashboard" onClick={this.handleNavigateHome} />
+        <ToolbarGroup float="right" lastChild>
+          {this.props.user.status === UserStatus.ANONYMOUS &&
+            <FlatButton
+              onClick={this.handleNavigateUserLogin}
+              primary
+              label="Login"
+            />
+          }
+          {this.props.user.status === UserStatus.AUTHENTICATED &&
+            <div>
+              <FlatButton
+                label="Your Profile"
+                icon={<AccountCircle color="#222" />}
+                onClick={this.handleTouchTap}
+                primary />
+              <Popover
+                open={this.state.open}
+                anchorEl={this.state.anchorEl}
+                onRequestClose={this.handleRequestClose}
+              >
+                <Menu>
+                  <MenuItemLink
+                    primaryText="Your profile"
+                    url="/user/profile"
+                    leftIcon={<AccountBoxIcon />}
+                    onClick={this.handleOnClick} />
+                  <MenuItemLink
+                    primaryText="Preferences"
+                    url="/user/preferences"
+                    leftIcon={<SettingsIcon />}
+                    onClick={this.handleOnClick} />
+                  <MenuItemLink
+                    primaryText="Logout"
+                    url="/logout"
+                    leftIcon={<LogoutIcon />}
+                    onClick={this.handleOnClick} />
+                </Menu>
+              </Popover>
+            </div>
+          }
+        </ToolbarGroup>
+      </Toolbar>
     )
   }
 }

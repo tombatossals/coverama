@@ -4,6 +4,7 @@ import styles from './styles'
 
 export default () => (
   <div style={styles.box}>
-    <Link to="/video-search">Video search (Authenticated)</Link>
+    <Link to="/video-search">Video search (Authenticated)</Link> |
+    <Link to="/playlist">PlayList (Authenticated)</Link>
   </div>
 )

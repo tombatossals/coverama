@@ -10,6 +10,11 @@ module.exports = {
     }
   },
   clientProxy: 'http://127.0.0.1:3000',
+  spotify: {
+    url: 'https://accounts.spotify.com/api/token',
+    clientID: 'e232969c851e4ce291f3956b8544ac22',
+    clientSecret: 'aac252f97b1a480b830ffe1b9d46673b'
+  },
   auth: {
     providers: {
       facebook: {

@@ -6,7 +6,6 @@ import loading from './loading.gif'
 export default class Login extends React.Component {
   static propTypes = {
     onAuthenticate: React.PropTypes.func.isRequired,
-    status: React.PropTypes.string,
     message: React.PropTypes.string
   }
 
@@ -14,9 +13,16 @@ export default class Login extends React.Component {
     status: AsyncStatus.IDLE
   }
 
-  componentWillReceiveProps(props) {
+  componentDidMount () {
+    console.log('hola', this.props)
     this.setState({
-      status: props.status,
+      message: this.props.message
+    })
+  }
+
+  componentWillReceiveProps(props) {
+    console.log('hola', props)
+    this.setState({
       message: props.message
     })
   }
@@ -55,7 +61,7 @@ export default class Login extends React.Component {
           </button>
           {this.state.status === AsyncStatus.REQUEST &&
             <div>
-              <img src={loading} />
+              <img role="presentation" src={loading} />
             </div>
           }
           {this.state.status === AsyncStatus.FAILED &&

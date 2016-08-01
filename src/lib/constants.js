@@ -16,3 +16,7 @@ export const UserActions = {
   USER_LOGOUT: 'USER_LOGOUT',
   USER_CHECK_AUTH_TOKEN: 'USER_CHECK_AUTH_TOKEN'
 }
+
+export const PlayListActions = {
+  GET_PLAYLIST: 'GET_PLAYLIST'
+}

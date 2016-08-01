@@ -10,7 +10,7 @@ export default class MenuItemLink extends React.Component {
   }
 
   handleOnClick = () => {
-    this.props.handleOnClick(this.props.url)
+    this.props.onClick(this.props.url)
   }
 
   render () {

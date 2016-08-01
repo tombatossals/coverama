@@ -1,15 +1,15 @@
-import hz from '@horizon/client'
+import horizon from '@horizon/client'
 
-const hzconn = hz({
+const hz = horizon({
   authType: 'token',
   secure: true
 })
 
 const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    if (hzconn.hasAuthToken()) {
-      hzconn.connect()
-      return hzconn.currentUser().fetch().subscribe(user =>
+    if (hz.hasAuthToken()) {
+      hz.connect()
+      return hz.currentUser().fetch().subscribe(user =>
         resolve(user)
       )
     }
@@ -17,28 +17,34 @@ const getCurrentUser = () => {
   })
 }
 
+const getPlayList = () => new Promise((resolve, reject) =>
+  hz('playlist').fetch().subscribe(tracks =>
+    resolve(tracks),
+    reject({ message: 'Invalid auth token' }))
+)
+
 const logout = () => {
-  hz.clearAuthTokens()
+  horizon.clearAuthTokens()
 }
 
 const getStatus = () => {
-  return hzconn.status()
+  return hz.status()
 }
 
 const githubLogin = () => {
-  return hzconn.authEndpoint('github')
+  return hz.authEndpoint('github')
 }
 
 const googleLogin = () => {
-  return hzconn.authEndpoint('google')
+  return hz.authEndpoint('google')
 }
 
 const getCountries = () => {
-  return hzconn('countries').fetch()
+  return hz('countries').fetch()
 }
 
 const onReady = (cb) => {
-  hzconn.onReady(cb)
+  hz.onReady(cb)
 }
 
 export default {
@@ -48,5 +54,6 @@ export default {
   logout,
   getCountries,
   getStatus,
-  onReady
+  onReady,
+  getPlayList
 }

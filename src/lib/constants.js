@@ -20,3 +20,7 @@ export const UserActions = {
 export const PlayListActions = {
   GET_PLAYLIST: 'GET_PLAYLIST'
 }
+
+export const TrackActions = {
+  GET_TRACK: 'GET_TRACK'
+}

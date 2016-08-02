@@ -3,6 +3,7 @@ import Logo from '../Logo'
 import { getUserPropTypes } from '../../../lib/proptypes'
 import { UserStatus } from '../../../lib/constants'
 import MenuItemLink from '../Menu/ItemLink'
+import { Link } from 'react-router'
 
 import Toolbar from 'material-ui/Toolbar'
 import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup'
@@ -18,8 +19,7 @@ import styles from './styles'
 
 export default class HeaderToolbar extends React.Component {
   static propTypes = {
-    user: getUserPropTypes(),
-    onNavigationChange: React.PropTypes.func
+    user: getUserPropTypes()
   }
 
   state = {
@@ -39,37 +39,20 @@ export default class HeaderToolbar extends React.Component {
     })
   }
 
-  handleOnClick = (url) => {
-    this.setState({
-      open: false
-    })
-    this.props.onNavigationChange(url)
-  }
-
-  handleNavigateHome = () => {
-    this.handleOnClick('/home')
-  }
-
-  handleNavigateUserLogin = () => {
-    this.handleOnClick('/login')
-  }
-
-  handleNavigateUserLogout = () => {
-    this.handleOnClick('/logout')
-  }
-
   render () {
     return (
      <Toolbar style={styles.header}>
-        <Logo text="React Dashboard" onClick={this.handleNavigateHome} />
+        <Link to="/"><Logo>Spotify Playlists</Logo></Link>
         <ToolbarGroup float="right" lastChild>
           {this.props.user.status === UserStatus.ANONYMOUS &&
-            <FlatButton
-              onClick={this.handleNavigateUserLogin}
-              primary
-              style={styles.button}
-              label="Login"
-            />
+            <Link to="/login">
+              <FlatButton
+                onClick={this.handleNavigateUserLogin}
+                primary
+                style={styles.button}
+                label="Login"
+              />
+            </Link>
           }
           {this.props.user.status === UserStatus.AUTHENTICATED &&
             <div>

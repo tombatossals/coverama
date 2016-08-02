@@ -1,5 +1,7 @@
 import React from 'react'
 import MenuItem from 'material-ui/MenuItem'
+import { Link } from 'react-router'
+import styles from './styles'
 
 export default class MenuItemLink extends React.Component {
   static propTypes = {
@@ -9,17 +11,14 @@ export default class MenuItemLink extends React.Component {
     leftIcon: React.PropTypes.element
   }
 
-  handleOnClick = () => {
-    this.props.onClick(this.props.url)
-  }
-
   render () {
     return (
-      <MenuItem
-        primaryText={this.props.primaryText}
-        onClick={this.handleOnClick}
-        leftIcon={this.props.leftIcon}
-      />
+      <Link to="/logout">
+        <MenuItem style={styles.item}
+          primaryText={this.props.primaryText}
+          leftIcon={this.props.leftIcon}
+        />
+      </Link>
     )
   }
 }

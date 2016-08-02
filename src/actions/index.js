@@ -7,3 +7,7 @@ export {
 export {
   getPlayList
 } from './playlist'
+
+export {
+  getTrack
+} from './track'

@@ -17,7 +17,7 @@ const Routes = (props) => (
       <Route path="logout" component={Logout} />
       <Route path="video-search" component={requireAuth(VideoSearch)} />
       <Route path="playlist" component={requireAuth(PlayList)} />
-      <Route path="tracks/:id" component={requireAuth(Track)} />
+      <Route path="track/:id" component={requireAuth(Track)} />
     </Route>
   </Router>
 )

@@ -2,17 +2,15 @@ import React from 'react'
 import ToolbarTitle from 'material-ui/Toolbar/ToolbarTitle'
 import styles from './styles'
 
-const Logo = (props) => (
+const Logo = ({ children }) => (
   <ToolbarTitle
-    text={props.text}
-    onClick={props.onClick}
+    text={children}
     style={styles.link}
   />
 )
 
 Logo.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired
+  text: React.PropTypes.string.isRequired
 }
 
 export default Logo

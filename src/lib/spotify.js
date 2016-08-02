@@ -6,7 +6,7 @@ const getSpotifyAPI = (config) => new SpotifyWebAPI({
   redirectUri: config.redirectURI
 })
 
-export const getPlayList = (playlist, config) => new Promise((resolve, reject) => {
+export const getPlayListAndTracks = (playlist, config) => new Promise((resolve, reject) => {
   const api = getSpotifyAPI(config)
   api.clientCredentialsGrant().then(data => {
     const accessToken = data.body['access_token']

@@ -1,20 +1,21 @@
 import React from 'react'
 import TrackComponent from '../../components/Track'
-import API from '../../lib/api'
+import { getTrack } from '../../actions'
+import { connect } from 'react-redux'
 
-export default class extends React.Component {
+class Track extends React.Component {
   static propTypes = {
     router: React.PropTypes.any
   }
 
   state = {
-    item: {}
+    track: {}
   }
 
-  componentDidMount () {
-    API.getTrack(this.props.params.id).then(track =>
+  componentWillMount () {
+    getTrack(this.props.params.id).then(track =>
       this.setState({
-        item: track
+        track
       })
     )
   }
@@ -23,8 +24,14 @@ export default class extends React.Component {
     console.log(this.state.item)
     return (
       <TrackComponent
-        data={this.state.item}
+        track={this.state.track}
       />
     )
   }
 }
+
+const mapStateToProps = ({ track }) => ({
+  track
+})
+
+export default connect(mapStateToProps, { getTrack })(Track)

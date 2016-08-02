@@ -2,19 +2,18 @@ import React from 'react'
 import styles from './styles'
 import Track from './Track'
 
-const PlayList = (props) => (
+const PlayList = ({ playlist }) => (
   <div style={styles.box}>
     <ul>
-    {props.data.map(item =>
-      <Track onClick={props.onNavigationChange} data={item.track} />
+    {playlist.tracks.map(track =>
+      <Track key={track.id} data={track} />
     )}
     </ul>
   </div>
 )
 
 PlayList.propTypes = {
-  data: React.PropTypes.array,
-  onNavigationChange: React.PropTypes.func
+  playlist: React.PropTypes.array
 }
 
 export default PlayList

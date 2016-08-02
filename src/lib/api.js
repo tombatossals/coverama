@@ -18,15 +18,20 @@ const getCurrentUser = () => {
 }
 
 const getPlayList = () => new Promise((resolve, reject) =>
-  hz('playlist').fetch().subscribe(tracks =>
-    resolve(tracks),
+  hz('playlists').fetch().subscribe(playlists =>
+    hz('tracks').fetch().subscribe(tracks =>
+      resolve({ playlist: '123', tracks }),
+      err => reject({ message: err })),
     err => reject({ message: err }))
 )
 
 const getTrack = (id) => new Promise((resolve, reject) =>
-  hz('playlist').find({ track: { id: id } }).fetch().subscribe(track =>
-    resolve(track),
-    err => reject({ message: err }))
+  hz('tracks').find({ id }).fetch().subscribe(track => {
+    console.log('track', track)
+    resolve(track)
+  },
+    err => reject({ message: err })
+  )
 )
 
 const logout = () => {
@@ -45,10 +50,6 @@ const googleLogin = () => {
   return hz.authEndpoint('google')
 }
 
-const getCountries = () => {
-  return hz('countries').fetch()
-}
-
 const onReady = (cb) => {
   hz.onReady(cb)
 }
@@ -58,7 +59,6 @@ export default {
   githubLogin,
   googleLogin,
   logout,
-  getCountries,
   getStatus,
   onReady,
   getPlayList,

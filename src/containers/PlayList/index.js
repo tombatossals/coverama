@@ -2,7 +2,6 @@ import React from 'react'
 import PlayListComponent from '../../components/PlayList'
 import { getPlayList } from '../../actions'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 import { AsyncStatus } from '../../lib/constants'
 
 class PlayList extends React.Component {
@@ -12,21 +11,17 @@ class PlayList extends React.Component {
   }
 
   state = {
-    data: []
+    playlist: {}
   }
 
   componentDidMount () {
     this.props.getPlayList()
   }
 
-  handleNavigate = (trackId) => {
-    this.props.router.push(`/tracks/${trackId}`)
-  }
-
   componentWillReceiveProps (props) {
     if (props.playlist.status === AsyncStatus.SUCCESS) {
       this.setState({
-        data: props.playlist.data
+        playlist: props.playlist.data
       })
     }
   }
@@ -34,8 +29,7 @@ class PlayList extends React.Component {
   render () {
     return (
       <PlayListComponent
-        onNavigationChange={this.handleNavigate}
-        data={this.state.data}
+        playlist={this.state.data}
       />
     )
   }
@@ -45,4 +39,4 @@ const mapStateToProps = ({ playlist }) => ({
   playlist
 })
 
-export default withRouter(connect(mapStateToProps, { getPlayList })(PlayList))
+export default connect(mapStateToProps, { getPlayList })(PlayList)

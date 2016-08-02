@@ -1,15 +1,16 @@
 import React from 'react'
 import './styles.css'
 
-const Track = (props) => (
+const Track = ({ track }) => (
   <div>
     <h1>Track</h1>
-    {props.data.name}
+    {track.name}
+    <img src={track.album.images[0].url} alt={track.name} />
   </div>
 )
 
 Track.propTypes = {
-  data: React.PropTypes.object
+  track: React.PropTypes.object
 }
 
 export default Track

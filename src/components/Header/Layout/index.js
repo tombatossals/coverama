@@ -67,12 +67,14 @@ export default class HeaderToolbar extends React.Component {
             <FlatButton
               onClick={this.handleNavigateUserLogin}
               primary
+              style={styles.button}
               label="Login"
             />
           }
           {this.props.user.status === UserStatus.AUTHENTICATED &&
             <div>
               <FlatButton
+                style={styles.button}
                 label="Your Profile"
                 icon={<AccountCircle color="#222" />}
                 onClick={this.handleTouchTap}
@@ -82,7 +84,7 @@ export default class HeaderToolbar extends React.Component {
                 anchorEl={this.state.anchorEl}
                 onRequestClose={this.handleRequestClose}
               >
-                <Menu>
+                <Menu style={styles.menu}>
                   <MenuItemLink
                     primaryText="Your profile"
                     url="/user/profile"

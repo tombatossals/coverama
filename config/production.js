@@ -1,5 +1,5 @@
 module.exports = {
-  project_name: 'react_horizon_dashboard',
+  project_name: 'react_spotify',
   token_secret: 'hellothere',
   express: {
     host: '127.0.0.1',

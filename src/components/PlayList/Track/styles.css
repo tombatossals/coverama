@@ -1,0 +1,6 @@
+.track {
+  list-style: none;
+  display: inline-block;
+  padding: 1em;
+  cursor: pointer;
+}

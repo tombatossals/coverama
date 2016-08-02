@@ -14,17 +14,21 @@ export default class Login extends React.Component {
   }
 
   componentDidMount () {
-    console.log('hola', this.props)
-    this.setState({
-      message: this.props.message
-    })
+    if (this.props.message) {
+      this.setState({
+        status: AsyncStatus.IDLE,
+        message: this.props.message
+      })
+    }
   }
 
   componentWillReceiveProps(props) {
-    console.log('hola', props)
-    this.setState({
-      message: props.message
-    })
+    if (props.message) {
+      this.setState({
+        status: AsyncStatus.IDLE,
+        message: props.message
+      })
+    }
   }
 
   handleGithubLogin = () => {
@@ -64,7 +68,7 @@ export default class Login extends React.Component {
               <img role="presentation" src={loading} />
             </div>
           }
-          {this.state.status === AsyncStatus.FAILED &&
+          {this.state.message &&
             <div className="login-error">
               { this.state.message }
             </div>

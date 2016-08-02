@@ -20,7 +20,13 @@ const getCurrentUser = () => {
 const getPlayList = () => new Promise((resolve, reject) =>
   hz('playlist').fetch().subscribe(tracks =>
     resolve(tracks),
-    reject({ message: 'Invalid auth token' }))
+    err => reject({ message: err }))
+)
+
+const getTrack = (id) => new Promise((resolve, reject) =>
+  hz('playlist').find({ track: { id: id } }).fetch().subscribe(track =>
+    resolve(track),
+    err => reject({ message: err }))
 )
 
 const logout = () => {
@@ -55,5 +61,6 @@ export default {
   getCountries,
   getStatus,
   onReady,
-  getPlayList
+  getPlayList,
+  getTrack
 }

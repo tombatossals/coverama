@@ -1,5 +1,5 @@
 module.exports = {
-  project_name: 'react_redux_horizon_oauth',
+  project_name: 'react_spotify',
   token_secret: 'superSecret',
   express: {
     host: '127.0.0.1',
@@ -14,6 +14,11 @@ module.exports = {
     url: 'https://accounts.spotify.com/api/token',
     clientID: 'e232969c851e4ce291f3956b8544ac22',
     clientSecret: 'aac252f97b1a480b830ffe1b9d46673b'
+  },
+  rethinkdb: {
+    port: 28015,
+    host: 'localhost',
+    db: 'react_spotify'
   },
   auth: {
     providers: {

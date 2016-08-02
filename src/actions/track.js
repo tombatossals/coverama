@@ -1,10 +1,10 @@
-import { AsyncStatus, PlayListActions } from '../lib/constants'
+import { AsyncStatus, TrackActions } from '../lib/constants'
 import { createAction } from 'redux-actions'
 import API from '../lib/api'
 
 export const getTrack = (id) =>
   dispatch => {
-    const getTrackAction = createAction(PlayListActions.GET_TRACK)
+    const getTrackAction = createAction(TrackActions.GET_TRACK)
 
     dispatch(getTrackAction({
       status: AsyncStatus.REQUEST

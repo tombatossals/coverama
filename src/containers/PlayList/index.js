@@ -7,31 +7,29 @@ import { AsyncStatus } from '../../lib/constants'
 class PlayList extends React.Component {
   static propTypes = {
     getPlayList: React.PropTypes.func.isRequired,
-    router: React.PropTypes.any
+    playlist: React.PropTypes.object.isRequired
   }
 
   state = {
-    playlist: {}
+    playlist: {
+      tracks: []
+    }
   }
 
   componentDidMount () {
     this.props.getPlayList()
   }
 
-  componentWillReceiveProps (props) {
-    if (props.playlist.status === AsyncStatus.SUCCESS) {
+  componentWillReceiveProps ({ playlist }) {
+    if (playlist.status === AsyncStatus.SUCCESS) {
       this.setState({
-        playlist: props.playlist.data
+        playlist: playlist.data
       })
     }
   }
 
   render () {
-    return (
-      <PlayListComponent
-        playlist={this.state.data}
-      />
-    )
+    return <PlayListComponent playlist={this.state.playlist} />
   }
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import TrackComponent from '../../components/Track'
 import { getTrack } from '../../actions'
 import { connect } from 'react-redux'
+import { AsyncStatus } from '../../lib/constants'
 
 class Track extends React.Component {
   static propTypes = {
@@ -9,19 +10,28 @@ class Track extends React.Component {
   }
 
   state = {
-    track: {}
+    track: {},
+    status: AsyncStatus.IDLE
   }
 
-  componentWillMount () {
-    getTrack(this.props.params.id).then(track =>
+  componentDidMount () {
+    this.props.getTrack(this.props.params.id)
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.track.status === AsyncStatus.SUCCESS) {
       this.setState({
-        track
+        track: props.track.data,
+        status: AsyncStatus.SUCCESS
       })
-    )
+    }
   }
 
   render () {
-    console.log(this.state.item)
+    if (this.state.status !== AsyncStatus.SUCCESS) {
+      return null
+    }
+
     return (
       <TrackComponent
         track={this.state.track}

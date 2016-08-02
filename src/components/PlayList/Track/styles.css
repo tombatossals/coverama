@@ -1,6 +1,53 @@
-.track {
+.playlist .track {
+  position:relative;
   list-style: none;
   display: inline-block;
-  padding: 1em;
   cursor: pointer;
+  width: 128px;
+  padding: 0;
+  max-width: 128px;
+  height: 274px;
+  min-height: 274px;
+  border: 8px solid #FFF;
+  background: #2A2F38;
+  border-radius: 5px;
+}
+
+.playlist .track a {
+  text-decoration: none;
+  color: #A7AAAD;
+  font-size: .8em;
+}
+
+.playlist .track img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 128px;
+  height: 128px;
+}
+
+.playlist .track div {
+  position:absolute;
+  top: 135px;
+  padding: 0 5px;
+  width: 118px;
+}
+
+.playlist .track:hover {
+  transition: border-color .8s linear;
+  border-color: yellow;
+}
+
+.track p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 128px;
+  background: #38404C;
+  margin: 0;
+  color: #A7AAAD;
+  padding: 10px 0;
 }

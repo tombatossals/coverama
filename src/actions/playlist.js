@@ -11,7 +11,6 @@ export const getPlayList = () =>
     }))
 
     return API.getPlayList().then(data => {
-      console.log('ye', data)
       dispatch(getPlayListAction({
         status: AsyncStatus.SUCCESS,
         data

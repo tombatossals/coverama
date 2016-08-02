@@ -26,12 +26,9 @@ const getPlayList = () => new Promise((resolve, reject) =>
 )
 
 const getTrack = (id) => new Promise((resolve, reject) =>
-  hz('tracks').find({ id }).fetch().subscribe(track => {
-    console.log('track', track)
-    resolve(track)
-  },
-    err => reject({ message: err })
-  )
+  hz('tracks').find({ id }).fetch().subscribe(track =>
+    resolve(track),
+    err => reject({ message: err }))
 )
 
 const logout = () => {

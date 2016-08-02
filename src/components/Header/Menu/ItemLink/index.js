@@ -7,7 +7,6 @@ export default class MenuItemLink extends React.Component {
   static propTypes = {
     url: React.PropTypes.string.isRequired,
     primaryText: React.PropTypes.string.isRequired,
-    onClick: React.PropTypes.func.isRequired,
     leftIcon: React.PropTypes.element
   }
 

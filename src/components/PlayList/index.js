@@ -1,19 +1,19 @@
 import React from 'react'
-import styles from './styles'
 import Track from './Track'
+import './styles.css'
 
 const PlayList = ({ playlist }) => (
-  <div style={styles.box}>
+  <div className="playlist">
     <ul>
     {playlist.tracks.map(track =>
-      <Track key={track.id} data={track} />
+      <Track key={track.id} track={track} />
     )}
     </ul>
   </div>
 )
 
 PlayList.propTypes = {
-  playlist: React.PropTypes.array
+  playlist: React.PropTypes.object.isRequired
 }
 
 export default PlayList

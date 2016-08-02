@@ -10,7 +10,7 @@ const Logo = ({ children }) => (
 )
 
 Logo.propTypes = {
-  text: React.PropTypes.string.isRequired
+  children: React.PropTypes.string.isRequired
 }
 
 export default Logo

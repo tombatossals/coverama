@@ -5,35 +5,34 @@ import https from 'https'
 
 const run = (app) => {
   const port = config.express.port
+  let server
 
-  let options = {
-    key: fs.readFileSync(config.express.ssl.key),
-    cert: fs.readFileSync(config.express.ssl.cert)
+  if (config.ssl && config.express.hasOwnProperty('ssl')) {
+    let options = {
+      key: fs.readFileSync(config.express.ssl.key),
+      cert: fs.readFileSync(config.express.ssl.cert)
+    }
+    server = https.createServer(options, app)
+  } else {
+    server = app
   }
 
-  const server = https.createServer(options, app)
-  server.listen(port, err => {
+  const httpserver = server.listen(port, err => {
     if (err) {
       console.log(err)
     }
     console.log('Listening on port ' + port)
   })
 
-  const hserver = horizon(server, {
-    project_name: config.project_name,
-    permissions: false,
-    auto_create_collection: true,
-    auth: {
-      token_secret: config.token_secret
+  const hserver = horizon(httpserver, config.horizon)
+  if (config.ssl) {
+    if (config.providers.github) {
+      hserver.add_auth_provider(horizon.auth.github, config.providers.github)
     }
-  })
 
-  if (config.auth.providers.github) {
-    hserver.add_auth_provider(horizon.auth.github, config.auth.providers.github)
-  }
-
-  if (config.auth.providers.google) {
-    hserver.add_auth_provider(horizon.auth.google, config.auth.providers.google)
+    if (config.providers.google) {
+      hserver.add_auth_provider(horizon.auth.google, config.providers.google)
+    }
   }
 }
 

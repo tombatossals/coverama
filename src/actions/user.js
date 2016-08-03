@@ -50,10 +50,11 @@ export const checkAuthToken = () =>
     API.getCurrentUser().then(user => dispatch(checkAuthTokenAction({
       status: AsyncStatus.SUCCESS,
       user
-    }))).catch(() => {
+    }))).catch(err => {
       API.logout()
       dispatch(checkAuthTokenAction({
-        status: AsyncStatus.FAILED
+        status: AsyncStatus.FAILED,
+        message: err.message
       }))
     })
   }

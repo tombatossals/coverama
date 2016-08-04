@@ -1,0 +1,12 @@
+h1.logo {
+  color: white;
+  font-size: 24px;
+  display: inline;
+  line-height: 64px;
+  margin: 0;
+}
+
+div.logo img {
+  display: inline-block;
+  height: 64px;
+}

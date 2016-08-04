@@ -15,7 +15,6 @@
     "parser": "babel-eslint"
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.1.1",
     "babel-cli": "^6.11.4",
     "babel-eslint": "^6.1.2",
     "babel-preset-es2015": "^6.9.0",
@@ -35,7 +34,6 @@
     "@horizon/server": "^1.1.3",
     "express": "^4.14.0",
     "http-proxy-middleware": "^0.17.0",
-    "material-ui": "^0.15.2",
     "node-fetch": "^1.6.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
@@ -57,7 +55,6 @@
     "cli": "babel-node src/cli/index.js",
     "dev": "NODE_ENV=development babel-node src/server.js | react-scripts start",
     "prod": "react-scripts build && NODE_ENV=production babel-node src/server.js",
-    "standard": "standard",
-    "storybook": "start-storybook -p 9001"
+    "standard": "standard"
   }
 }

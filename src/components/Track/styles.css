@@ -1,4 +1,5 @@
-.track {
+div.track {
   list-style: none;
   display: inline-block;
+  margin: auto;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import './styles.css'
 
 const Track = ({ track }) => (
-  <div>
+  <div className="track">
     <h1>Track</h1>
     {track.name}
     <img src={track.album.images[0].url} alt={track.name} />

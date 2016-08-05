@@ -16,10 +16,10 @@ module.exports = {
   rethinkdb: {
     port: 28015,
     host: 'localhost',
-    db: 'react_spotify'
+    db: 'playlists'
   },
   horizon: {
-    project_name: 'react_spotify',
+    project_name: 'playlists',
     permissions: false,
     auto_create_collection: true,
     auth: {

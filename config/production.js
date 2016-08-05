@@ -1,6 +1,4 @@
 module.exports = {
-  project_name: 'react_spotify',
-  token_secret: 'hellothere',
   express: {
     host: '127.0.0.1',
     port: 5000,
@@ -12,10 +10,15 @@ module.exports = {
   rethinkdb: {
     port: 28015,
     host: 'localhost',
-    db: 'react_spotify'
+    db: 'playlists'
+  },
+  spotify: {
+    url: 'https://accounts.spotify.com/api/token',
+    clientID: 'e232969c851e4ce291f3956b8544ac22',
+    clientSecret: 'aac252f97b1a480b830ffe1b9d46673b'
   },
   horizon: {
-    project_name: 'react_spotify',
+    project_name: 'playlists',
     permissions: false,
     auto_create_collection: true,
     auth: {

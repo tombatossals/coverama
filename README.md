@@ -1,2 +1,2 @@
-# react-horizon-dashboard
-React + Horizon Dashboard
+# playlists
+Playlists

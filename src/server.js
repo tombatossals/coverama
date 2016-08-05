@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(`${__dirname}/../build`))
   index = fs.readFileSync(`${__dirname}/../build/index.html`, 'utf8')
 } else {
+  app.get('/favicon.ico', proxy({target: `${config.clientProxy}`}))
   app.get('/static*', proxy({target: `${config.clientProxy}`}))
   app.get('/sockjs-node*', proxy({target: `${config.clientProxy}`}))
 
@@ -20,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>React App</title>
-        <link rel="shortcut icon" href="/static/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
       </head>
       <body>
         <div id="root"></div>

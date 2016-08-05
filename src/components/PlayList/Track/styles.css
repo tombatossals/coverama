@@ -8,9 +8,35 @@
   max-width: 128px;
   height: 274px;
   min-height: 274px;
-  border: 8px solid #396A92;
-  background: #2A2F38;
+  border: 8px solid transparent;
   border-radius: 5px;
+}
+
+.playlist .track div.hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.05s ease 0s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.playlist .track div.hover:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.playlist .track div.hover:hover > img {
+  opacity: 1;
+}
+
+.playlist .track .hover > img {
+    left: 50%;
+    margin-left: -16px;
+    margin-top: 54px;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.3s ease-in-out 0s;
 }
 
 .playlist .track a {
@@ -19,7 +45,7 @@
   font-size: .8em;
 }
 
-.playlist .track img {
+.playlist .track img.cover {
   position: absolute;
   top: 0;
   left: 0;
@@ -28,19 +54,16 @@
   height: 128px;
 }
 
-.playlist .track div {
+.playlist .track .info {
   position:absolute;
-  top: 135px;
-  padding: 0 5px;
+  top: 128px;
+  height: 130px;
+  padding: 5px;
   width: 118px;
+  background: #2A2F38;
 }
 
-.playlist .track:hover {
-  transition: border-color .8s linear;
-  border-color: yellow;
-}
-
-.track p {
+.playlist .track .footer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -50,4 +73,5 @@
   margin: 0;
   color: #A7AAAD;
   padding: 10px 0;
+  height: 16px;
 }

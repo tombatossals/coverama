@@ -2,10 +2,13 @@ import React from 'react'
 import './styles.css'
 
 const Track = ({ track }) => (
-  <div className="track">
-    <h1>Track</h1>
-    {track.name}
-    <img src={track.album.images[0].url} alt={track.name} />
+  <div className="track-detail">
+    <div className="cover">
+      <img src={track.album.images[1].url} alt={track.name} />
+    </div>
+    <div className="info">
+      <h1>{track.name}</h1>
+    </div>
   </div>
 )
 

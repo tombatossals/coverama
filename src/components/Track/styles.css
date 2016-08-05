@@ -1,5 +1,20 @@
-div.track {
-  list-style: none;
-  display: inline-block;
+.track-detail {
   margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  padding: 0.5em;
+  background: white;
+  box-shadow: 0 0 30px #2A2F38;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.track-detail div.info {
+    text-align: center;
+    width: 100%;
+}
+
+.track-detail div.info h1 {
+  font-size: 18px;
 }

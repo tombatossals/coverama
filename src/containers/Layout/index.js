@@ -3,6 +3,7 @@ import { getUserPropTypes } from '../../lib/proptypes'
 import { connect } from 'react-redux'
 import { checkAuthToken } from '../../actions'
 import Header from '../../components/Header'
+import Breadcrumb from '../../containers/Breadcrumb'
 import { withRouter } from 'react-router'
 import './styles.css'
 
@@ -26,6 +27,7 @@ class Layout extends React.Component {
     return (
       <div className="layout">
         <Header user={this.props.user} onNavigationChange={this.handleNavigate} />
+        <Breadcrumb params={this.props.params} />
         {this.props.children}
       </div>
     )

@@ -20,3 +20,22 @@ export const getPlayList = () =>
       message: err.message
     })))
   }
+
+export const getPlayLists = () =>
+  dispatch => {
+    const getPlayListsAction = createAction(PlayListActions.GET_PLAYLISTS)
+
+    dispatch(getPlayListsAction({
+      status: AsyncStatus.REQUEST
+    }))
+
+    return API.getPlayLists().then(data => {
+      dispatch(getPlayListsAction({
+        status: AsyncStatus.SUCCESS,
+        data
+      }))
+    }).catch(err => dispatch(getPlayListsAction({
+      status: AsyncStatus.FAILED,
+      message: err.message
+    })))
+  }

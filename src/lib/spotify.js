@@ -1,4 +1,5 @@
 import SpotifyWebAPI from 'spotify-web-api-node'
+import config from '../../config'
 
 const getSpotifyAPI = (config) => new SpotifyWebAPI({
   clientId: config.clientID,
@@ -6,18 +7,22 @@ const getSpotifyAPI = (config) => new SpotifyWebAPI({
   redirectUri: config.redirectURI
 })
 
-export const getPlayListAndTracks = (playlist, config) => new Promise((resolve, reject) => {
-  const api = getSpotifyAPI(config)
+const api = getSpotifyAPI(config.spotify)
+
+const init = new Promise((resolve, reject) =>
   api.clientCredentialsGrant().then(data => {
-    const accessToken = data.body['access_token']
-    api.setAccessToken(accessToken)
-    api.getPlaylistTracks(playlist.username, playlist.id).then(data => {
-      var tracks = data.body.items
-      tracks.map(track => {
-        track.playlist_id = playlist.id
-        track.added_by = playlist.username
-      })
-      resolve({ tracks, api, accessToken, config })
-    }).catch(err => reject(err))
-  }).catch(err => reject(err))
-})
+    api.setAccessToken(data.body['access_token'])
+    resolve(true)
+  }))
+
+export const spotifyFetchData = data => {
+  switch (data.table) {
+    case 'playlists':
+      return init.then(() =>
+        api.getPlaylist(data.username, data.id))
+    case 'albums':
+      return init.then(api.getAlbum(data.id))
+    case 'artists':
+      return init.then(api.getArtist(data.id))
+  }
+}

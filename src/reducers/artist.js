@@ -1,13 +1,12 @@
 import { handleActions } from 'redux-actions'
 import { AsyncStatus } from '../lib/constants'
 
-const initialPlayListState = {
-  playlist: {},
-  tracks: []
+const initialArtistState = {
+  status: AsyncStatus.IDLE
 }
 
 export default handleActions({
-  GET_PLAYLIST: (state, action) => {
+  GET_ARTIST: (state, action) => {
     switch (action.payload.status) {
       case AsyncStatus.FAILED:
         return {
@@ -27,4 +26,4 @@ export default handleActions({
         return state
     }
   }
-}, initialPlayListState)
+}, initialArtistState)

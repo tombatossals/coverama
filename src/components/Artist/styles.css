@@ -1,4 +1,4 @@
-.track-detail {
+.artist {
   margin: 2em;
   display: flex;
   flex-direction: row;
@@ -10,11 +10,15 @@
   box-sizing: border-box;
 }
 
-.track-detail div.info {
+.artist .photo img {
+  width: 256px;
+}
+
+.artist div.info {
     text-align: center;
     width: 100%;
 }
 
-.track-detail div.info h1 {
+.artist div.info h1 {
   font-size: 18px;
 }

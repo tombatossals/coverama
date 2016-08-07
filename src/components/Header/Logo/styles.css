@@ -1,6 +1,7 @@
 h1.logo {
+  font-family: Nunito;
   color: white;
-  font-size: 24px;
+  font-size: 32px;
   display: inline;
   line-height: 64px;
   margin: 0;

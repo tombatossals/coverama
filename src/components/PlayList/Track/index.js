@@ -1,25 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router'
 import './styles.css'
-import play from './play.png'
+import play from './play.32.png'
 
-const Track = ({ track }) => {
+const Track = ({ track, playlistId }) => {
   return (
-    <li className="track">
-      <Link to={`/track/${track.id}`}>
+    <div className="track">
+      <Link to={`/playlist/${playlistId}/track/${track.id}`}>
         <img className="cover" src={track.album.images[1].url} alt={track.name} />
-        <div className="info">{track.name}</div>
-        <p className="footer">Playlist name</p>
+        <div className="info">
+          {track.name}
+          <hr />
+          {track.artists[0].name}
+        </div>
+        <div className="footer">Playlist name</div>
         <div className="hover">
           <img src={play} role="presentation" />
         </div>
       </Link>
-    </li>
+    </div>
   )
 }
 
 Track.propTypes = {
-  track: React.PropTypes.object
+  track: React.PropTypes.object.isRequired,
+  playlistId: React.PropTypes.string.isRequired
 }
 
 export default Track

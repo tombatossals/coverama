@@ -1,6 +1,6 @@
 import React from 'react'
 import TrackComponent from '../../components/Track'
-import { getTrack } from '../../actions'
+import { getTrack, getPlayLists } from '../../actions'
 import { connect } from 'react-redux'
 import { AsyncStatus } from '../../lib/constants'
 
@@ -15,7 +15,11 @@ class Track extends React.Component {
   }
 
   componentDidMount () {
-    this.props.getTrack(this.props.params.id)
+    this.props.getTrack(this.props.params.trackId)
+
+    if (this.props.playlists.status !== AsyncStatus.SUCCESS) {
+      this.props.getPlayLists()
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -40,8 +44,9 @@ class Track extends React.Component {
   }
 }
 
-const mapStateToProps = ({ track }) => ({
-  track
+const mapStateToProps = ({ track, playlists }) => ({
+  track,
+  playlists
 })
 
-export default connect(mapStateToProps, { getTrack })(Track)
+export default connect(mapStateToProps, { getTrack, getPlayLists })(Track)

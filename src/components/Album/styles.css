@@ -1,4 +1,4 @@
-.track-detail {
+.album {
   margin: 2em;
   display: flex;
   flex-direction: row;
@@ -10,11 +10,15 @@
   box-sizing: border-box;
 }
 
-.track-detail div.info {
+.album .cover img {
+  width: 256px;
+}
+
+.album div.info {
     text-align: center;
     width: 100%;
 }
 
-.track-detail div.info h1 {
+.album div.info h1 {
   font-size: 18px;
 }

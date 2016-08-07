@@ -1,17 +1,19 @@
-.playlist .track {
+.playlists .playlist-item {
   position:relative;
+  list-style: none;
   display: inline-block;
   cursor: pointer;
-  width: 128px;
+  width: 256px;
   padding: 0;
-  max-width: 128px;
-  height: 274px;
-  min-height: 274px;
+  max-width: 256px;
+  height: 348px;
+  min-height: 348px;
   border: 8px solid transparent;
   border-radius: 5px;
+  text-align: center;
 }
 
-.playlist .track div.hover {
+.playlists .playlist-item div.hover {
   background-color: rgba(0, 0, 0, 0.1);
   transition: background-color 0.05s ease 0s;
   position: absolute;
@@ -22,65 +24,64 @@
   border-radius: 5px;
 }
 
-.playlist .track div.hover:hover {
+.playlists .playlist-item div.hover:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.playlist .track div.hover:hover > img {
+.playlists .playlist-item div.hover:hover > img {
   opacity: 0.5;
 }
 
-.playlist .track div.hover:hover > img:hover {
+.playlists .playlist-item div.hover:hover > img:hover {
   opacity: 1;
 }
 
-.playlist .track .hover > img {
+.playlists .playlist-item .hover > img {
     left: 50%;
-    margin-left: -16px;
-    margin-top: 54px;
+    margin-left: -32px;
+    margin-top: 96px;
     opacity: 0;
     position: absolute;
     transition: opacity 0.3s ease-in-out 0s;
 }
 
-.playlist .track a {
+.playlists .playlist-item a {
   text-decoration: none;
   color: #A7AAAD;
   font-size: .8em;
 }
 
-.playlist .track img.cover {
+.playlists .playlist-item img.cover {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  width: 128px;
-  height: 128px;
+  width: 256px;
+  height: 256px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-.playlist .track .info {
+.playlists .playlist-item .info {
   position:absolute;
-  top: 128px;
-  height: 130px;
+  top: 256px;
+  height: 60px;
   padding: 5px;
-  width: 118px;
+  width: 246px;
   background: #2A2F38;
 }
 
-.playlist .track .footer {
-  box-sizing: border-box;
+.playlists .playlist-item .footer {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 128px;
+  width: 256px;
   background: #38404C;
   margin: 0;
   color: #A7AAAD;
-  padding: 5px 5px;
-  height: 28px;
+  padding: 10px 0;
+  height: 16px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }

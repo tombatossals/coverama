@@ -22,7 +22,8 @@ export default class {
 
     return {
       username: pathname.slice(-3)[0],
-      id: pathname.slice(-1)[0]
+      id: pathname.slice(-1)[0],
+      table: 'playlists'
     }
   }
 }

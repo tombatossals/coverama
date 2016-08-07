@@ -4,11 +4,9 @@ import './styles.css'
 
 const PlayList = ({ playlist }) => (
   <div className="playlist">
-    <ul>
-    {playlist.tracks.map(track =>
-      <Track key={track.id} track={track} />
-    )}
-    </ul>
+  {playlist.tracks.items.map(item =>
+    <Track key={item.track.id} track={item.track} playlistId={playlist.id} />
+  )}
   </div>
 )
 

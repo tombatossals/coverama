@@ -7,26 +7,23 @@ const horizon = new Horizon({
 
 horizon.connect()
 
-/*
+/* Create tables */
+// horizon('playlists_tracks').fetch().subscribe()
+// horizon('playlists').fetch().subscribe()
+// horizon('tracks').fetch().subscribe()
+// horizon('albums').fetch().subscribe()
+// horizon('artists').fetch().subscribe()
+
 const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    if (hz.hasAuthToken()) {
-      hz.connect()
-      return hz.currentUser().fetch().subscribe(user => {
-        console.log(user)
+    if (horizon.hasAuthToken()) {
+      horizon.connect()
+      return horizon.currentUser().fetch().subscribe(user => {
         resolve(user)
       }, err => reject({ message: err.message }))
     }
 
     return reject({ message: 'Invalid auth token' })
-  })
-}
-*/
-
-const getCurrentUser = () => {
-  return new Promise((resolve, reject) => {
-    // hz.connect()
-    resolve({ id: 'anonymous' })
   })
 }
 
@@ -38,11 +35,54 @@ const getPlayList = () => new Promise((resolve, reject) =>
     err => reject({ message: err }))
 )
 
+const getPlayLists = () => new Promise((resolve, reject) =>
+  horizon('playlists').fetch().subscribe(playlists =>
+    resolve(playlists),
+  err => reject({ message: err }))
+)
+
 const getTrack = (id) => new Promise((resolve, reject) =>
   horizon('tracks').find({ id }).fetch().subscribe(track =>
     resolve(track),
     err => reject({ message: err }))
 )
+
+const getArtist = (id) => new Promise((resolve, reject) => {
+  horizon('artists').find(id).fetch().defaultIfEmpty().subscribe(artist => {
+    if (artist !== null) {
+      return resolve(artist)
+    }
+
+    return window.fetch('/api/collect', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ table: 'artists', id })
+    }).then(res => res.json()).then(() =>
+      horizon('artists').find(id).fetch().defaultIfEmpty().subscribe(artist => resolve(artist),
+        err => reject({ message: err }))).catch(err => reject(err))
+  }, err => {
+    reject({ message: err })
+  })
+})
+
+const getAlbum = (id) => new Promise((resolve, reject) => {
+  horizon('albums').find(id).fetch().defaultIfEmpty().subscribe(album => {
+    if (album !== null) {
+      return resolve(album)
+    }
+
+    return window.fetch('/api/collect', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ table: 'albums', id })
+    }).then(res => res.json()).then(() =>
+      horizon('albums').find(id).fetch().defaultIfEmpty().subscribe(album => resolve(album),
+        err => reject({ message: err }))).catch(err => reject(err))
+  }, err => {
+    reject({ message: err })
+  })
+})
+
 
 const logout = () => {
   Horizon.clearAuthTokens()
@@ -72,5 +112,8 @@ export default {
   getStatus,
   onReady,
   getPlayList,
+  getPlayLists,
+  getArtist,
+  getAlbum,
   getTrack
 }

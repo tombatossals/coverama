@@ -1,0 +1,91 @@
+.playlists .playlist-item {
+  position:relative;
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+  width: 256px;
+  padding: 0;
+  max-width: 256px;
+  height: 348px;
+  min-height: 348px;
+  border: 8px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.playlists .playlist-item div.hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.05s ease 0s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+}
+
+.playlists .playlist-item div.hover:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.playlists .playlist-item div.hover:hover > img {
+  opacity: 0.5;
+}
+
+.playlists .playlist-item div.hover:hover > img:hover {
+  opacity: 1;
+}
+
+.playlists .playlist-item .hover > img {
+    left: 50%;
+    margin-left: -32px;
+    margin-top: 96px;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.3s ease-in-out 0s;
+}
+
+.playlists .playlist-item a {
+  text-decoration: none;
+  color: #A7AAAD;
+  font-size: .8em;
+}
+
+.playlists .playlist-item img.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 256px;
+  height: 256px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.playlists .playlist-item .info {
+  position:absolute;
+  top: 256px;
+  height: 60px;
+  padding: 5px;
+  width: 246px;
+  background: #2A2F38;
+}
+
+.playlists .playlist-item .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 256px;
+  background: #38404C;
+  margin: 0;
+  color: #A7AAAD;
+  height: 24px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: left;
+}
+
+.playlists .playlist-item .footer img {
+  margin: 2px 5px;
+}

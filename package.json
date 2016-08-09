@@ -55,6 +55,8 @@
     "eject": "react-scripts eject",
     "cli": "babel-node src/cli/index.js",
     "dev": "NODE_ENV=development babel-node src/server.js | react-scripts start",
+    "dev:cli": "react-scripts start",
+    "dev:server": "NODE_ENV=development babel-node src/server.js",
     "prod": "react-scripts build && NODE_ENV=production babel-node src/server.js",
     "standard": "standard"
   }

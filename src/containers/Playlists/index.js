@@ -1,12 +1,12 @@
 import React from 'react'
-import PlayListsComponent from '../../components/PlayLists'
-import { getPlayLists } from '../../actions'
+import PlaylistsComponent from '../../components/Playlists'
+import { getPlaylists } from '../../actions'
 import { connect } from 'react-redux'
 import { AsyncStatus } from '../../lib/constants'
 
-class PlayLists extends React.Component {
+class Playlists extends React.Component {
   static propTypes = {
-    getPlayLists: React.PropTypes.func.isRequired,
+    getPlaylists: React.PropTypes.func.isRequired,
     playlists: React.PropTypes.object.isRequired
   }
 
@@ -15,7 +15,7 @@ class PlayLists extends React.Component {
   }
 
   componentDidMount () {
-    this.props.getPlayLists()
+    this.props.getPlaylists()
   }
 
   componentWillReceiveProps ({ playlists }) {
@@ -27,7 +27,7 @@ class PlayLists extends React.Component {
   }
 
   render () {
-    return <PlayListsComponent playlists={this.state.playlists} />
+    return <PlaylistsComponent playlists={this.state.playlists} />
   }
 }
 
@@ -35,4 +35,4 @@ const mapStateToProps = ({ playlists }) => ({
   playlists
 })
 
-export default connect(mapStateToProps, { getPlayLists })(PlayLists)
+export default connect(mapStateToProps, { getPlaylists })(Playlists)

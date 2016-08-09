@@ -7,7 +7,8 @@ import { AsyncStatus } from '../../lib/constants'
 class Artist extends React.Component {
   static propTypes = {
     getArtist: React.PropTypes.func.isRequired,
-    artist: React.PropTypes.object.isRequired
+    artist: React.PropTypes.object.isRequired,
+    albums: React.PropTypes.object.isRequired,
   }
 
   componentDidMount () {
@@ -15,16 +16,20 @@ class Artist extends React.Component {
   }
 
   render () {
-    if (this.props.artist.status !== AsyncStatus.SUCCESS) {
+    if (this.props.artist.status !== AsyncStatus.SUCCESS ||
+        this.props.albums.status !== AsyncStatus.SUCCESS) {
       return null
     }
 
-    return <ArtistComponent artist={this.props.artist.data} />
+    return <ArtistComponent
+      artist={this.props.artist.data}
+      albums={this.props.albums.data} />
   }
 }
 
-const mapStateToProps = ({ artist }) => ({
-  artist
+const mapStateToProps = ({ artist, albums }) => ({
+  artist,
+  albums
 })
 
 export default connect(mapStateToProps, { getArtist })(Artist)

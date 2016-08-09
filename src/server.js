@@ -41,8 +41,8 @@ if (process.env.NODE_ENV === 'production') {
 app.post('/api/collect', (req, res) =>
   getTables().then(tables =>
     spotifyFetchData(req.body, config.spotify).then(data =>
-      dbInsert(data.body, tables[req.body.table]).then(data => res.json(data)))
-    .catch(err => console.log(err))
+      dbInsert(data, tables[req.body.table]).then(data => res.json(data))
+    ).catch(err => console.log(err))
   .catch(err => console.log(err))))
 
 app.use('/', (req, res) => res.status(200).send(index))

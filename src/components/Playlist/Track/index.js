@@ -7,11 +7,11 @@ const Track = ({ track, playlistId }) => {
   return (
     <div className="track">
       <Link to={`/playlist/${playlistId}/track/${track.id}`}>
-        <img className="cover" src={track.album.images[1].url} alt={track.name} />
+        <img className="cover" src={track.image_url} alt={track.name} />
         <div className="info">
           {track.name}
           <hr />
-          {track.artists[0].name}
+          {track.artist_name}
         </div>
         <div className="footer">Playlist name</div>
         <div className="hover">

@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+.track-detail .cover img {
+  width: 256px;
+}
+
 .track-detail div.info {
     text-align: center;
     width: 100%;

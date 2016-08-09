@@ -6,9 +6,9 @@ import BreadcrumbComponent from '../../components/Breadcrumb'
 class Breadcrumb extends React.Component {
   static propTypes = {
     playlists: React.PropTypes.object.isRequired,
-    track: React.PropTypes.object.isRequired,
+    tracks: React.PropTypes.object.isRequired,
     artist: React.PropTypes.object.isRequired,
-    album: React.PropTypes.object.isRequired
+    albums: React.PropTypes.object.isRequired
   }
 
   state = {
@@ -25,7 +25,7 @@ class Breadcrumb extends React.Component {
     this.updateState(props)
   }
 
-  updateState = ({ playlists, track, artist, params }) => {
+  updateState = ({ playlists, tracks, artist, albums, params }) => {
     let breadcrumb = { playlists: { name: 'Playlists', url: '/playlists' } }
     if (playlists.status === AsyncStatus.SUCCESS && params && params.playlistId) {
       const playlist = playlists.data.find(p => p.id === params.playlistId)
@@ -34,19 +34,20 @@ class Breadcrumb extends React.Component {
       })
     }
 
-    if (track.status === AsyncStatus.SUCCESS && params && params.trackId) {
+    if (tracks.status === AsyncStatus.SUCCESS && params && params.trackId) {
+      const track = tracks.data.find(t => t.id === params.trackId)
       breadcrumb = Object.assign(breadcrumb, {
         artist: {
-          url: `/artist/${track.data.artists[0].id}`,
-          name: `${track.data.artists[0].name}`
+          url: `/artist/${track.artist_id}`,
+          name: `${track.artist_name}`
         },
         album: {
-          url: `/artist/${track.data.artists[0].id}/album/${track.data.album.id}`,
-          name: `${track.data.album.name}`
+          url: `/artist/${track.artist_id}/album/${track.album_id}`,
+          name: `${track.album_name}`
         },
         track: {
-          url: `/playlist/${params.playlistId}/track/${track.data.id}`,
-          name: `${track.data.name}`
+          url: `/playlist/${params.playlistId}/track/${track.id}`,
+          name: `${track.name}`
         }
       })
     }
@@ -54,12 +55,23 @@ class Breadcrumb extends React.Component {
     if (artist.status === AsyncStatus.SUCCESS && params && params.artistId) {
       breadcrumb = Object.assign(breadcrumb, {
         artist: {
-          url: `/artist/${artist.id}`,
+          url: `/artist/${artist.data.id}`,
           name: `${artist.data.name}`
         }
       })
     }
 
+    if (albums.status === AsyncStatus.SUCCESS && params && params.albumId) {
+      const album = albums.data.find(a => a.id === params.albumId)
+      if (album) {
+        breadcrumb = Object.assign(breadcrumb, {
+          album: {
+            url: `/album/${album.id}`,
+            name: `${album.name}`
+          }
+        })
+      }
+    }
 
     this.setState({ breadcrumb })
   }
@@ -69,11 +81,11 @@ class Breadcrumb extends React.Component {
   }
 }
 
-const mapStateToProps = ({ playlists, track, artist, album }) => ({
+const mapStateToProps = ({ playlists, tracks, artist, albums }) => ({
   playlists,
-  track,
+  tracks,
   artist,
-  album
+  albums
 })
 
 export default connect(mapStateToProps)(Breadcrumb)

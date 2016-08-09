@@ -1,4 +1,4 @@
-.album {
+.album-detail .album {
   margin: 2em;
   display: flex;
   flex-direction: row;
@@ -10,15 +10,15 @@
   box-sizing: border-box;
 }
 
-.album .cover img {
+.album-detail .album .cover img {
   width: 256px;
 }
 
-.album div.info {
+.album-detail .album div.info {
     text-align: center;
     width: 100%;
 }
 
-.album div.info h1 {
+.album-detail .album div.info h1 {
   font-size: 18px;
 }

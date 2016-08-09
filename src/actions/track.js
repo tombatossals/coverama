@@ -2,20 +2,39 @@ import { AsyncStatus, TrackActions } from '../lib/constants'
 import { createAction } from 'redux-actions'
 import API from '../lib/api'
 
-export const getTrack = (id) =>
+export const getTracksByPlaylistId = (playlistId) =>
   dispatch => {
-    const getTrackAction = createAction(TrackActions.GET_TRACK)
+    const getTracksAction = createAction(TrackActions.GET_TRACKS)
 
-    dispatch(getTrackAction({
+    dispatch(getTracksAction({
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getTrack(id).then(data => {
-      dispatch(getTrackAction({
+    return API.getTracksByPlaylistId(playlistId).then(data => {
+      dispatch(getTracksAction({
         status: AsyncStatus.SUCCESS,
         data
       }))
-    }).catch(err => dispatch(getTrackAction({
+    }).catch(err => dispatch(getTracksAction({
+      status: AsyncStatus.FAILED,
+      message: err.message
+    })))
+  }
+
+export const getTracksByAlbumId = (albumId) =>
+  dispatch => {
+    const getTracksAction = createAction(TrackActions.GET_TRACKS)
+
+    dispatch(getTracksAction({
+      status: AsyncStatus.REQUEST
+    }))
+
+    return API.getTracksByAlbumId(albumId).then(data => {
+      dispatch(getTracksAction({
+        status: AsyncStatus.SUCCESS,
+        data
+      }))
+    }).catch(err => dispatch(getTracksAction({
       status: AsyncStatus.FAILED,
       message: err.message
     })))

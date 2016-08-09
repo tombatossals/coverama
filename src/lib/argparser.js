@@ -4,7 +4,7 @@ import * as url from 'url'
 export default class {
   constructor () {
     this.argv = yargs.demand(2)
-      .usage('Usage: $0 <action> <RockBand PlayList ID>')
+      .usage('Usage: $0 <action> <RockBand Playlist ID>')
       .check(this.check)
       .argv
   }
@@ -17,7 +17,7 @@ export default class {
     return this.argv._[0]
   }
 
-  getPlayList () {
+  getPlaylist () {
     var pathname = url.parse(this.argv._[1]).pathname.split('/')
 
     return {

@@ -1,40 +1,40 @@
-import { AsyncStatus, PlayListActions } from '../lib/constants'
+import { AsyncStatus, PlaylistActions } from '../lib/constants'
 import { createAction } from 'redux-actions'
 import API from '../lib/api'
 
-export const getPlayList = () =>
+export const getPlaylist = (id) =>
   dispatch => {
-    const getPlayListAction = createAction(PlayListActions.GET_PLAYLIST)
+    const getPlaylistAction = createAction(PlaylistActions.GET_PLAYLIST)
 
-    dispatch(getPlayListAction({
+    dispatch(getPlaylistAction({
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getPlayList().then(data => {
-      dispatch(getPlayListAction({
+    return API.getPlaylist(id).then(data => {
+      dispatch(getPlaylistAction({
         status: AsyncStatus.SUCCESS,
         data
       }))
-    }).catch(err => dispatch(getPlayListAction({
+    }).catch(err => dispatch(getPlaylistAction({
       status: AsyncStatus.FAILED,
       message: err.message
     })))
   }
 
-export const getPlayLists = () =>
+export const getPlaylists = () =>
   dispatch => {
-    const getPlayListsAction = createAction(PlayListActions.GET_PLAYLISTS)
+    const getPlaylistsAction = createAction(PlaylistActions.GET_PLAYLISTS)
 
-    dispatch(getPlayListsAction({
+    dispatch(getPlaylistsAction({
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getPlayLists().then(data => {
-      dispatch(getPlayListsAction({
+    return API.getPlaylists().then(data => {
+      dispatch(getPlaylistsAction({
         status: AsyncStatus.SUCCESS,
         data
       }))
-    }).catch(err => dispatch(getPlayListsAction({
+    }).catch(err => dispatch(getPlaylistsAction({
       status: AsyncStatus.FAILED,
       message: err.message
     })))

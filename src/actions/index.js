@@ -5,12 +5,13 @@ export {
 } from './user'
 
 export {
-  getPlayLists,
-  getPlayList
+  getPlaylists,
+  getPlaylist
 } from './playlist'
 
 export {
-  getTrack
+  getTracksByPlaylistId,
+  getTracksByAlbumId
 } from './track'
 
 export {
@@ -18,5 +19,6 @@ export {
 } from './artist'
 
 export {
-  getAlbum
+  getAlbum,
+  getAlbumsByArtist
 } from './album'

@@ -1,12 +1,12 @@
 import React from 'react'
-import PlayListComponent from '../../components/PlayList'
-import { getPlayLists } from '../../actions'
+import PlaylistComponent from '../../components/Playlist'
+import { getPlaylist } from '../../actions'
 import { connect } from 'react-redux'
 import { AsyncStatus } from '../../lib/constants'
 
-class PlayList extends React.Component {
+class Playlist extends React.Component {
   static propTypes = {
-    getPlayLists: React.PropTypes.func.isRequired,
+    getPlaylist: React.PropTypes.func.isRequired,
     playlists: React.PropTypes.object.isRequired
   }
 
@@ -14,7 +14,13 @@ class PlayList extends React.Component {
 
   componentDidMount () {
     if (this.props.playlists.status !== AsyncStatus.SUCCESS) {
-      return this.props.getPlayLists()
+      return this.props.getPlaylist(this.props.params.playlistId)
+    }
+
+    const playlist = this.props.playlists.data.find(p => p.id === this.props.params.playlistId)
+
+    if (!playlist.tracks) {
+      return this.props.getPlaylist(this.props.params.playlistId)
     }
     this.updateActivePlaylist(this.props)
   }
@@ -35,7 +41,7 @@ class PlayList extends React.Component {
     if (!this.state.playlist) {
       return null
     }
-    return <PlayListComponent playlist={this.state.playlist} />
+    return <PlaylistComponent playlist={this.state.playlist} />
   }
 }
 
@@ -43,4 +49,4 @@ const mapStateToProps = ({ playlists }) => ({
   playlists
 })
 
-export default connect(mapStateToProps, { getPlayLists })(PlayList)
+export default connect(mapStateToProps, { getPlaylist })(Playlist)

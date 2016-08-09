@@ -1,4 +1,4 @@
-.artist {
+.artist-detail .artist {
   margin: 2em;
   display: flex;
   flex-direction: row;
@@ -10,15 +10,19 @@
   box-sizing: border-box;
 }
 
-.artist .photo img {
+.artist-detail .artist .photo img {
   width: 256px;
 }
 
-.artist div.info {
+.artist-detail .artist div.info {
     text-align: center;
     width: 100%;
 }
 
-.artist div.info h1 {
+.artist-detail .artist div.info h1 {
   font-size: 18px;
+}
+
+.artist-detail .albums {
+  text-align: center;
 }

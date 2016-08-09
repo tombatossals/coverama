@@ -1,19 +1,19 @@
 import React from 'react'
-import PlayListItem from './PlayListItem'
+import PlaylistItem from './PlaylistItem'
 import './styles.css'
 
-const PlayLists = ({ playlists }) => (
+const Playlists = ({ playlists }) => (
   <div className="playlists">
     <ul>
     {playlists.map(playlist =>
-      <PlayListItem key={playlist.id} playlist={playlist} />
+      <PlaylistItem key={playlist.id} playlist={playlist} />
     )}
     </ul>
   </div>
 )
 
-PlayLists.propTypes = {
+Playlists.propTypes = {
   playlists: React.PropTypes.array.isRequired
 }
 
-export default PlayLists
+export default Playlists

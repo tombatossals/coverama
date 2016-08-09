@@ -1,38 +1,43 @@
 import React from 'react'
 import TrackComponent from '../../components/Track'
-import { getTrack, getPlayLists } from '../../actions'
+import { getTracksByPlaylistId, getPlaylist } from '../../actions'
 import { connect } from 'react-redux'
 import { AsyncStatus } from '../../lib/constants'
 
 class Track extends React.Component {
   static propTypes = {
+    getTracksByPlaylistId: React.PropTypes.func.isRequired,
     router: React.PropTypes.any
   }
 
-  state = {
-    track: {},
-    status: AsyncStatus.IDLE
-  }
+  state = {}
 
   componentDidMount () {
-    this.props.getTrack(this.props.params.trackId)
+    if (this.props.tracks.status !== AsyncStatus.SUCCESS) {
+      this.props.getTracksByPlaylistId(this.props.params.playlistId)
+    }
 
     if (this.props.playlists.status !== AsyncStatus.SUCCESS) {
-      this.props.getPlayLists()
+      this.props.getPlaylist(this.props.params.playlistId)
     }
+
+    this.updateState(this.props)
   }
 
   componentWillReceiveProps(props) {
-    if (props.track.status === AsyncStatus.SUCCESS) {
+    this.updateState(props)
+  }
+
+  updateState = (props) => {
+    if (props.tracks.status === AsyncStatus.SUCCESS) {
       this.setState({
-        track: props.track.data,
-        status: AsyncStatus.SUCCESS
+        track: props.tracks.data.find(t => t.id === props.params.trackId),
       })
     }
   }
 
   render () {
-    if (this.state.status !== AsyncStatus.SUCCESS) {
+    if (!this.state.track) {
       return null
     }
 
@@ -44,9 +49,9 @@ class Track extends React.Component {
   }
 }
 
-const mapStateToProps = ({ track, playlists }) => ({
-  track,
+const mapStateToProps = ({ tracks, playlists }) => ({
+  tracks,
   playlists
 })
 
-export default connect(mapStateToProps, { getTrack, getPlayLists })(Track)
+export default connect(mapStateToProps, { getTracksByPlaylistId, getPlaylist })(Track)

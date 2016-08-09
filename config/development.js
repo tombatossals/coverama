@@ -22,6 +22,7 @@ module.exports = {
     project_name: 'playlists',
     permissions: false,
     auto_create_collection: true,
+    auto_create_index: true,
     auth: {
       token_secret: 'superSecret',
       allow_anonymous: true,

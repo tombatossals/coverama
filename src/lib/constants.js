@@ -17,14 +17,14 @@ export const UserActions = {
   USER_CHECK_AUTH_TOKEN: 'USER_CHECK_AUTH_TOKEN'
 }
 
-export const PlayListActions = {
+export const PlaylistActions = {
   GET_PLAYLIST: 'GET_PLAYLIST',
   GET_PLAYLISTS: 'GET_PLAYLISTS',
   SET_ACTIVE_PLAYLIST: 'SET_ACTIVE_PLAYLIST'
 }
 
 export const TrackActions = {
-  GET_TRACK: 'GET_TRACK'
+  GET_TRACKS: 'GET_TRACKS'
 }
 
 export const ArtistActions = {

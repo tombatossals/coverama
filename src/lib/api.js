@@ -14,106 +14,93 @@ horizon('tracks').fetch().subscribe()
 horizon('albums').fetch().subscribe()
 horizon('artists').fetch().subscribe()
 
-const getCurrentUser = () => {
-  return new Promise((resolve, reject) => {
-    if (horizon.hasAuthToken()) {
-      horizon.connect()
-      return horizon.currentUser().fetch().subscribe(user => {
-        resolve(user)
-      }, err => reject({ message: err.message }))
-    }
-
-    return reject({ message: 'Invalid auth token' })
-  })
-}
-
-const getPlaylist = (id) => new Promise((resolve, reject) =>
-  horizon('playlists').find(id).fetch().subscribe(playlist =>
-    horizon('tracks').findAll({ playlist_id: id }).fetch().subscribe(tracks =>
-      resolve(Object.assign({}, playlist, { tracks })),
-      err => reject({ message: err })),
-    err => reject({ message: err }))
+const getPlaylistBySlug = (slug) => new Promise((resolve, reject) =>
+  horizon('playlists').find({ slug: slug }).fetch().subscribe(playlist =>
+    horizon('tracks').findAll({ playlist_id: playlist.id }).fetch().subscribe(tracks =>
+      resolve(Object.assign({}, playlist, { tracks }))
+    , err => reject(err))
+    , err => reject(err))
 )
 
 const getPlaylists = () => new Promise((resolve, reject) =>
-  horizon('playlists').fetch().subscribe(playlists =>
-    resolve(playlists),
-  err => reject({ message: err }))
+  horizon('playlists').fetch().subscribe(playlists => {
+    resolve(playlists)
+  }, err => reject(err))
 )
 
-const getTracksByPlaylistId = (id) => new Promise((resolve, reject) =>
-  horizon('tracks').findAll({ playlist_id: id }).fetch().subscribe(tracks =>
-    resolve(tracks),
-    err => reject({ message: err }))
-)
+const getAlbumFromSlug = (slug, artistSlug) => new Promise((resolve, reject) =>
+  horizon('albums').find({ slug: slug, artist_slug: artistSlug }).fetch().subscribe(album =>
+    resolve(album)
+  , err => reject(err)))
 
-const getTracksByAlbumId = (albumId) => new Promise((resolve, reject) =>
-  horizon('tracks').findAll({ album_id: albumId }).fetch().defaultIfEmpty().subscribe(tracks => {
+const getTracksByAlbumSlug = (slug, artistSlug) => new Promise((resolve, reject) =>
+  horizon('tracks').findAll({ album_slug: slug, artist_slug: artistSlug }).fetch().defaultIfEmpty().subscribe(tracks => {
     if (tracks !== null && tracks.length > 1) {
       return resolve(tracks)
     }
-    window.fetch('/api/collect', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ table: 'tracks', albumId })
-    }).then(res => res.json()).then(() =>
-      horizon('albums').findAll({ album_id: albumId }).fetch().subscribe(albums =>
-        resolve(albums), err => reject({ message: err }))
+
+    getAlbumFromSlug(slug, artistSlug).then(album =>
+      window.fetch('/api/collect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ table: 'tracks', album })
+      }).then(res => res.json()).then(() =>
+        horizon('tracks').findAll({ album_slug: slug, artist_slug: artistSlug }).fetch().subscribe(tracks =>
+          resolve(tracks)
+        , err => reject(err))
+      ).catch(err => reject(err))
     ).catch(err => reject(err))
-  }, err => reject({ message: err }))
+  }, err => reject(err))
 )
 
-const getAlbumsByArtistId = (artistId) => new Promise((resolve, reject) => {
-  horizon('albums').findAll({ artist_id: artistId }).fetch().defaultIfEmpty().subscribe(albums => {
+const getAlbumsByArtist = (artist) => new Promise((resolve, reject) => {
+  horizon('albums').findAll({ artist_id: artist.id }).fetch().defaultIfEmpty().subscribe(albums => {
     if (albums !== null && albums.length > 1) {
       return resolve(albums)
     }
     window.fetch('/api/collect', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ table: 'albums', artistId })
+      body: JSON.stringify({ table: 'albums', artistId: artist.id, artistSlug: artist.slug })
     }).then(res => res.json()).then(() =>
-      horizon('albums').findAll({ artist_id: artistId }).fetch().subscribe(albums =>
-        resolve(albums), err => reject({ message: err }))
+      horizon('albums').findAll({ artist_id: artist.id }).fetch().subscribe(albums => resolve(albums)
+      , err => reject(err))
     ).catch(err => reject(err))
-  }, err => reject({ message: err }))
+  }, err => reject(err))
 })
 
-const getArtist = (id) => new Promise((resolve, reject) => {
-  horizon('artists').find(id).fetch().defaultIfEmpty().subscribe(artist => {
+const getAlbumsByArtistSlug = (slug) => new Promise((resolve, reject) => {
+  horizon('artists').find({ slug: slug }).fetch().subscribe(artist => {
+    getAlbumsByArtist(artist).then(albums => resolve(albums))
+  }, err => reject(err))
+})
+
+const getArtistFromTracksBySlug = (slug) => new Promise((resolve, reject) =>
+  horizon('tracks').find({ artist_slug: slug }).fetch().subscribe(track =>
+    resolve({ id: track.artist_id, slug: track.artist_slug })
+  , err => reject(err)))
+
+const getArtistBySlug = (slug) => new Promise((resolve, reject) => {
+  horizon('artists').find({ slug: slug }).fetch().defaultIfEmpty().subscribe(artist => {
     if (artist !== null) {
-      getAlbumsByArtistId(id).then(albums => {
+      return getAlbumsByArtist(artist).then(albums => {
         resolve(Object.assign({}, artist, { albums }))
-      }).catch(err => reject({ message: err }))
+      }).catch(err => reject(err))
     }
-    return window.fetch('/api/collect', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ table: 'artists', id })
-    }).then(res => res.json()).then(() =>
-      horizon('artists').find(id).fetch().subscribe(artist =>
-        getAlbumsByArtistId(id).then(albums => {
-          resolve(Object.assign({}, artist, { albums }))
-        }).catch(err => reject({ message: err })),
-        err => reject({ message: err }))).catch(err => reject(err))
-  }, err => reject({ message: err }))
-})
-
-const getAlbum = (id) => new Promise((resolve, reject) => {
-  horizon('albums').find(id).fetch().defaultIfEmpty().subscribe(album => {
-    if (album !== null) {
-      return resolve(album)
-    }
-    window.fetch('/api/collect', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ table: 'albums', id })
-    }).then(res => res.json()).then(() =>
-      horizon('albums').find(id).fetch().subscribe(album =>
-        resolve(album), err => reject({ message: err }))
-    ).catch(err => reject(err))
-  }, err => reject({ message: err }))
-})
+    getArtistFromTracksBySlug(slug).then(artist => {
+      window.fetch('/api/collect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ table: 'artists', id: artist.id })
+      }).then(res => res.json()).then(() =>
+        horizon('artists').find({ slug: slug }).fetch().subscribe(artist => {
+          getAlbumsByArtist(artist).then(albums => {
+            resolve(Object.assign({}, artist, { albums }))
+          }).catch(err => reject(err))
+        }, err => reject(err))
+      ).catch(err => reject(err))
+    .catch(err => reject(err)) })
+  }, err => reject(err)) })
 
 const logout = () => {
   Horizon.clearAuthTokens()
@@ -136,16 +123,14 @@ const onReady = (cb) => {
 }
 
 export default {
-  getCurrentUser,
   githubLogin,
   googleLogin,
   logout,
   getStatus,
   onReady,
-  getPlaylist,
+  getPlaylistBySlug,
   getPlaylists,
-  getArtist,
-  getAlbum,
-  getTracksByPlaylistId,
-  getTracksByAlbumId
+  getArtistBySlug,
+  getAlbumsByArtistSlug,
+  getTracksByAlbumSlug
 }

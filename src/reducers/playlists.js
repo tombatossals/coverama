@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions'
-import { AsyncStatus } from '../lib/constants'
+import { AsyncStatus, PlaylistActions } from '../lib/constants'
 
 const initialPlaylistsState = {
   status: AsyncStatus.IDLE
 }
 
 export default handleActions({
-  GET_PLAYLISTS: (state, action) => {
+  [PlaylistActions.GET_PLAYLISTS]: (state, action) => {
     switch (action.payload.status) {
       case AsyncStatus.FAILED:
         return {
@@ -20,13 +20,14 @@ export default handleActions({
       case AsyncStatus.SUCCESS:
         return {
           status: AsyncStatus.SUCCESS,
-          data: action.payload.data
+          entities: action.payload.entities,
+          ids: action.payload.result
         }
       default:
         return state
     }
   },
-  GET_PLAYLIST: (state, action) => {
+  [PlaylistActions.GET_PLAYLIST]: (state, action) => {
     switch (action.payload.status) {
       case AsyncStatus.FAILED:
         return {
@@ -40,7 +41,8 @@ export default handleActions({
       case AsyncStatus.SUCCESS:
         return {
           status: AsyncStatus.SUCCESS,
-          data: state.data && state.data.length > 0 ? state.data : [ action.payload.data ]
+          entities: action.payload.entities.playlists,
+          ids: [ action.payload.result ]
         }
       default:
         return state

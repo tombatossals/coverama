@@ -1,13 +1,11 @@
-h1.logo {
+div.logo {
   font-family: Nunito;
-  color: white;
-  font-size: 32px;
-  display: inline;
-  line-height: 64px;
+  color: #222;
   margin: 0;
+  padding-bottom: .5em;
+  display: flex;
 }
 
-div.logo img {
-  display: inline-block;
-  height: 64px;
+div.logo h1 {
+  margin: 14px;
 }

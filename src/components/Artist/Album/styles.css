@@ -1,4 +1,4 @@
-.artist-detail .albums .album {
+.detail .artist .albums .album {
   position:relative;
   display: inline-block;
   cursor: pointer;
@@ -7,11 +7,12 @@
   max-width: 128px;
   height: 274px;
   min-height: 274px;
-  border: 8px solid transparent;
   border-radius: 5px;
+  margin: 6px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.artist-detail .albums .album div.hover {
+.detail .artist .albums .album div.hover {
   background-color: rgba(0, 0, 0, 0.1);
   transition: background-color 0.05s ease 0s;
   position: absolute;
@@ -22,19 +23,19 @@
   border-radius: 5px;
 }
 
-.artist-detail .albums .album div.hover:hover {
+.detail .artist .albums .album div.hover:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.artist-detail .albums .album div.hover:hover > img {
+.detail .artist .albums .album div.hover:hover > img {
   opacity: 0.5;
 }
 
-.artist-detail .albums .album div.hover:hover > img:hover {
+.detail .artist .albums .album div.hover:hover > img:hover {
   opacity: 1;
 }
 
-.artist-detail .albums .album .hover > img {
+.detail .artist .albums .album .hover > img {
     left: 50%;
     margin-left: -16px;
     margin-top: 54px;
@@ -43,13 +44,13 @@
     transition: opacity 0.3s ease-in-out 0s;
 }
 
-.artist-detail .albums .album a {
+.detail .artist .albums .album a {
   text-decoration: none;
   color: #A7AAAD;
   font-size: .8em;
 }
 
-.artist-detail .albums .album img.cover {
+.detail .artist .albums .album img.cover {
   position: absolute;
   top: 0;
   left: 0;
@@ -60,7 +61,7 @@
   border-top-right-radius: 5px;
 }
 
-.artist-detail .albums .album .info {
+.detail .artist .albums .album .info {
   position:absolute;
   top: 128px;
   height: 130px;
@@ -69,7 +70,7 @@
   background: #2A2F38;
 }
 
-.artist-detail .albums .album .footer {
+.detail .artist .albums .album .footer {
   box-sizing: border-box;
   position: absolute;
   bottom: 0;

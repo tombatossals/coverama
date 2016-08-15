@@ -1,5 +1,8 @@
 div.header {
   text-align: left;
-  margin-left: 2em;
-  padding-top: 2em;
+  margin: 0;
+  padding: 1em 2em 0 2em;
+  background: #0ea59e;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }

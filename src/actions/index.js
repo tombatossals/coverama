@@ -6,19 +6,17 @@ export {
 
 export {
   getPlaylists,
-  getPlaylist
+  getPlaylistBySlug
 } from './playlist'
 
 export {
-  getTracksByPlaylistId,
-  getTracksByAlbumId
+  getTracksByAlbumSlug
 } from './track'
 
 export {
-  getArtist
+  getArtistBySlug
 } from './artist'
 
 export {
-  getAlbum,
-  getAlbumsByArtist
+  getAlbumsByArtistSlug
 } from './album'

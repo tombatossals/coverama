@@ -1,0 +1,14 @@
+.frontpage {
+  margin: 2em;
+}
+
+.frontpage ul {
+  margin: 0;
+  padding: 0;
+}
+
+.frontpage h2 {
+  text-align: left;
+  color: #0EA59E;
+  border-bottom: 1px solid #0EA59E;
+}

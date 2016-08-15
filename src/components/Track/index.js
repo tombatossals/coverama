@@ -2,13 +2,16 @@ import React from 'react'
 import './styles.css'
 
 const Track = ({ track }) => (
-  <div className="track-detail">
-    <div className="cover">
-      <img src={track.image_url} alt={track.name} />
-    </div>
-    <div className="info">
-      <h1>Track</h1>
-      <h1>{track.name}</h1>
+  <div className="detail">
+    <div className="track">
+      <div className="main">
+        <div className="info">
+          <h1>{track.name}&nbsp;<span className="subtitle">track</span></h1>
+        </div>
+        <div className="cover">
+          <img src={track.image_url} alt={track.name} />
+        </div>
+      </div>
     </div>
   </div>
 )

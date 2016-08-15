@@ -1,24 +1,33 @@
-.track-detail {
+.detail .track {
   margin: 2em;
+}
+
+.detail .track .main {
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
-  padding: 0.5em;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px #2A2F38;
-  border-radius: 4px;
-  box-sizing: border-box;
 }
 
-.track-detail .cover img {
+.detail .track .main .cover {
+  flex: 1 0 0;
+  text-align: right;
+}
+
+.detail .track .main .info {
+  flex: 3 0 0;
+}
+
+.detail .track .main .cover img {
   width: 256px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border: 1px solid #888;
 }
 
-.track-detail div.info {
-    text-align: center;
-    width: 100%;
+.detail .track .main .info h1 {
+  margin: 0;
 }
 
-.track-detail div.info h1 {
-  font-size: 18px;
+.detail .track .main .info span.subtitle {
+  font-size: 14px;
+  color: #444;
 }

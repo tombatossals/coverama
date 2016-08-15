@@ -10,7 +10,7 @@ module.exports = {
   rethinkdb: {
     port: 28015,
     host: 'localhost',
-    db: 'playlists'
+    db: 'music'
   },
   spotify: {
     url: 'https://accounts.spotify.com/api/token',
@@ -18,7 +18,7 @@ module.exports = {
     clientSecret: 'aac252f97b1a480b830ffe1b9d46673b'
   },
   horizon: {
-    project_name: 'playlists',
+    project_name: 'music',
     permissions: false,
     auto_create_collection: true,
     auth: {

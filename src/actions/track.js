@@ -1,8 +1,10 @@
 import { AsyncStatus, TrackActions } from '../lib/constants'
 import { createAction } from 'redux-actions'
+import { normalize, arrayOf } from 'normalizr'
 import API from '../lib/api'
+import { trackSchema } from '../lib/schemas'
 
-export const getTracksByPlaylistId = (playlistId) =>
+export const getTracksByAlbumSlug = (slug, artistSlug) =>
   dispatch => {
     const getTracksAction = createAction(TrackActions.GET_TRACKS)
 
@@ -10,29 +12,15 @@ export const getTracksByPlaylistId = (playlistId) =>
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getTracksByPlaylistId(playlistId).then(data => {
+    return API.getTracksByAlbumSlug(slug, artistSlug).then(data => {
+      const normalized = normalize(data, arrayOf(trackSchema))
+      console.log(slug)
       dispatch(getTracksAction({
         status: AsyncStatus.SUCCESS,
-        data
-      }))
-    }).catch(err => dispatch(getTracksAction({
-      status: AsyncStatus.FAILED,
-      message: err.message
-    })))
-  }
-
-export const getTracksByAlbumId = (albumId) =>
-  dispatch => {
-    const getTracksAction = createAction(TrackActions.GET_TRACKS)
-
-    dispatch(getTracksAction({
-      status: AsyncStatus.REQUEST
-    }))
-
-    return API.getTracksByAlbumId(albumId).then(data => {
-      dispatch(getTracksAction({
-        status: AsyncStatus.SUCCESS,
-        data
+        entities: normalized.entities,
+        result: normalized.result,
+        artistSlug: artistSlug,
+        albumSlug: slug
       }))
     }).catch(err => dispatch(getTracksAction({
       status: AsyncStatus.FAILED,

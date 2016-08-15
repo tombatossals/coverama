@@ -1,5 +1,6 @@
 import SpotifyWebAPI from 'spotify-web-api-node'
 import config from '../../config'
+import slug from 'limax'
 
 const getSpotifyAPI = (config) => new SpotifyWebAPI({
   clientId: config.clientID,
@@ -7,25 +8,26 @@ const getSpotifyAPI = (config) => new SpotifyWebAPI({
   redirectUri: config.redirectURI
 })
 
-const api = getSpotifyAPI(config.spotify)
-
-const init = new Promise((resolve, reject) =>
+const init = () => new Promise((resolve, reject) => {
+  const api = getSpotifyAPI(config.spotify)
   api.clientCredentialsGrant().then(data => {
     api.setAccessToken(data.body['access_token'])
     resolve(api)
-  }))
+  }).catch(err => console.log(err))
+})
 
 export const spotifyFetchData = params => {
   switch (params.table) {
     case 'playlists':
-      return init.then(api =>
+      return init().then(api =>
         api.getPlaylist(params.username, params.id).then(data => ({
           playlist: {
             description: data.body.description,
             external_urls: data.body.external_urls.spotify,
             id: data.body.id,
             image_url: data.body.images[0].url,
-            name: data.body.name
+            name: data.body.name,
+            slug: slug(data.body.name)
           },
           playlistTracks: data.body.tracks.items.map(item => ({
             added_at: item.playlist_id,
@@ -34,12 +36,17 @@ export const spotifyFetchData = params => {
             track_id: item.track.id
           })),
           tracks: data.body.tracks.items.map(item => ({
-            album_id: item.track.album.id,
             playlist_id: data.body.id,
+            playlist_slug: slug(data.body.name),
+            playlist_image_url: data.body.images[0].url,
+            album_id: item.track.album.id,
             album_name: item.track.album.name,
+            album_slug: slug(item.track.album.name),
+            album_image_url: item.track.album.images[0].url,
             image_url: item.track.album.images[0].url,
             artist_id: item.track.artists[0].id,
             artist_name: item.track.artists[0].name,
+            artist_slug: slug(item.track.artists[0].name),
             disc_number: item.track.disc_number,
             duration_ms: item.track.duration_ms,
             explicit: item.track.explicit,
@@ -47,24 +54,14 @@ export const spotifyFetchData = params => {
             href: item.track.href,
             id: item.track.id,
             name: item.track.name,
+            slug: slug(item.track.name),
             popularity: item.track.popularity,
             preview_url: item.track.preview_url,
             track_number: item.track.track_number
           }))
-        })))
+        }))).catch(err => console.log(err))
     case 'albums':
-      if (params.id) {
-        return init.then(api =>
-          api.getAlbum(params.id).then(data => ({
-            id: data.body.id,
-            external_url: data.body.external_urls.spotify,
-            image_url: data.body.images[0].url,
-            name: data.body.name,
-            artist_id: data.artistId
-          })))
-      }
-
-      return init.then(api => new Promise((resolve, reject) =>
+      return init().then(api => new Promise((resolve, reject) =>
         api.getArtistAlbums(params.artistId, {
           limit: 50,
           album_type: 'album',
@@ -74,39 +71,49 @@ export const spotifyFetchData = params => {
           external_url: album.external_urls.spotify,
           image_url: album.images[0].url,
           name: album.name,
-          artist_id: params.artistId
+          slug: slug(album.name),
+          artist_id: params.artistId,
+          artist_slug: params.artistSlug
         })))).catch(err => console.log(err))
-      ).catch(err => console.log(err)))
+      )).catch(err => console.log(err))
 
     case 'tracks':
-      return init.then(api =>
-        api.getAlbumTracks(params.albumId)).then(data => ({
-          album_id: data.body.album.id,
-          album_name: data.body.album.name,
-          image_url: data.body.album.images[0].url,
-          artist_id: data.body.artists[0].id,
-          artist_name: data.body.artists[0].name,
-          disc_number: data.body.disc_number,
-          duration_ms: data.body.duration_ms,
-          explicit: data.body.explicit,
-          external_url: data.body.external_urls.spotify,
-          href: data.body.href,
-          id: data.body.id,
-          name: data.body.name,
-          popularity: data.body.popularity,
-          preview_url: data.body.preview_url,
-          track_number: data.body.track_number
-        }))
+      return init().then(api => new Promise((resolve, reject) =>
+        api.getAlbumTracks(params.album.id).then(data =>
+          resolve(data.body.items.map(track => ({
+            album_id: params.album.id,
+            album_name: params.album.name,
+            album_image_url: params.album.image_url,
+            album_slug: params.album.slug,
+            image_url: params.album.image_url,
+            artist_id: track.artists[0].id,
+            artist_name: track.artists[0].name,
+            artist_slug: slug(track.artists[0].name),
+            disc_number: track.disc_number,
+            duration_ms: track.duration_ms,
+            explicit: track.explicit,
+            external_url: track.external_urls.spotify,
+            href: track.href,
+            id: track.id,
+            name: track.name,
+            slug: slug(track.name),
+            popularity: track.popularity,
+            preview_url: track.preview_url,
+            track_number: track.track_number
+          })))).catch(err => console.log(err))
+        )).catch(err => console.log(err))
     case 'artists':
-      return init.then(api =>
-        api.getArtist(params.id)).then(data => ({
+      return init().then(api =>
+        api.getArtist(params.id).then(data => ({
           id: data.body.id,
           external_url: data.body.external_urls.spotify,
           genres: data.body.genres.slice(),
           followers: data.body.followers.total,
           image_url: data.body.images[0].url,
           name: data.body.name,
+          slug: slug(data.body.name),
           popularity: data.body.popularity
-        }))
+        })).catch(err => console.log(err))
+      ).catch(err => console.log(err))
   }
 }

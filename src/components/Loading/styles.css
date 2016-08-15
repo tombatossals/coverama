@@ -1,0 +1,10 @@
+.loading {
+  padding: 1em;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.loading.center > div {
+  margin: auto;
+}

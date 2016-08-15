@@ -32,6 +32,6 @@ export const ArtistActions = {
 }
 
 export const AlbumActions = {
-  GET_ALBUM: 'GET_ALBUM'
+  GET_ALBUMS: 'GET_ALBUMS'
 }
 

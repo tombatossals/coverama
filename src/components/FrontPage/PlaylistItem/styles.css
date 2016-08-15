@@ -3,14 +3,15 @@
   list-style: none;
   display: inline-block;
   cursor: pointer;
-  width: 256px;
+  width: 224px;
   padding: 0;
-  max-width: 256px;
-  height: 348px;
-  min-height: 348px;
-  border: 8px solid transparent;
+  max-width: 224px;
+  height: 296px;
+  min-height: 296px;
+  margin-right: 12px;
   border-radius: 5px;
   text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .playlists .playlist-item div.hover {
@@ -39,7 +40,7 @@
 .playlists .playlist-item .hover > img {
     left: 50%;
     margin-left: -32px;
-    margin-top: 96px;
+    margin-top: 80px;
     opacity: 0;
     position: absolute;
     transition: opacity 0.3s ease-in-out 0s;
@@ -56,19 +57,22 @@
   top: 0;
   left: 0;
   right: 0;
-  width: 256px;
-  height: 256px;
+  width: 100%;
+  height: 224px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
 .playlists .playlist-item .info {
   position:absolute;
-  top: 256px;
-  height: 60px;
-  padding: 5px;
-  width: 246px;
+  top: 224px;
+  height: 40px;
+  padding: 10px;
+  width: 100%;
   background: #2A2F38;
+  color: #EEE;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 .playlists .playlist-item .footer {
@@ -76,16 +80,17 @@
   bottom: 0;
   left: 0;
   right: 0;
-  width: 256px;
-  background: #38404C;
+  width: 100%;
   margin: 0;
-  color: #A7AAAD;
-  height: 24px;
+  color: #38404C;
+  background: #FAFAFA;
+  height: 32px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   text-align: left;
 }
 
 .playlists .playlist-item .footer img {
-  margin: 2px 5px;
+  margin: 5px;
+  float: right;
 }

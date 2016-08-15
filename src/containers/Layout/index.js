@@ -2,7 +2,6 @@ import React from 'react'
 import Header from '../../components/Header'
 import Breadcrumb from '../../containers/Breadcrumb'
 import { withRouter } from 'react-router'
-import './styles.css'
 
 class Layout extends React.Component {
   static propTypes = {

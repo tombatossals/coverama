@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions'
-import { AsyncStatus } from '../lib/constants'
+import { AsyncStatus, ArtistActions } from '../lib/constants'
 
 const initialArtistState = {
   status: AsyncStatus.IDLE
 }
 
 export default handleActions({
-  GET_ARTIST: (state, action) => {
+  [ArtistActions.GET_ARTIST]: (state, action) => {
     switch (action.payload.status) {
       case AsyncStatus.FAILED:
         return {
@@ -20,7 +20,8 @@ export default handleActions({
       case AsyncStatus.SUCCESS:
         return {
           status: AsyncStatus.SUCCESS,
-          data: action.payload.data
+          entities: action.payload.entities.artists,
+          ids: [ action.payload.result ]
         }
       default:
         return state

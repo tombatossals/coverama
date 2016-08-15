@@ -27,8 +27,9 @@ if (process.env.NODE_ENV === 'production') {
     <html lang="en">
       <head>
         <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>React App</title>
+        <title>Playlists</title>
         <link rel="shortcut icon" href="/favicon.ico">
       </head>
       <body>
@@ -41,9 +42,10 @@ if (process.env.NODE_ENV === 'production') {
 app.post('/api/collect', (req, res) =>
   getTables().then(tables =>
     spotifyFetchData(req.body, config.spotify).then(data =>
-      dbInsert(data, tables[req.body.table]).then(data => res.json(data))
-    ).catch(err => console.log(err))
-  .catch(err => console.log(err))))
+      dbInsert(data, tables[req.body.table]).then(data =>
+      res.json(data)).catch(err => res.status(500).send(err.message))
+    ).catch(err => res.status(500).send(err.message))
+  .catch(err => res.status(500).send(err.message))))
 
 app.use('/', (req, res) => res.status(200).send(index))
 api.run(app)

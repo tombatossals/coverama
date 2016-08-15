@@ -1,24 +1,40 @@
-.album-detail .album {
+.detail .album {
   margin: 2em;
+}
+
+.detail .album .main {
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
-  padding: 0.5em;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px #2A2F38;
-  border-radius: 4px;
   box-sizing: border-box;
 }
 
-.album-detail .album .cover img {
+.detail .album .main .cover {
+  flex: 1 0 0;
+  text-align: right;
+}
+
+.detail .album .main .info {
+  flex: 3 0 0;
+}
+
+.detail .album .main .cover img {
   width: 256px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border: 1px solid #888;
 }
 
-.album-detail .album div.info {
-    text-align: center;
-    width: 100%;
+.detail .album .info h1 {
+  font-size: 24px;
 }
 
-.album-detail .album div.info h1 {
-  font-size: 18px;
+.detail .album .artist {
+  text-align: left;
+}
+
+.detail .album .artist h2 {
+  text-align: left;
+  color: #0EA59E;
+  border-bottom: 1px solid #0EA59E;
+  margin: 0 0 .5em;
 }

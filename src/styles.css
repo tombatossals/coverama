@@ -1,21 +1,32 @@
 html, body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
-  height: 100%;
+  min-height: 100%;
+  min-width: 556px;
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  background-repeat: no-repeat;
 }
 
 body {
-  background-color: #396A92;
-  height: 100%;
+  padding: 2em;
+  min-height: 100%;
 }
 
 div#root {
-  background: linear-gradient(rgba(0,0,0,.3), #141414);
-  background-repeat: no-repeat;
-  padding: 0 2em;
-  min-height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding-bottom: 1em;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 a {
   text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: #9F2461;
 }

@@ -6,7 +6,7 @@ import play from './play.32.png'
 const Album = ({ album }) => {
   return (
     <div className="album">
-      <Link to={`/artist/${album.artist_id}/album/${album.id}`}>
+      <Link to={`/artist/${album.artist_slug}/album/${album.slug}`}>
         <img className="cover" src={album.image_url} alt={album.name} />
         <div className="info">
           {album.name}

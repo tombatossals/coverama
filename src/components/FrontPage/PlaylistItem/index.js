@@ -7,7 +7,7 @@ import spotify from './spotify.20.png'
 const PlaylistItem = ({ playlist }) => {
   return (
     <li className="playlist-item">
-      <Link to={`/playlist/${playlist.id}`}>
+      <Link to={`/playlist/${playlist.slug}`}>
         <img className="cover" src={playlist.image_url} alt={playlist.name} />
         <div className="info">{playlist.name}</div>
         <div className="footer">

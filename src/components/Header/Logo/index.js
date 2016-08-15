@@ -1,10 +1,13 @@
 import React from 'react'
 import './styles.css'
+import logo from './logo.64.png'
+import { Link } from 'react-router'
 
 const Logo = ({ children }) => (
-  <h1 className="logo">
-    <span>{ children }</span>
-  </h1>
+  <div className="logo">
+    <Link className="image" to="/"><img src={logo} role="presentation" /></Link>
+    <h1><Link to="/">{ children }</Link></h1>
+  </div>
 )
 
 Logo.propTypes = {

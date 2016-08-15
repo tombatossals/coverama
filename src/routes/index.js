@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, Route, Redirect } from 'react-router'
 import { Login, Logout } from '../containers/User'
 import Layout from '../containers/Layout'
-import Playlists from '../containers/Playlists'
+import FrontPage from '../containers/FrontPage'
 import Playlist from '../containers/Playlist'
 import Track from '../containers/Track'
 import Artist from '../containers/Artist'
@@ -12,13 +12,14 @@ const Routes = (props) => (
   <Router history={props.history}>
     <Redirect from="/" to="/playlists" />
     <Route path="/" component={Layout}>
-      <Route path="playlists" component={Playlists} />
+      <Route path="playlists" component={FrontPage} />
       <Route path="login" component={Login} />
       <Route path="logout" component={Logout} />
-      <Route path="playlist/:playlistId" component={Playlist} />
-      <Route path="playlist/:playlistId/track/:trackId" component={Track} />
-      <Route path="artist/:artistId" component={Artist} />
-      <Route path="artist/:artistId/album/:albumId" component={Album} />
+      <Route path="playlist/:playlistSlug" component={Playlist} />
+      <Route path="playlist/:playlistSlug/track/:trackSlug" component={Track} />
+      <Route path="artist/:artistSlug/album/:albumSlug/track/:trackSlug" component={Track} />
+      <Route path="artist/:artistSlug" component={Artist} />
+      <Route path="artist/:artistSlug/album/:albumSlug" component={Album} />
     </Route>
   </Router>
 )

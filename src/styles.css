@@ -1,22 +1,28 @@
-html, body {
+html {
   font-family: "Roboto", sans-serif;
-  margin: 0;
-  min-height: 100%;
-  min-width: 556px;
+  margin: 0 auto;
+  padding: 0;
+  width: 588px;
+  height: 100%;
   background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {
-  padding: 2em;
-  min-height: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 div#root {
-  background: rgba(255, 255, 255, 0.8);
-  padding-bottom: 1em;
-  border-radius: 8px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background: #74675A;
+  min-height: 100%;
+  box-shadow: 0 0 10px #74675A;
+  position: relative;
+}
+
+div.layout {
+  min-height: 100%;
 }
 
 a {

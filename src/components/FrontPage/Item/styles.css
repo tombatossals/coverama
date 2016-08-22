@@ -1,0 +1,112 @@
+.frontpage .item {
+  position:relative;
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+  width: 196px;
+  padding: 0;
+  border: 1px solid transparent;
+  text-align: center;
+  box-sizing: border-box;
+  /* box-shadow: 0 1px 25px rgba(0, 0, 0, 0.1); */
+}
+
+/*
+.frontpage .item:hover {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+*/
+
+.frontpage .item div.hover {
+  transition: background-color 0.05s ease 0s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.frontpage .item div.hover:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.frontpage .item div.hover:hover > img {
+  opacity: 0.5;
+}
+
+.frontpage .item:hover {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  box-shadow: 0 .5em 1em rgba(0,0,0,0.25);
+  z-index: 1000;
+}
+
+.frontpage .item div.hover:hover > img:hover {
+  opacity: 1;
+}
+
+.frontpage .item .hover > img {
+    left: 50%;
+    margin-left: -32px;
+    margin-top: 40px;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.3s ease-in-out 0s;
+}
+
+.frontpage .item a {
+  text-decoration: none;
+  color: #A7AAAD;
+  font-size: .8em;
+}
+
+.frontpage .item img.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.frontpage .item .info {
+  position:absolute;
+  width: 196px;
+  bottom: -40px;
+  left: -1px;
+  height: 40px;
+  padding: 10px;
+  background: #2A2F38;
+  color: #EEE;
+  font-size: 14px;
+  box-sizing: border-box;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  z-index: 100;
+  display: none;
+}
+
+.frontpage .item:hover .info {
+  display: inline;
+}
+
+.frontpage .item .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  color: #38404C;
+  background: #FAFAFA;
+  height: 32px;
+  text-align: left;
+  display: none;
+}
+
+.frontpage .item .footer img {
+  margin: 5px;
+  float: right;
+}

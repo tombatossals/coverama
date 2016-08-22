@@ -1,5 +1,6 @@
 .detail .artist {
-  margin: 2em;
+  margin: 1em;
+  padding-bottom: 4em;
 }
 
 .detail .artist .main {
@@ -19,14 +20,15 @@
 }
 
 .detail .artist .main .photo img {
-  width: 256px;
+  width: 128px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   border: 1px solid #888;
   border-radius: 8px;
 }
 
 .detail .artist .info h1 {
-  font-size: 24px;
+  font-size: 32px;
+  color: #C8B08E;
 }
 
 .detail .artist .albums {
@@ -35,7 +37,7 @@
 
 .detail .artist .albums h2 {
   text-align: left;
-  color: #0EA59E;
-  border-bottom: 1px solid #0EA59E;
+  color: #DDD;
+  border-bottom: 1px solid #DDD;
   margin: 0 0 .5em;
 }

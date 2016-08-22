@@ -1,8 +1,5 @@
 import { AsyncStatus, PlaylistActions } from '../lib/constants'
 import { createAction } from 'redux-actions'
-import { arrayOf, normalize } from 'normalizr'
-import { playlistSchema } from '../lib/schemas'
-
 import API from '../lib/api'
 
 export const getPlaylists = () =>
@@ -14,11 +11,9 @@ export const getPlaylists = () =>
     }))
 
     return API.getPlaylists().then(data => {
-      const normalized = normalize(data, arrayOf(playlistSchema))
       dispatch(getPlaylistsAction({
         status: AsyncStatus.SUCCESS,
-        entities: normalized.entities.playlists,
-        result: normalized.result
+        data
       }))
     }).catch(err => dispatch(getPlaylistsAction({
       status: AsyncStatus.FAILED,
@@ -28,21 +23,18 @@ export const getPlaylists = () =>
 
 export const getPlaylistBySlug = (slug) =>
   dispatch => {
-    const getPlaylistsAction = createAction(PlaylistActions.GET_PLAYLIST)
+    const getPlaylistAction = createAction(PlaylistActions.GET_PLAYLIST)
 
-    dispatch(getPlaylistsAction({
+    dispatch(getPlaylistAction({
       status: AsyncStatus.REQUEST
     }))
 
     return API.getPlaylistBySlug(slug).then(data => {
-      const normalized = normalize(data, playlistSchema)
-      dispatch(getPlaylistsAction({
+      dispatch(getPlaylistAction({
         status: AsyncStatus.SUCCESS,
-        entities: normalized.entities,
-        result: normalized.result,
-        playlistSlug: slug
+        data
       }))
-    }).catch(err => dispatch(getPlaylistsAction({
+    }).catch(err => dispatch(getPlaylistAction({
       status: AsyncStatus.FAILED,
       message: err.message
     })))

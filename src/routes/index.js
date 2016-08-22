@@ -13,13 +13,15 @@ const Routes = (props) => (
     <Redirect from="/" to="/playlists" />
     <Route path="/" component={Layout}>
       <Route path="playlists" component={FrontPage} />
+      <Route path="artists" component={FrontPage} />
+      <Route path="albums" component={FrontPage} />
       <Route path="login" component={Login} />
       <Route path="logout" component={Logout} />
-      <Route path="playlist/:playlistSlug" component={Playlist} />
-      <Route path="playlist/:playlistSlug/track/:trackSlug" component={Track} />
-      <Route path="artist/:artistSlug/album/:albumSlug/track/:trackSlug" component={Track} />
-      <Route path="artist/:artistSlug" component={Artist} />
-      <Route path="artist/:artistSlug/album/:albumSlug" component={Album} />
+      <Route path="playlists/:playlistSlug" component={Playlist} />
+      <Route path="playlists/:playlistSlug/artists/:artistSlug/tracks/:trackSlug" component={Track} />
+      <Route path="artists/:artistSlug/albums/:albumSlug/tracks/:trackSlug" component={Track} />
+      <Route path="artists/:artistSlug" component={Artist} />
+      <Route path="artists/:artistSlug/albums/:albumSlug" component={Album} />
     </Route>
   </Router>
 )

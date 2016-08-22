@@ -1,22 +1,32 @@
 import React from 'react'
-import PlaylistItem from './PlaylistItem'
+import Item from './Item'
 import './styles.css'
 
-const FrontPage = ({ playlists }) => (
+const getColumn = (items, columns, number) =>
+  items.filter((item, index) => index % columns === number)
+
+const FrontPage = ({ items }) => (
   <div className="frontpage">
-    <h2>Playlists</h2>
-    <div className="playlists">
-    {playlists.ids.map(id =>
-      <PlaylistItem key={playlists.entities[id].id} playlist={playlists.entities[id]} />
+    <div className="column">
+    {getColumn(items, 3, 0).map(item =>
+      <Item key={item.id} item={item} />
+    )}
+    </div>
+    <div className="column">
+    {getColumn(items, 3, 1).map(item =>
+      <Item key={item.id} item={item} />
+    )}
+    </div>
+    <div className="column">
+    {getColumn(items, 3, 2).map(item =>
+      <Item key={item.id} item={item} />
     )}
     </div>
   </div>
 )
 
 FrontPage.propTypes = {
-  playlists: React.PropTypes.shape({
-    ids: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
-  })
+  items: React.PropTypes.array.isRequired
 }
 
 export default FrontPage

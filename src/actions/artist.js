@@ -1,8 +1,6 @@
 import { AsyncStatus, ArtistActions } from '../lib/constants'
 import { createAction } from 'redux-actions'
-import { normalize } from 'normalizr'
 import API from '../lib/api'
-import { artistSchema } from '../lib/schemas'
 
 export const getArtistBySlug = (slug) =>
   dispatch => {
@@ -13,14 +11,30 @@ export const getArtistBySlug = (slug) =>
     }))
 
     return API.getArtistBySlug(slug).then(data => {
-      const normalized = normalize(data, artistSchema)
       dispatch(getArtistAction({
         status: AsyncStatus.SUCCESS,
-        entities: normalized.entities,
-        result: normalized.result,
-        artistSlug: slug
+        data
       }))
     }).catch(err => dispatch(getArtistAction({
+      status: AsyncStatus.FAILED,
+      message: err.message
+    })))
+  }
+
+export const getArtists = () =>
+  dispatch => {
+    const getArtistsAction = createAction(ArtistActions.GET_ARTISTS)
+
+    dispatch(getArtistsAction({
+      status: AsyncStatus.REQUEST
+    }))
+
+    return API.getArtists().then(data => {
+      dispatch(getArtistsAction({
+        status: AsyncStatus.SUCCESS,
+        data
+      }))
+    }).catch(err => dispatch(getArtistsAction({
       status: AsyncStatus.FAILED,
       message: err.message
     })))

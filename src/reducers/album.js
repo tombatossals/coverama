@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions'
 import { AsyncStatus, AlbumActions } from '../lib/constants'
 
-const initialAlbumsState = {
+const initialAlbumState = {
   status: AsyncStatus.IDLE
 }
 
 export default handleActions({
-  [AlbumActions.GET_ALBUMS]: (state, action) => {
+  [AlbumActions.GET_ALBUM]: (state, action) => {
     switch (action.payload.status) {
       case AsyncStatus.FAILED:
         return {
@@ -24,4 +24,4 @@ export default handleActions({
         return state
     }
   }
-}, initialAlbumsState)
+}, initialAlbumState)

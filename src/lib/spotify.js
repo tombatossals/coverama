@@ -27,7 +27,8 @@ export const spotifyFetchData = params => {
             id: data.body.id,
             image_url: data.body.images[0].url,
             name: data.body.name,
-            slug: slug(data.body.name)
+            slug: slug(data.body.name),
+            url: `/playlists/${slug(data.body.name)}`
           },
           playlistTracks: data.body.tracks.items.map(item => ({
             added_at: item.playlist_id,
@@ -37,15 +38,10 @@ export const spotifyFetchData = params => {
           })),
           tracks: data.body.tracks.items.map(item => ({
             playlist_id: data.body.id,
-            playlist_slug: slug(data.body.name),
-            playlist_image_url: data.body.images[0].url,
             album_id: item.track.album.id,
-            album_name: item.track.album.name,
             album_slug: slug(item.track.album.name),
-            album_image_url: item.track.album.images[0].url,
             image_url: item.track.album.images[0].url,
             artist_id: item.track.artists[0].id,
-            artist_name: item.track.artists[0].name,
             artist_slug: slug(item.track.artists[0].name),
             disc_number: item.track.disc_number,
             duration_ms: item.track.duration_ms,
@@ -72,6 +68,7 @@ export const spotifyFetchData = params => {
           image_url: album.images[0].url,
           name: album.name,
           slug: slug(album.name),
+          url: `/artists/${params.artistSlug}/albums/${slug(album.name)}`,
           artist_id: params.artistId,
           artist_slug: params.artistSlug
         })))).catch(err => console.log(err))
@@ -82,12 +79,9 @@ export const spotifyFetchData = params => {
         api.getAlbumTracks(params.album.id).then(data =>
           resolve(data.body.items.map(track => ({
             album_id: params.album.id,
-            album_name: params.album.name,
-            album_image_url: params.album.image_url,
             album_slug: params.album.slug,
             image_url: params.album.image_url,
             artist_id: track.artists[0].id,
-            artist_name: track.artists[0].name,
             artist_slug: slug(track.artists[0].name),
             disc_number: track.disc_number,
             duration_ms: track.duration_ms,
@@ -112,6 +106,7 @@ export const spotifyFetchData = params => {
           image_url: data.body.images[0].url,
           name: data.body.name,
           slug: slug(data.body.name),
+          url: `/artists/${slug(data.body.name)}`,
           popularity: data.body.popularity
         })).catch(err => console.log(err))
       ).catch(err => console.log(err))

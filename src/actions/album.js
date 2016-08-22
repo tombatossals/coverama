@@ -1,25 +1,40 @@
 import { AsyncStatus, AlbumActions } from '../lib/constants'
 import { createAction } from 'redux-actions'
-import { arrayOf, normalize } from 'normalizr'
 import API from '../lib/api'
-import { albumSchema } from '../lib/schemas'
 
-export const getAlbumsByArtistSlug = (slug) =>
+export const getAlbumBySlug = (slug, artistSlug) =>
   dispatch => {
-    const getAlbumAction = createAction(AlbumActions.GET_ALBUMS)
+    const getAlbumAction = createAction(AlbumActions.GET_ALBUM)
 
     dispatch(getAlbumAction({
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getAlbumsByArtistSlug(slug).then(data => {
-      const normalized = normalize(data, arrayOf(albumSchema))
+    return API.getAlbumBySlug(slug, artistSlug).then(data => {
       dispatch(getAlbumAction({
         status: AsyncStatus.SUCCESS,
-        entities: normalized.entities.playlists,
-        result: normalized.result
+        data
       }))
     }).catch(err => dispatch(getAlbumAction({
+      status: AsyncStatus.FAILED,
+      message: err.message
+    })))
+  }
+
+export const getAlbums = () =>
+  dispatch => {
+    const getAlbumsAction = createAction(AlbumActions.GET_ALBUMS)
+
+    dispatch(getAlbumsAction({
+      status: AsyncStatus.REQUEST
+    }))
+
+    return API.getAlbums().then(data => {
+      dispatch(getAlbumsAction({
+        status: AsyncStatus.SUCCESS,
+        data
+      }))
+    }).catch(err => dispatch(getAlbumsAction({
       status: AsyncStatus.FAILED,
       message: err.message
     })))

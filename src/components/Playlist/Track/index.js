@@ -3,10 +3,10 @@ import { Link } from 'react-router'
 import './styles.css'
 import play from './play.32.png'
 
-const Track = ({ track, playlistSlug }) => {
+const Track = ({ track, playlist }) => {
   return (
     <div className="track">
-      <Link to={`/playlist/${playlistSlug}/track/${track.slug}`}>
+      <Link to={`/playlists/${playlist.slug}/artists/${track.artist_slug}/tracks/${track.slug}`}>
         <img className="cover" src={track.image_url} alt={track.name} />
         <div className="info">
           {track.name}
@@ -24,7 +24,7 @@ const Track = ({ track, playlistSlug }) => {
 
 Track.propTypes = {
   track: React.PropTypes.object.isRequired,
-  playlistSlug: React.PropTypes.string.isRequired
+  playlist: React.PropTypes.object.isRequired
 }
 
 export default Track

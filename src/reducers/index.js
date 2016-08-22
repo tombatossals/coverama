@@ -1,13 +1,19 @@
 import { combineReducers } from 'redux'
 import playlistsReducers from './playlists'
-import tracksReducers from './tracks'
+import playlistReducers from './playlist'
+import trackReducers from './track'
+import artistReducers from './artist'
 import artistsReducers from './artists'
+import albumReducers from './album'
 import albumsReducers from './albums'
 
 const rootReducer = combineReducers({
   playlists: playlistsReducers,
-  tracks: tracksReducers,
+  playlist: playlistReducers,
+  track: trackReducers,
+  artist: artistReducers,
   artists: artistsReducers,
+  album: albumReducers,
   albums: albumsReducers
 })
 

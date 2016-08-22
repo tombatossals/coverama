@@ -1,8 +1,9 @@
 .detail .playlist {
-  margin: 2em;
+  margin: 0 1em;
 }
 
 .detail .playlist h2 {
-  color: #0EA59E;
-  border-bottom: 1px solid #0EA59E;
+  margin-top: .5em;
+  color: #DDD;
+  border-bottom: 1px solid #DDD;
 }

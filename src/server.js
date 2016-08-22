@@ -4,6 +4,7 @@ import api from './backend/api'
 import config from '../config'
 import proxy from 'http-proxy-middleware'
 import bodyParser from 'body-parser'
+import expressMonitor from 'express-status-monitor'
 import { spotifyFetchData } from './lib/spotify'
 import {
   dbInsert,
@@ -11,6 +12,7 @@ import {
 } from './lib/database'
 
 const app = express()
+app.use(expressMonitor())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 

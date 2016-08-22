@@ -1,8 +1,17 @@
-div.header {
+div.header .top {
   text-align: left;
   margin: 0;
-  padding: 1em 2em 0 2em;
-  background: #0ea59e;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  padding: .5em 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+}
+
+div.header .logo {
+  flex: 2 0 0;
+}
+
+div.header .Search {
+  flex: 2 0 0;
+  width: 100%;
 }

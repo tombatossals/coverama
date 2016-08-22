@@ -2,7 +2,7 @@ import React from 'react'
 import './styles.css'
 import Album from './Album'
 
-const Artist = ({ artist, albums }) => (
+const Artist = ({ artist }) => (
   <div className="detail">
     <div className="artist">
       <div className="main">
@@ -15,8 +15,8 @@ const Artist = ({ artist, albums }) => (
       </div>
       <div className="albums">
         <h2>Albums</h2>
-        { albums.ids.map(albumId =>
-          <Album key={albumId} album={albums.entities[albumId]} />
+        { artist.albums.map(album =>
+          <Album key={album.id} album={album} />
         )}
       </div>
     </div>
@@ -24,8 +24,7 @@ const Artist = ({ artist, albums }) => (
 )
 
 Artist.propTypes = {
-  artist: React.PropTypes.object.isRequired,
-  albums: React.PropTypes.object.isRequired
+  artist: React.PropTypes.object.isRequired
 }
 
 export default Artist

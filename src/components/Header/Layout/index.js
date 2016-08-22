@@ -1,9 +1,21 @@
 import React from 'react'
 import Logo from '../Logo'
+import Search from '../Search'
+import MenuList from '../MenuList'
 import './styles.css'
 
-export default () => (
+const Layout = ({ section }) => (
   <div className="header">
-    <Logo>Music</Logo>
+    <div className="top">
+      <Logo className="logo">Music</Logo>
+      <Search className="Search"></Search>
+    </div>
+    <MenuList section={section} />
   </div>
 )
+
+Layout.propTypes = {
+  section: React.PropTypes.string.isRequired
+}
+
+export default Layout

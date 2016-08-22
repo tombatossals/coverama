@@ -2,24 +2,24 @@ import React from 'react'
 import './styles.css'
 import { Link } from 'react-router'
 
-const Album = ({ album, artist, tracks }) => (
+const Album = ({ album, artist }) => (
   <div className="detail">
     <div className="album">
       <div className="main">
         <div className="info">
+          <div className="cover">
+            <img src={album.image_url} alt={album.name} />
+          </div>
           <h1>{album.name}</h1>
           <div className="tracks">
             <h2>Tracks</h2>
-            {tracks.map(track =>
+            {album.tracks.map(track =>
               <div key={track.id} className="track">
                 {track.track_number}.&nbsp;
-                <Link to={`/artist/${track.slug}/album/${track.slug}/track/${track.slug}`}>{track.name}</Link>
+                <Link to={`/artist/${artist.slug}/album/${album.slug}/track/${track.slug}`}>{track.name}</Link>
               </div>
             )}
           </div>
-        </div>
-        <div className="cover">
-          <img src={album.image_url} alt={album.name} />
         </div>
       </div>
       <div className="artist">
@@ -32,8 +32,7 @@ const Album = ({ album, artist, tracks }) => (
 
 Album.propTypes = {
   album: React.PropTypes.object,
-  artist: React.PropTypes.object,
-  tracks: React.PropTypes.array
+  artist: React.PropTypes.object
 }
 
 export default Album

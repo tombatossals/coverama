@@ -10,13 +10,19 @@ export {
 } from './playlist'
 
 export {
-  getTracksByAlbumSlug
+  getTrackBySlug
 } from './track'
 
 export {
-  getArtistBySlug
+  getArtistBySlug,
+  getArtists
 } from './artist'
 
 export {
-  getAlbumsByArtistSlug
+  getAlbumBySlug,
+  getAlbums
 } from './album'
+
+export {
+  searchByKey
+} from './search'

@@ -17,6 +17,14 @@ export default class {
     return this.argv._[0]
   }
 
+  getFirstArgument () {
+    return this.argv._[1]
+  }
+
+  getSecondArgument () {
+    return this.argv._[2]
+  }
+
   getPlaylist () {
     var pathname = url.parse(this.argv._[1]).pathname.split('/')
 

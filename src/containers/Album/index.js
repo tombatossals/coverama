@@ -1,16 +1,15 @@
 import React from 'react'
 import AlbumComponent from '../../components/Album'
-import { getArtistBySlug, getTracksByAlbumSlug } from '../../actions'
+import { getArtistBySlug, getAlbumBySlug } from '../../actions'
 import { connect } from 'react-redux'
 import { AsyncStatus } from '../../lib/constants'
 import Loading from '../../components/Loading'
 
 class Album extends React.Component {
   static propTypes = {
-    albums: React.PropTypes.object.isRequired,
-    artists: React.PropTypes.object.isRequired,
-    tracks: React.PropTypes.object.isRequired,
-    getTracksByAlbumSlug: React.PropTypes.func.isRequired,
+    album: React.PropTypes.object.isRequired,
+    artist: React.PropTypes.object.isRequired,
+    getAlbumBySlug: React.PropTypes.func.isRequired,
     getArtistBySlug: React.PropTypes.func.isRequired
   }
 
@@ -23,56 +22,43 @@ class Album extends React.Component {
   }
 
   fetchDataIfNeeded = (props) => {
-    if (props.artists.status === AsyncStatus.IDLE ||
-        props.albums.status === AsyncStatus.IDLE) {
+    if (props.artist.status === AsyncStatus.IDLE) {
       props.getArtistBySlug(props.params.artistSlug)
     }
 
-    if (props.tracks.status === AsyncStatus.IDLE) {
-      return props.getTracksByAlbumSlug(props.params.albumSlug, props.params.artistSlug)
+    if (props.album.status === AsyncStatus.IDLE) {
+      props.getAlbumBySlug(props.params.albumSlug, props.params.artistSlug)
     }
 
-    if (props.tracks.status === AsyncStatus.SUCCESS &&
-        props.tracks.albumSlug !== props.params.albumSlug) {
-      props.getTracksByAlbumSlug(props.params.albumSlug, props.params.artistSlug)
+    if (props.artist.status === AsyncStatus.SUCCESS &&
+        props.artist.data.slug !== props.params.artistSlug) {
+      props.getArtistBySlug(props.params.artistSlug)
     }
-  }
 
-  findBySlug(data, slug) {
-    for (const id of data.ids) {
-      if (data.entities[id].slug === slug) {
-        return data.entities[id]
-      }
+    if (props.album.status === AsyncStatus.SUCCESS &&
+        props.album.data.slug !== props.params.albumSlug) {
+      props.getAlbumBySlug(props.params.albumSlug, props.params.artistSlug)
     }
   }
 
   render () {
-    if (this.props.artists.status !== AsyncStatus.SUCCESS ||
-        this.props.albums.status !== AsyncStatus.SUCCESS ||
-        this.props.tracks.status !== AsyncStatus.SUCCESS) {
+    if (this.props.artist.status !== AsyncStatus.SUCCESS ||
+        this.props.album.status !== AsyncStatus.SUCCESS) {
       return <Loading type="spin" width={96} height={96} />
     }
 
-
-    const artist = this.findBySlug(this.props.artists, this.props.params.artistSlug)
-    const album = this.findBySlug(this.props.albums, this.props.params.albumSlug)
-
-    const tracks = this.props.tracks.ids.map(trackId => this.props.tracks.entities[trackId])
-    tracks.sort((a, b) => a.track_number - b.track_number)
     return (
       <AlbumComponent
-        album={album}
-        artist={artist}
-        tracks={tracks}
+        album={this.props.album.data}
+        artist={this.props.artist.data}
       />
     )
   }
 }
 
-const mapStateToProps = ({ albums, artists, tracks }) => ({
-  albums,
-  artists,
-  tracks
+const mapStateToProps = ({ album, artist }) => ({
+  album,
+  artist
 })
 
-export default connect(mapStateToProps, { getTracksByAlbumSlug, getArtistBySlug })(Album)
+export default connect(mapStateToProps, { getAlbumBySlug, getArtistBySlug })(Album)

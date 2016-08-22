@@ -24,14 +24,21 @@ export const PlaylistActions = {
 }
 
 export const TrackActions = {
-  GET_TRACKS: 'GET_TRACKS'
+  GET_TRACK: 'GET_TRACK'
 }
 
 export const ArtistActions = {
-  GET_ARTIST: 'GET_ARTIST'
+  GET_ARTIST: 'GET_ARTIST',
+  GET_ARTISTS: 'GET_ARTISTS'
 }
 
 export const AlbumActions = {
-  GET_ALBUMS: 'GET_ALBUMS'
+  GET_ALBUMS: 'GET_ALBUMS',
+  GET_ALBUM: 'GET_ALBUM'
 }
+
+export const SearchActions = {
+  GET_SEARCH: 'GET_SEARCH'
+}
+
 

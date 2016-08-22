@@ -5,10 +5,10 @@ import BreadcrumbComponent from '../../components/Breadcrumb'
 
 class Breadcrumb extends React.Component {
   static propTypes = {
-    playlists: React.PropTypes.object.isRequired,
-    tracks: React.PropTypes.object.isRequired,
-    artists: React.PropTypes.object.isRequired,
-    albums: React.PropTypes.object.isRequired
+    playlist: React.PropTypes.object.isRequired,
+    track: React.PropTypes.object.isRequired,
+    artist: React.PropTypes.object.isRequired,
+    album: React.PropTypes.object.isRequired
   }
 
   state = {
@@ -23,73 +23,55 @@ class Breadcrumb extends React.Component {
     this.updateState(props)
   }
 
-  findBySlug(data, slug) {
-    for (const id of data.ids) {
-      if (data.entities[id].slug === slug) {
-        return data.entities[id]
-      }
-    }
-  }
-
-  updateState = ({ playlists, tracks, artists, albums, params }) => {
+  updateState = ({ playlist, track, artist, album, params }) => {
     let breadcrumb = {}
-    if (playlists.status === AsyncStatus.SUCCESS && params && params.playlistSlug) {
-      const playlist = this.findBySlug(playlists, params.playlistSlug)
+    if (playlist.status === AsyncStatus.SUCCESS && params && params.playlistSlug) {
       breadcrumb = Object.assign(breadcrumb, {
         playlist: {
-          url: `/playlist/${playlist.slug}`,
-          name: playlist.name,
-          image_url: playlist.image_url
+          url: playlist.data.url,
+          name: playlist.data.name,
+          image_url: playlist.data.image_url
       }})
     }
 
-    if (tracks.status === AsyncStatus.SUCCESS && params && params.trackSlug) {
-      const track = this.findBySlug(tracks, params.trackSlug)
+    if (track.status === AsyncStatus.SUCCESS &&
+        artist.status === AsyncStatus.SUCCESS &&
+        params && params.trackSlug) {
+      const album = artist.data.albums.find(a => a.slug === track.data.album_slug)
+      if (track && album) {
+        breadcrumb = Object.assign(breadcrumb, {
+          album: {
+            url: album.url,
+            name: album.name,
+            image_url: album.image_url
+          },
+          track: {
+            url: params.playlistSlug
+                ? `/playlists/${params.playlistSlug}/tracks/${track.slug}`
+                : `/artists/${params.artistSlug}/tracks/${track.slug}`,
+            name: track.name
+          }
+        })
+      }
+    }
+
+    if (artist.status === AsyncStatus.SUCCESS && params && params.artistSlug) {
       breadcrumb = Object.assign(breadcrumb, {
         artist: {
-          url: `/artist/${track.artist_slug}`,
-          name: track.artist_name,
-          image_url: track.artist_image_url
-        },
-        album: {
-          url: `/artist/${track.artist_slug}/album/${track.album_slug}`,
-          name: track.album_name,
-          image_url: track.album_image_url
-        },
-        track: {
-          url: params.playlistSlug
-               ? `/playlist/${params.playlistSlug}/track/${track.slug}`
-               : `/artist/${params.artistSlug}/track/${track.slug}`,
-          name: track.name
+          url: artist.data.url,
+          name: `${artist.data.name}`,
+          image_url: artist.data.image_url
         }
       })
     }
 
-    if (artists.status === AsyncStatus.SUCCESS && params && params.artistSlug) {
-      const artist = this.findBySlug(artists, params.artistSlug)
-
-      if (artist) {
-        breadcrumb = Object.assign(breadcrumb, {
-          artist: {
-            url: `/artist/${artist.slug}`,
-            name: `${artist.name}`,
-            image_url: artist.image_url
-          }
-        })
-      }
-    }
-
-    if (albums.status === AsyncStatus.SUCCESS && params && params.albumSlug &&
-        params.artistSlug && albums.artistSlug === params.artistSlug) {
-      const album = this.findBySlug(albums, params.albumSlug)
-      if (album) {
-        breadcrumb = Object.assign(breadcrumb, {
-          album: {
-            url: `/artist/${album.artist_slug}/album/${album.slug}`,
-            name: `${album.name}`
-          }
-        })
-      }
+    if (artist.status === AsyncStatus.SUCCESS && album.status === AsyncStatus.SUCCESS && params && params.albumSlug) {
+      breadcrumb = Object.assign(breadcrumb, {
+        album: {
+          url: album.data.url,
+          name: `${album.data.name}`
+        }
+      })
     }
     this.setState({ breadcrumb })
   }
@@ -108,11 +90,11 @@ class Breadcrumb extends React.Component {
   }
 }
 
-const mapStateToProps = ({ playlists, tracks, artists, albums }) => ({
-  playlists,
-  tracks,
-  artists,
-  albums
+const mapStateToProps = ({ playlist, track, artist, album }) => ({
+  playlist,
+  track,
+  artist,
+  album
 })
 
 export default connect(mapStateToProps)(Breadcrumb)

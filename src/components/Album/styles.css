@@ -1,5 +1,6 @@
 .detail .album {
-  margin: 2em;
+  margin: 1em auto;
+  text-align: center;
 }
 
 .detail .album .main {
@@ -11,11 +12,10 @@
 
 .detail .album .main .cover {
   flex: 1 0 0;
-  text-align: right;
 }
 
 .detail .album .main .info {
-  flex: 3 0 0;
+  flex: 1 0 0;
 }
 
 .detail .album .main .cover img {
@@ -37,4 +37,18 @@
   color: #0EA59E;
   border-bottom: 1px solid #0EA59E;
   margin: 0 0 .5em;
+}
+
+.detail .album .tracks {
+  text-align: left;
+}
+
+.detail .album .tracks h2 {
+  color: #0EA59E;
+  border-bottom: 1px solid #0EA59E;
+  margin: 0 0 .5em;
+}
+
+.detail .album .tracks a {
+  color: #423F67;
 }

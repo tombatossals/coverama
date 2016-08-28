@@ -1,41 +1,41 @@
-.detail .artist {
-  margin: 1em;
+.detail > .artist {
+  margin: 0 1em;
   padding-bottom: 4em;
 }
 
-.detail .artist .main {
+.detail > .artist .main {
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
   box-sizing: border-box;
 }
 
-.detail .artist .main .photo {
+.detail > .artist .main .photo {
   flex: 1 0 0;
   text-align: right;
 }
 
-.detail .artist .main .info {
+.detail > .artist .main .info {
   flex: 3 0 0;
 }
 
-.detail .artist .main .photo img {
+.detail > .artist .main .photo img {
   width: 128px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   border: 1px solid #888;
   border-radius: 8px;
 }
 
-.detail .artist .info h1 {
+.detail > .artist .info h1 {
   font-size: 32px;
   color: #C8B08E;
 }
 
-.detail .artist .albums {
+.detail > .artist .albums {
   text-align: left;
 }
 
-.detail .artist .albums h2 {
+.detail > .artist .albums h2 {
   text-align: left;
   color: #DDD;
   border-bottom: 1px solid #DDD;

@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import { AsyncStatus, TrackActions } from '../lib/constants'
 
-const initialPlaylistsState = {
+const initialTrackState = {
   status: AsyncStatus.IDLE
 }
 
@@ -26,4 +26,4 @@ export default handleActions({
         return state
     }
   }
-}, initialPlaylistsState)
+}, initialTrackState)

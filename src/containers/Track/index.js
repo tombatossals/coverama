@@ -1,6 +1,6 @@
 import React from 'react'
 import TrackComponent from '../../components/Track'
-import { getPlaylistBySlug, getAlbumBySlug, getArtistBySlug, getTrackBySlug} from '../../actions'
+import { getPlaylistBySlug, getAlbumBySlug, getArtistBySlug, getTrackBySlug, setTracks } from '../../actions'
 import { connect } from 'react-redux'
 import { AsyncStatus } from '../../lib/constants'
 import Loading from '../../components/Loading'
@@ -93,4 +93,4 @@ const mapStateToProps = ({ track, playlist, album, artist }) => ({
   artist
 })
 
-export default connect(mapStateToProps, { getPlaylistBySlug, getAlbumBySlug, getArtistBySlug, getTrackBySlug })(Track)
+export default connect(mapStateToProps, { getPlaylistBySlug, getAlbumBySlug, getArtistBySlug, getTrackBySlug, setTracks })(Track)

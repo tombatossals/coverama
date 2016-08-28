@@ -1,0 +1,62 @@
+.Player {
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: #282F31;
+}
+
+.Player .main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  box-sizing: border-box;
+}
+
+.Player .main .info {
+  position: relative;
+}
+
+.Player .main .cover img {
+  width: 128px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  border-radius: 5px;
+  border: 1px solid #AAA;
+}
+
+.Player h1, .Player h2, .Player h3 {
+  color: #C8B08E;
+}
+
+.Player a {
+  color: inherit;
+}
+
+.Player a:hover {
+  color: #444;
+}
+
+.Player .main .cover {
+  display: inline-block;
+  flex: 1 0 0;
+  text-align: right;
+}
+
+.Player .main .info {
+  display: inline-block;
+  vertical-align: top;
+  flex: 3 0 0;
+}
+
+.Player .main .info h1, .Player .main .info h2, .Player .main .info h3 {
+  margin: 0;
+}
+
+.Player .main .info span.subtitle {
+  font-size: 14px;
+  color: #CCC;
+}
+
+.Player .player {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

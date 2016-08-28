@@ -6,10 +6,7 @@ import proxy from 'http-proxy-middleware'
 import bodyParser from 'body-parser'
 import expressMonitor from 'express-status-monitor'
 import { spotifyFetchData } from './lib/spotify'
-import {
-  dbInsert,
-  getTables
-} from './lib/database'
+import { dbInsert } from './lib/database'
 
 const app = express()
 app.use(expressMonitor())
@@ -42,12 +39,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.post('/api/collect', (req, res) =>
-  getTables().then(tables =>
-    spotifyFetchData(req.body, config.spotify).then(data =>
-      dbInsert(data, tables[req.body.table]).then(data =>
+  spotifyFetchData(req.body, config.spotify).then(data =>
+    dbInsert(data, req.body.table).then(data =>
       res.json(data)).catch(err => res.status(500).send(err.message))
     ).catch(err => res.status(500).send(err.message))
-  .catch(err => res.status(500).send(err.message))))
+  .catch(err => res.status(500).send(err.message)))
 
 app.use('/', (req, res) => res.status(200).send(index))
 api.run(app)

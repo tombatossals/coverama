@@ -1,0 +1,11 @@
+.frontpage .orderlist .alphabeticalchooser li {
+  padding: 6px 2px;
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #DDD;
+}
+
+.frontpage .orderlist .alphabeticalchooser li:hover {
+  color: yellow;
+}

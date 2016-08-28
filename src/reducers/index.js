@@ -6,6 +6,7 @@ import artistReducers from './artist'
 import artistsReducers from './artists'
 import albumReducers from './album'
 import albumsReducers from './albums'
+import playerReducers from './player'
 
 const rootReducer = combineReducers({
   playlists: playlistsReducers,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   artist: artistReducers,
   artists: artistsReducers,
   album: albumReducers,
-  albums: albumsReducers
+  albums: albumsReducers,
+  player: playerReducers
 })
 
 export default rootReducer

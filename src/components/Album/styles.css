@@ -1,5 +1,6 @@
 .detail .album {
   margin: 1em auto;
+  padding-bottom: 4em;
   text-align: center;
 }
 
@@ -19,9 +20,9 @@
 }
 
 .detail .album .main .cover img {
-  width: 256px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  border: 1px solid #888;
+  width: 100%;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
 }
 
 .detail .album .info h1 {
@@ -34,8 +35,8 @@
 
 .detail .album .artist h2 {
   text-align: left;
-  color: #0EA59E;
-  border-bottom: 1px solid #0EA59E;
+  color: #CCC;
+  border-bottom: 1px solid #CCC;
   margin: 0 0 .5em;
 }
 
@@ -44,11 +45,11 @@
 }
 
 .detail .album .tracks h2 {
-  color: #0EA59E;
-  border-bottom: 1px solid #0EA59E;
-  margin: 0 0 .5em;
+  color: #CCC;
+  border-bottom: 1px solid #CCC;
+  margin: 1em 1em 0;
 }
 
 .detail .album .tracks a {
-  color: #423F67;
+  color: #DDD;
 }

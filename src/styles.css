@@ -27,6 +27,7 @@ div.layout {
 
 a {
   text-decoration: none;
+  transition: all 250ms ease;
 }
 
 a:visited {

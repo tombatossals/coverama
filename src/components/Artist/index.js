@@ -5,14 +5,6 @@ import Album from './Album'
 const Artist = ({ artist }) => (
   <div className="detail">
     <div className="artist">
-      <div className="main">
-        <div className="info">
-          <h1>{artist.name}</h1>
-        </div>
-        <div className="photo">
-          <img src={artist.image_url} alt={artist.name} />
-        </div>
-      </div>
       <div className="albums">
         <h2>Albums</h2>
         { artist.albums.map(album =>

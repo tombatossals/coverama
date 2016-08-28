@@ -1,5 +1,6 @@
-.header  ul.menulist {
+.frontpage  ul.menulist {
   text-align: left;
+  width: 100%;
   background-color: #DC7563;
   font-size: 14px;
   font-weight: bold;
@@ -8,25 +9,25 @@
   padding: 0;
 }
 
-.header ul.menulist li {
+.frontpage ul.menulist li {
   list-style: none;
   display: inline-block;
   padding: 6px 1em;
   border-right: 1px solid white;
 }
 
-.header ul.menulist li a {
+.frontpage ul.menulist li a {
   color: #DDD;
 }
 
-.header ul.menulist li.active a {
+.frontpage ul.menulist li.active a {
   color: white;
 }
 
-.header ul.menulist li.active {
+.frontpage ul.menulist li.active {
   background: #ce442f;
 }
 
-.header ul.menulist li a:hover {
+.frontpage ul.menulist li a:hover {
   color: white;
 }

@@ -21,7 +21,7 @@ export const getArtistBySlug = (slug) =>
     })))
   }
 
-export const getArtists = () =>
+export const getArtists = (sort, letter) =>
   dispatch => {
     const getArtistsAction = createAction(ArtistActions.GET_ARTISTS)
 
@@ -29,7 +29,7 @@ export const getArtists = () =>
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getArtists().then(data => {
+    return API.getArtists(sort, letter).then(data => {
       dispatch(getArtistsAction({
         status: AsyncStatus.SUCCESS,
         data

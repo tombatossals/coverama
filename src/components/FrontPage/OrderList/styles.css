@@ -1,0 +1,38 @@
+.frontpage .orderlist {
+  background-color: #ce442f;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+  color: #EEE;
+  margin: 0;
+  padding: 0 0 0 1em;
+  display: flex;
+  text-align: right;
+}
+
+.frontpage .orderlist .selectorlist {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.frontpage .orderlist .selectorlist li {
+  text-align: right;
+  list-style: none;
+  display: inline-block;
+  padding: 6px 1em 6px 0;
+  cursor: pointer;
+}
+
+.frontpage .orderlist .selectorlist li {
+  color: #DDD;
+}
+
+.frontpage .orderlist .selectorlist li.active {
+  background: #ce442f;
+}
+
+.frontpage .orderlist .selectorlist li:hover {
+  color: yellow;
+}

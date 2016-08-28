@@ -1,5 +1,6 @@
-.detail .track {
-  margin: 2em;
+.detail > .track {
+  margin: 1em;
+  padding-bottom: 4em;
 }
 
 .detail .track .main {

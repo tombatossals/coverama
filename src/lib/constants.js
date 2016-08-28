@@ -5,6 +5,18 @@ export const AsyncStatus = {
   FAILED: 'FAILED'
 }
 
+export const PlayerStatus = {
+  HIDDEN: 'HIDDEN',
+  IDLE: 'IDLE',
+  PLAYING: 'PLAYING'
+}
+
+export const PlayerActions = {
+  SET_PLAYLIST: 'SET_PLAYLIST',
+  START_PLAYER: 'START_PLAYER',
+  STOP_PLAYER: 'STOP_PLAYER'
+}
+
 export const UserStatus = {
   UNDETERMINED: 'UNDETERMINED',
   AUTHENTICATED: 'AUTHENTICATED',

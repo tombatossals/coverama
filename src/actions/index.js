@@ -10,7 +10,8 @@ export {
 } from './playlist'
 
 export {
-  getTrackBySlug
+  getTrackBySlug,
+  setTracks
 } from './track'
 
 export {

@@ -28,14 +28,17 @@ const getTrackBySlug = (slug, albumSlug, artistSlug) => new Promise((resolve, re
   , err => reject(err))
 )
 
-const getPlaylists = () => new Promise((resolve, reject) =>
-  horizon('playlists').fetch().defaultIfEmpty().subscribe(playlists => resolve(playlists), err => reject(err)))
+const getPlaylists = (sort, letter) => new Promise((resolve, reject) =>
+  horizon('playlists').order(sort).fetch().filter(reg => {
+    console.log(sort, reg)
+    return true
+  }).defaultIfEmpty().subscribe(playlists => resolve(playlists), err => reject(err)))
 
-const getAlbums = () => new Promise((resolve, reject) =>
-  horizon('albums').fetch().defaultIfEmpty().subscribe(albums => resolve(albums), err => reject(err)))
+const getAlbums = (sort, letter) => new Promise((resolve, reject) =>
+  horizon('albums').order(sort).fetch().defaultIfEmpty().subscribe(albums => resolve(albums), err => reject(err)))
 
-const getArtists = () => new Promise((resolve, reject) =>
-  horizon('artists').fetch().defaultIfEmpty().subscribe(artists => resolve(artists), err => reject(err)))
+const getArtists = (sortColumn, filterLetter) => new Promise((resolve, reject) =>
+  horizon('artists').order(sortColumn).fetch().defaultIfEmpty().subscribe(artists => resolve(artists), err => reject(err)))
 
 const getAlbumBySlug = (slug, artistSlug) => new Promise((resolve, reject) =>
   horizon('tracks').findAll({ album_slug: slug, artist_slug: artistSlug }).fetch().defaultIfEmpty().subscribe(tracks => {

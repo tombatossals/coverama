@@ -3,6 +3,7 @@ import FrontPageComponent from '../../components/FrontPage'
 import { getPlaylists, getAlbums, getArtists } from '../../actions'
 import { connect } from 'react-redux'
 import { AsyncStatus } from '../../lib/constants'
+import { withRouter } from 'react-router'
 import Loading from '../../components/Loading'
 
 class FrontPage extends React.Component {
@@ -17,6 +18,9 @@ class FrontPage extends React.Component {
 
   state = {
     items: [],
+    section: 'playlists',
+    sort: 'added',
+    letter: undefined,
     ready: false
   }
 
@@ -28,47 +32,52 @@ class FrontPage extends React.Component {
     this.updateState(props)
   }
 
+  changedView = (section, sort, letter) => {
+    return section !== this.state.section ||
+           sort !== this.state.sort ||
+           letter !== this.state.letter
+  }
+
+  changeSortOrder = (method, letter) => {
+    const url = `${this.props.location.pathname}?sort=${method}`
+    this.props.router.push(letter ? `${url}&letter=${letter}` : url)
+  }
+
   updateState = (props) => {
-    if (props.location.pathname === '/playlists') {
-      if (props.playlists.status === AsyncStatus.IDLE) {
-        this.setState({ ready: false })
-        return this.props.getPlaylists()
+    const section = props.location.pathname.substring(1, props.location.pathname.length)
+
+    const sort = props.location.query && props.location.query.sort ? props.location.query.sort : 'added'
+    const letter = props.location.query && props.location.query.letter ? props.location.query.letter : ''
+
+     if (this.changedView(section, sort, letter) ||
+        props[section].status === AsyncStatus.IDLE) {
+      switch (section) {
+        case 'playlists':
+          this.props.getPlaylists(sort, letter)
+          break
+        case 'artists':
+          this.props.getArtists(sort, letter)
+          break
+        case 'albums':
+          this.props.getAlbums(sort, letter)
+          break
+        default:
+          break
       }
 
-      if (props.playlists.status === AsyncStatus.SUCCESS) {
-        return this.setState({
-          items: props.playlists.data,
-          ready: true
-        })
-      }
+      this.setState({
+        ready: false,
+        section,
+        sort,
+        letter
+      })
     }
 
-    if (props.location.pathname === '/artists') {
-      if (props.artists.status === AsyncStatus.IDLE) {
-        this.setState({ ready: false })
-        return this.props.getArtists()
-      }
-
-      if (props.artists.status === AsyncStatus.SUCCESS) {
-        return this.setState({
-          items: props.artists.data,
-          ready: true
-        })
-      }
-    }
-
-    if (props.location.pathname === '/albums') {
-      if (props.albums.status === AsyncStatus.IDLE) {
-        this.setState({ ready: false })
-        return this.props.getAlbums()
-      }
-
-      if (props.albums.status === AsyncStatus.SUCCESS) {
-        return this.setState({
-          items: props.albums.data,
-          ready: true
-        })
-      }
+    if (props[section].status === AsyncStatus.SUCCESS) {
+      return this.setState({
+        items: props[section].data,
+        ready: true
+      })
     }
   }
 
@@ -76,8 +85,13 @@ class FrontPage extends React.Component {
     if (!this.state.ready) {
       return <Loading type="spin" width={96} height={96} />
     }
-
-    return <FrontPageComponent items={this.state.items} />
+    return <FrontPageComponent
+      items={this.state.items}
+      section={this.state.section}
+      sort={this.state.sort}
+      letter={this.state.letter}
+      changeSortOrder={this.changeSortOrder}
+    />
   }
 }
 
@@ -87,4 +101,4 @@ const mapStateToProps = ({ playlists, albums, artists }) => ({
   artists
 })
 
-export default connect(mapStateToProps, { getPlaylists, getAlbums, getArtists })(FrontPage)
+export default withRouter(connect(mapStateToProps, { getPlaylists, getAlbums, getArtists })(FrontPage))

@@ -28,13 +28,15 @@ export const spotifyFetchData = params => {
             image_url: data.body.images[0].url,
             name: data.body.name,
             slug: slug(data.body.name),
-            url: `/playlists/${slug(data.body.name)}`
+            url: `/playlists/${slug(data.body.name)}`,
+            added: new Date()
           },
           playlistTracks: data.body.tracks.items.map(item => ({
             added_at: item.playlist_id,
             added_by: item.added_by,
             playlist_id: item.playlist_id,
-            track_id: item.track.id
+            track_id: item.track.id,
+            added: new Date()
           })),
           tracks: data.body.tracks.items.map(item => ({
             playlist_id: data.body.id,
@@ -53,7 +55,8 @@ export const spotifyFetchData = params => {
             slug: slug(item.track.name),
             popularity: item.track.popularity,
             preview_url: item.track.preview_url,
-            track_number: item.track.track_number
+            track_number: item.track.track_number,
+            added: new Date()
           }))
         }))).catch(err => console.log(err))
     case 'albums':
@@ -70,7 +73,8 @@ export const spotifyFetchData = params => {
           slug: slug(album.name),
           url: `/artists/${params.artistSlug}/albums/${slug(album.name)}`,
           artist_id: params.artistId,
-          artist_slug: params.artistSlug
+          artist_slug: params.artistSlug,
+          added: new Date()
         })))).catch(err => console.log(err))
       )).catch(err => console.log(err))
 
@@ -93,7 +97,8 @@ export const spotifyFetchData = params => {
             slug: slug(track.name),
             popularity: track.popularity,
             preview_url: track.preview_url,
-            track_number: track.track_number
+            track_number: track.track_number,
+            added: new Date()
           })))).catch(err => console.log(err))
         )).catch(err => console.log(err))
     case 'artists':
@@ -107,7 +112,8 @@ export const spotifyFetchData = params => {
           name: data.body.name,
           slug: slug(data.body.name),
           url: `/artists/${slug(data.body.name)}`,
-          popularity: data.body.popularity
+          popularity: data.body.popularity,
+          added: new Date()
         })).catch(err => console.log(err))
       ).catch(err => console.log(err))
   }

@@ -20,3 +20,5 @@ export const getTrackBySlug = (slug, albumSlug, artistSlug) =>
       message: err.message
     })))
   }
+
+export const setTracks = (tracks) => console.log(tracks)

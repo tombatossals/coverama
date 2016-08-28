@@ -1,32 +1,41 @@
 import React from 'react'
 import Item from './Item'
+import MenuList from './MenuList'
+import OrderList from './OrderList'
 import './styles.css'
 
-const getColumn = (items, columns, number) =>
+const getItemColumn = (items, columns, number) =>
   items.filter((item, index) => index % columns === number)
 
-const FrontPage = ({ items }) => (
-  <div className="frontpage">
-    <div className="column">
-    {getColumn(items, 3, 0).map(item =>
-      <Item key={item.id} item={item} />
+const getColumns = (items, columns, section) => (
+  <div className={'frontpage ' + section}>
+    {Array(columns).fill().map((empty, index) =>
+      <div key={index} className="column">
+      {getItemColumn(items, columns, index).map(item =>
+        <Item key={item.id} item={item} />
+      )}
+      </div>
     )}
-    </div>
-    <div className="column">
-    {getColumn(items, 3, 1).map(item =>
-      <Item key={item.id} item={item} />
-    )}
-    </div>
-    <div className="column">
-    {getColumn(items, 3, 2).map(item =>
-      <Item key={item.id} item={item} />
-    )}
-    </div>
+  </div>
+)
+
+const FrontPage = ({ items, section, sort, letter, changeSortOrder }) => (
+  <div className={'frontpage ' + section}>
+    <MenuList section={section} />
+    <OrderList changeSortOrder={changeSortOrder} sort={sort} letter={letter} />
+
+    { section === 'artists'
+    ? getColumns(items, 3, section)
+    : getColumns(items, 4, section) }
   </div>
 )
 
 FrontPage.propTypes = {
-  items: React.PropTypes.array.isRequired
+  items: React.PropTypes.array.isRequired,
+  section: React.PropTypes.string.isRequired,
+  sort: React.PropTypes.string.isRequired,
+  letter: React.PropTypes.string.isRequired,
+  changeSortOrder: React.PropTypes.func.isRequired
 }
 
 export default FrontPage

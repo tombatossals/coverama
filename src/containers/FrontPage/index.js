@@ -28,7 +28,7 @@ class FrontPage extends React.Component {
     this.updateState(this.props)
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps (props) {
     this.updateState(props)
   }
 

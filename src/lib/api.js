@@ -29,9 +29,8 @@ const getTrackBySlug = (slug, albumSlug, artistSlug) => new Promise((resolve, re
 )
 
 const getPlaylists = (sort, letter) => new Promise((resolve, reject) =>
-  horizon('playlists').order(sort).fetch().filter(reg => {
-    console.log(sort, reg)
-    return true
+  horizon('playlists').order(sort).fetch().filter(list => {
+    return list.filter(playlist => playlist.name.indexOf(letter) === 0)
   }).defaultIfEmpty().subscribe(playlists => resolve(playlists), err => reject(err)))
 
 const getAlbums = (sort, letter) => new Promise((resolve, reject) =>

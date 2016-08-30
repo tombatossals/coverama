@@ -21,8 +21,6 @@
 
 .detail .album .main .cover img {
   width: 100%;
-  border-top: 1px solid #CCC;
-  border-bottom: 1px solid #CCC;
 }
 
 .detail .album .info h1 {
@@ -52,4 +50,8 @@
 
 .detail .album .tracks a {
   color: #DDD;
+}
+
+.detail .album .tracks .track {
+  padding: 1em;
 }

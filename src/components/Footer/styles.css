@@ -1,11 +1,10 @@
 .Footer {
   position: absolute;
-  background: black;
   color: white;
   font-weight: bold;
   clear: both;
   bottom: 0;
-  width: 100%;
+  width: 588px;
   height: 40px;
   line-height: 40px;
   padding: 0 1em;

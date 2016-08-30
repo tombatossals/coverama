@@ -32,7 +32,10 @@ if (process.env.NODE_ENV === 'production') {
         <link rel="shortcut icon" href="/favicon.ico">
       </head>
       <body>
-        <div id="root"></div>
+        <div class="content">
+          <div class="overlay"></div>
+          <div id="root"></div>
+        </div>
         <script type="text/javascript" src="/static/js/bundle.js"></script>
       </body>
     </html>`

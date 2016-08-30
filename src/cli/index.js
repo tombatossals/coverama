@@ -34,17 +34,15 @@ switch (argv.getCommand()) {
     break
   case 'insert':
     const playlist = argv.getPlaylist()
-    getTables().then(tables =>
-      spotifyFetchData(playlist).then(data =>
-        Promise.all([
-          dbInsert(data.playlist, tables.playlists),
-          dbInsert(data.tracks, tables.tracks),
-          dbInsert(data.playlistTracks, tables.playlists_tracks)
-        ]).then(result => {
-          console.log(result)
-          closeDBConnection()
-        }).catch(err => console.log(err))
-      ).catch(err => console.log(err)))
+    spotifyFetchData(playlist).then(data =>
+      Promise.all([
+        dbInsert(data.playlist, 'playlists'),
+        dbInsert(data.tracks, 'tracks'),
+        dbInsert(data.playlistTracks, 'playlists_tracks')
+      ]).then(result => {
+        console.log(result)
+        closeDBConnection()
+      }).catch(err => console.log(err)))
     break
   case 'remove':
   default:

@@ -28,7 +28,7 @@
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
     "mocha": "^3.0.2",
-    "react-scripts": "0.2.3",
+    "react-scripts": "0.3.0",
     "standard": "^8.0.0"
   },
   "dependencies": {
@@ -42,7 +42,6 @@
     "limax": "^1.4.0",
     "lodash.debounce": "^4.0.8",
     "node-fetch": "^1.6.0",
-    "npm": "^3.10.5",
     "react": "^15.3.1",
     "react-addons-css-transition-group": "^15.3.1",
     "react-addons-shallow-compare": "^15.3.1",
@@ -66,7 +65,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "mocha --bail --compilers js:babel-core/register",
+    "test": "react-scripts test --env=jsdom",
+    "test:server": "mocha --bail --compilers js:babel-core/register",
     "cli": "babel-node src/cli/index.js",
     "dev": "NODE_ENV=development babel-node src/server.js | react-scripts start",
     "dev:cli": "react-scripts start",

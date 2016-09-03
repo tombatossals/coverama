@@ -1,15 +1,15 @@
 div.logo {
   font-family: Nunito;
-  color: #222;
+  color: white;
   margin: 0;
   display: flex;
 }
 
 div.logo h1 {
   margin: 14px;
-  color:  #C8B08E;
+  color:  white;
 }
 
 div.logo h1 a:hover {
-  color: #444;
+  color: #CCC;
 }

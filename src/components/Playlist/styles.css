@@ -2,6 +2,14 @@
   margin: 1em 1em 0;
 }
 
+.detail .playlist .info {
+  text-align: center;
+}
+
+.detail .playlist .info h1 {
+  color: white;
+}
+
 .detail .playlist h2 {
   margin: 0 0 .5em;
   color: #DDD;

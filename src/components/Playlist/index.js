@@ -6,10 +6,10 @@ const Playlist = ({ playlist }) => (
   <div className="detail">
     <div className="playlist">
       <div className="info">
-        <h1>{playlist.name}</h1>
         <div className="cover">
           <img src={playlist.image_url} />
         </div>
+        <h1>{playlist.name}</h1>
       </div>
       <div className="tracks">
         <h2>Tracks</h2>

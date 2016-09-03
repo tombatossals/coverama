@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import logo from './logo.64.png'
+import logo from './logo.svg'
 import { Link } from 'react-router'
 
 const Logo = ({ children }) => (

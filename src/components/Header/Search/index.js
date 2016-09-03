@@ -13,13 +13,13 @@ class Search extends React.Component {
   searchByKey = (key) => {
     this.setState({
       loading: true
-    });
+    })
 
     return API.searchByKey(key).then(data => {
       this.setState({
         loading: false,
         data: data
-      });
+      })
     })
   }
 
@@ -33,8 +33,7 @@ class Search extends React.Component {
   render () {
     return (
       <div className="Search" onBlur={this.handleBlur}>
-        <h2>Search</h2>
-        <DebouncedInput onChange={this.searchByKey} />
+        <DebouncedInput onChange={this.searchByKey} placeholder="Search..." />
         <ResultBox data={this.state.data} visible={this.state.data.length > 0} />
       </div>
     )

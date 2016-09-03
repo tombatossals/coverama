@@ -5,10 +5,8 @@ import './styles.css'
 
 const Layout = () => (
   <div className="header">
-    <div className="top">
-      <Logo className="logo">Music</Logo>
-      <Search className="Search" />
-    </div>
+    <Logo className="logo">Music</Logo>
+    <Search className="Search" />
   </div>
 )
 

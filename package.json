@@ -28,7 +28,7 @@
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
     "mocha": "^3.0.2",
-    "react-scripts": "0.3.0",
+    "react-scripts": "0.4.0",
     "standard": "^8.0.0"
   },
   "dependencies": {
@@ -36,7 +36,7 @@
     "@horizon/server": "^2.0.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "express-status-monitor": "0.1.0",
+    "express-status-monitor": "0.1.1",
     "http-proxy-middleware": "^0.17.1",
     "jimp": "^0.2.27",
     "limax": "^1.4.0",
@@ -53,7 +53,7 @@
     "react-selectize": "^2.0.3",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.1",
-    "redux-actions": "^0.11.0",
+    "redux-actions": "^0.12.0",
     "redux-logger": "^2.6.1",
     "redux-search": "^2.2.0",
     "redux-thunk": "^2.1.0",

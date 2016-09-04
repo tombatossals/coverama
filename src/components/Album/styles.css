@@ -36,12 +36,12 @@
 
 .detail .album .tracks {
   text-align: left;
+  box-sizing: border-box;
 }
 
 .detail .album .tracks h2 {
   color: #CCC;
   border-bottom: 1px solid #CCC;
-  margin: 1em 1em 0;
 }
 
 .detail .album .tracks a {
@@ -50,6 +50,31 @@
 
 .detail .album .tracks .track {
   padding: 1em;
-  display: block;
-  font-family: Circular,Helvetica,Arial,sans-serif;
+  display: flex;
+  color: white;
+  padding: 2em 1em;
+  box-sizing: border-box;
+  transition: background-color .2s linear;
+}
+
+.detail .album .tracks .track:hover {
+  background-color: rgba(0,0,0,.3);
+  cursor: pointer;
+}
+
+.detail .album .tracks .track .number {
+  font-weight: bold;
+  text-align: right;
+  padding-right: 1em;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.detail .album .tracks .track .name {
+  flex: 20;
+}
+
+.detail .album .tracks .track .duration {
+  flex: 1;
+  text-align: right;
 }

@@ -6,6 +6,8 @@ const horizon = new Horizon({
   host: process.env.NODE_ENV ? 'localhost:5000' : undefined
 })
 
+const host = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : ''
+
 horizon.connect()
 
 /* Create tables */
@@ -54,7 +56,7 @@ const getAlbumBySlug = (slug, artistSlug) => new Promise((resolve, reject) =>
     }
 
     horizon('albums').find({ slug: slug, artist_slug: artistSlug }).fetch().subscribe(album =>
-      window.fetch('/api/collect', {
+      window.fetch(`${host}/api/collect`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ table: 'tracks', album })
@@ -83,7 +85,7 @@ const getAlbumsByArtist = (artist) => new Promise((resolve, reject) => {
     if (albums !== null && albums.length > 1) {
       return resolve(albums)
     }
-    window.fetch('/api/collect', {
+    window.fetch(`${host}/api/collect`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ table: 'albums', artistId: artist.id, artistSlug: artist.slug })
@@ -113,7 +115,7 @@ const getArtistBySlug = (slug) => new Promise((resolve, reject) => {
       }).catch(err => reject(err))
     }
     getArtistFromTracksBySlug(slug).then(artist => {
-      window.fetch('/api/collect', {
+      window.fetch(`${host}/api/collect`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ table: 'artists', id: artist.id })

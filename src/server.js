@@ -7,11 +7,16 @@ import bodyParser from 'body-parser'
 import expressMonitor from 'express-status-monitor'
 import { spotifyFetchData } from './lib/spotify'
 import { dbInsert } from './lib/database'
+import cors from 'cors'
 
 const app = express()
 app.use(expressMonitor())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(cors())
+}
 
 let index
 if (process.env.NODE_ENV === 'production') {

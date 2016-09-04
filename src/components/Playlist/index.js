@@ -7,7 +7,7 @@ const Playlist = ({ playlist }) => (
     <div className="playlist">
       <div className="info">
         <div className="cover">
-          <img src={playlist.image_url} />
+          <img src={playlist.image_url} alt={playlist.name} />
         </div>
         <h1>{playlist.name}</h1>
       </div>

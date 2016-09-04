@@ -30,6 +30,7 @@ div.content {
 }
 
 div#root {
+  max-width: 640px;
   margin: auto;
   box-sizing: border-box;
 }

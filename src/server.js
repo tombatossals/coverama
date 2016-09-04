@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   app.get('/favicon.ico', proxy({target: `${config.clientProxy}`}))
   app.get('/static*', proxy({target: `${config.clientProxy}`}))
-  app.post('/sockjs-node*', proxy({target: `${config.clientProxy}`}))
+  // app.post('/sockjs-node*', proxy({target: `${config.clientProxy}`}))
 
   index = `<!doctype html>
     <html lang="en">

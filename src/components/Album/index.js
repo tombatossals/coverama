@@ -2,6 +2,9 @@ import React from 'react'
 import './styles.css'
 import { Link } from 'react-router'
 
+const getDurationString = ms => `${(ms / 1000 / 60) << 0}:${(ms / 1000) % 60}`
+
+
 const Album = ({ album, artist }) => (
   <div className="detail">
     <div className="album">
@@ -10,15 +13,19 @@ const Album = ({ album, artist }) => (
           <div className="cover">
             <img src={album.image_url} alt={album.name} />
           </div>
-          <div className="tracks">
-            <h2>Tracks</h2>
-            {album.tracks.map(track =>
-              <div key={track.id} className="track">
-                {track.track_number}.&nbsp;
-                <Link to={`/artists/${artist.slug}/albums/${album.slug}/tracks/${track.slug}`}>{track.name}</Link>
-              </div>
-            )}
-          </div>
+          <h1>{album.name}</h1>
+          <h2>{album.artist_name}</h2>
+        </div>
+
+        <div className="tracks">
+          <h2>Tracks</h2>
+          {album.tracks.map(track =>
+            <div key={track.id} className="track">
+              <div className="number">{track.track_number}.</div>
+              <Link to={`/artists/${artist.slug}/albums/${album.slug}/tracks/${track.slug}`}>{track.name}</Link>
+              <div className="duration">{getDurationString(track.duration_ms)}</div>
+            </div>
+          )}
         </div>
       </div>
     </div>

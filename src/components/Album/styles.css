@@ -1,14 +1,7 @@
 .detail .album {
-  margin: 1em auto;
+  margin: 1em auto 0;
   padding-bottom: 4em;
   text-align: center;
-}
-
-.detail .album .main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  box-sizing: border-box;
 }
 
 .detail .album .main .cover {
@@ -16,15 +9,18 @@
 }
 
 .detail .album .main .info {
-  flex: 1 0 0;
+  text-align: center;
 }
 
 .detail .album .main .cover img {
-  width: 100%;
+  width: 270px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border: 1px solid #888;
 }
 
 .detail .album .info h1 {
   font-size: 24px;
+  color: white;
 }
 
 .detail .album .artist {
@@ -54,4 +50,6 @@
 
 .detail .album .tracks .track {
   padding: 1em;
+  display: block;
+  font-family: Circular,Helvetica,Arial,sans-serif;
 }

@@ -29,7 +29,7 @@ const updateHeight = (tableName, item, width) =>
 export const updateImages = (tableName, width) =>
   r.table(tableName).then(items => {
     const promises = []
-    items.map(item => !item.image_height && promises.push(updateHeight(tableName, item, width)))
+    items.map(item => item.image_width === width && !item.image_height && promises.push(updateHeight(tableName, item, width)))
     return Promise.all(promises)
   })
 

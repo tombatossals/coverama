@@ -7,6 +7,7 @@ module.exports = {
       key: 'config/horizon-key.pem'
     }
   },
+  ssl: true,
   rethinkdb: {
     port: 28015,
     host: 'localhost',

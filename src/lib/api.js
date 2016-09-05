@@ -2,8 +2,8 @@ import Horizon from '@horizon/client'
 
 const horizon = new Horizon({
   authType: 'anonymous',
-  secure: false,
-  host: process.env.NODE_ENV ? 'localhost:5000' : undefined
+  secure: process.env.NODE_ENV !== 'development',
+  host: process.env.NODE_ENV === 'developtment' ? 'localhost:5000' : undefined
 })
 
 const host = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : ''

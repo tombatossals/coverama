@@ -19,10 +19,8 @@ switch (argv.getCommand()) {
     break
   case 'compute':
     const table = argv.getFirstArgument()
-    const width = argv.getSecondArgument()
-    getTables()
-      .then(tables => updateImages(tables[table], width).then(closeDBConnection))
-      .catch(err => console.log(err))
+    const width = argv.getSecondArgument() || 147
+    updateImages(table, width).then(closeDBConnection).catch(err => console.log(err))
     break
   case 'list':
     spotifyFetchData(argv.getPlaylist())

@@ -33,8 +33,12 @@ if (process.env.NODE_ENV === 'production') {
         <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Playlists</title>
-        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./src/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="./src/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="./src/favicon-16x16.png" sizes="16x16">
+        <link rel="mask-icon" href="./src/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="theme-color" content="#f5c20f">
+        <title>Coverama</title>
       </head>
       <body>
         <div class="content">

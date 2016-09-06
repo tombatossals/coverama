@@ -8,7 +8,7 @@ import Loading from '../../components/Loading'
 class Artist extends React.Component {
   static propTypes = {
     getArtistBySlug: React.PropTypes.func.isRequired,
-    artist: React.PropTypes.object.isRequired,
+    artist: React.PropTypes.object.isRequired
   }
 
   componentDidMount () {

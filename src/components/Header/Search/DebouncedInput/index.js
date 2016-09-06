@@ -20,7 +20,7 @@ export default class DebouncedInput extends React.Component {
     }
 
     const changed = keys.some(key => nextProps[key] !== this.props[key])
-    return changed ? true : false;
+    return changed
   }
 
   handleFocus = () => {

@@ -3,11 +3,16 @@ import Logo from '../Logo'
 import Search from '../Search'
 import './styles.css'
 
-const Layout = () => (
-  <div className="header">
-    <Logo className="logo">Music</Logo>
-    <Search className="Search" />
+const Layout = (props) => (
+  <div className="row Header">
+    <Logo className="col">{props.title}</Logo>
+    <div className="col" />
+    <Search className="col" />
   </div>
 )
+
+Layout.propTypes = {
+  title: React.PropTypes.string.isRequired
+}
 
 export default Layout

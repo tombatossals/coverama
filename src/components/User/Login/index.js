@@ -22,7 +22,7 @@ export default class Login extends React.Component {
     }
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps (props) {
     if (props.message) {
       this.setState({
         status: AsyncStatus.IDLE,

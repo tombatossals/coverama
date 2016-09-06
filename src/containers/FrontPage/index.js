@@ -49,7 +49,7 @@ class FrontPage extends React.Component {
     const sort = props.location.query && props.location.query.sort ? props.location.query.sort : 'added'
     const letter = props.location.query && props.location.query.letter ? props.location.query.letter : ''
 
-     if (this.changedView(section, sort, letter) ||
+    if (this.changedView(section, sort, letter) ||
         props[section].status === AsyncStatus.IDLE) {
       switch (section) {
         case 'playlists':

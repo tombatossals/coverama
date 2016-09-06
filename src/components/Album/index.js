@@ -4,7 +4,6 @@ import { Link } from 'react-router'
 
 const getDurationString = ms => `${(ms / 1000 / 60) << 0}:${(ms / 1000) % 60 << 0}`
 
-
 const Album = ({ album, artist }) => (
   <div className="detail">
     <div className="album">

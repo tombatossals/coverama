@@ -1,17 +1,3 @@
-div.header {
-  text-align: left;
-  margin: 0;
-  padding: 1em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-}
-
-div.header .logo {
-  flex: 2 0 0;
-}
-
-div.header .Search {
-  flex: 2 0 0;
-  width: 100%;
+div.Header {
+  margin: 2em 0;
 }

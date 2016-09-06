@@ -67,7 +67,6 @@ class Track extends React.Component {
         props.track.data.slug !== props.params.trackSlug) {
       return props.getTrackBySlug(props.params.trackSlug, props.params.albumSlug, props.params.artistSlug)
     }
-
   }
 
   render () {

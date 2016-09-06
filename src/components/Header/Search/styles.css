@@ -1,27 +1,4 @@
-.header .Search {
-  margin-top: 6px;
-  position: relative;
+.Header .Search {
+  margin-top: 20px;
   text-align: right;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.header .Search h2 {
-  color: white;
-  font-size: 16px;
-  text-align: right;
-  margin: 0;
-  padding-right: 1em;
-}
-
-.header .Search input {
-  padding: 8px 16px;
-  border: 1px solid #AAA;
-	border-radius:15px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.header .Search input:focus {
-  padding: 8px;
 }

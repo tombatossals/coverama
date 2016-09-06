@@ -1,7 +1,7 @@
+/* global it, describe */
+
 import { spotifyFetchData } from '../src/lib/spotify'
 import { expect } from 'chai'
-
-// import util from 'util'
 
 describe('spotify', () => {
   it('fetches playlists', () =>
@@ -22,5 +22,4 @@ describe('spotify', () => {
       artistId: '5ypxebeHEIXjMtJb17uJlI',
       table: 'albums'
     }).then(albums => console.log(albums)))
-
 })

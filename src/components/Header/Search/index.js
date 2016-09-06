@@ -32,10 +32,10 @@ class Search extends React.Component {
 
   render () {
     return (
-      <div className="Search" onBlur={this.handleBlur}>
+      <form className="form Search" onBlur={this.handleBlur}>
         <DebouncedInput onChange={this.searchByKey} placeholder="Search..." />
         <ResultBox data={this.state.data} visible={this.state.data.length > 0} />
-      </div>
+      </form>
     )
   }
 }

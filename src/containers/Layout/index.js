@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import Player from '../../containers/Player'
 import { withRouter } from 'react-router'
 
 class Layout extends React.Component {
@@ -11,9 +10,8 @@ class Layout extends React.Component {
 
   render () {
     return (
-      <div className="layout">
-        <Header />
-        <Player />
+      <div>
+        <Header title="Coverama" />
         {this.props.children}
         <Footer />
       </div>

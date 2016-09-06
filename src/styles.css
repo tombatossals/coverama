@@ -1,16 +1,21 @@
 html {
-background: #24C6DC; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #24C6DC , #514A9D); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #24C6DC , #514A9D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-          min-height: 100%;
-}
-
-body {
   min-height: 100%;
 }
 
+body {
+  background: #24C6DC;
+  background: -webkit-linear-gradient(to left, #24C6DC , #514A9D);
+  background: linear-gradient(to left, #24C6DC , #514A9D);
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100%;
+}
+
+.container {
+  background: inherit;
+  outline: inherit;
+}
+
 a {
-  text-decoration: none;
   transition: all 250ms ease;
 }
 
@@ -19,5 +24,5 @@ a:visited {
 }
 
 a:hover {
-  color: #9F2461;
+  text-decoration: none;
 }

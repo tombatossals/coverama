@@ -1,19 +1,18 @@
-div.logo {
-  color: white;
+div.Header div.Logo {
   margin: 0;
-  display: flex;
+  white-space: nowrap;
 }
 
-div.logo a.image img {
-  width: 40px;
-}
-
-div.logo h1 {
-  margin: 6px 8px;
-  font-size: 24px;
+div.Header div.Logo h1 {
+  display: inline-block;
   color:  white;
 }
 
-div.logo h1 a:hover {
+div.Header div.Logo a.Image img {
+  width: 1.5em;
+  margin-right: .5em;
+}
+
+div.Header div.Logo h1 a:hover {
   color: #CCC;
 }

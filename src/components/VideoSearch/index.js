@@ -27,7 +27,7 @@ export default class VideoSearch extends React.Component {
     return (
       <div>
         <h1>Youtube</h1>
-        <DebouncedInput autoFocus placeholder='Search...' onChange={this.handleSearchVideo} />
+        <DebouncedInput autoFocus placeholder="Search..." onChange={this.handleSearchVideo} />
         <VideoList results={this.state.results} />
       </div>
     )

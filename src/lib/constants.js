@@ -53,4 +53,3 @@ export const SearchActions = {
   GET_SEARCH: 'GET_SEARCH'
 }
 
-

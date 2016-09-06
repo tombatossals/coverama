@@ -41,8 +41,7 @@ if (process.env.NODE_ENV === 'production') {
         <title>Coverama</title>
       </head>
       <body>
-        <div class="content">
-          <div class="overlay"></div>
+        <div class="container">
           <div id="root"></div>
         </div>
         <script type="text/javascript" src="/static/js/bundle.js"></script>

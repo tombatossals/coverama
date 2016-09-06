@@ -5,6 +5,9 @@ import { browserHistory } from 'react-router'
 
 import Routes from './routes'
 import configureStore from './lib/store'
+
+import './css/normalize.css'
+import './css/skeleton.css'
 import './styles.css'
 
 const rootElement = document.getElementById('root')

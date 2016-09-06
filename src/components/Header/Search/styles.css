@@ -2,3 +2,9 @@
   margin-top: 20px;
   text-align: right;
 }
+
+.Header .Search input {
+  border-radius: 15px;
+  padding-left: 1em;
+  border: 0;
+}

@@ -1,7 +1,5 @@
 import React from 'react'
 import Item from './Item'
-import MenuList from './MenuList'
-import OrderList from './OrderList'
 import './styles.css'
 
 const getItemColumn = (items, columns, number) =>
@@ -21,9 +19,6 @@ const getColumns = (items, columns, section) => (
 
 const FrontPage = ({ items, section, sort, letter, changeSortOrder }) => (
   <div className={'frontpage ' + section}>
-    <MenuList section={section} />
-    <OrderList changeSortOrder={changeSortOrder} sort={sort} letter={letter} />
-
     { section === 'artists'
     ? getColumns(items, 3, section)
     : getColumns(items, 4, section) }

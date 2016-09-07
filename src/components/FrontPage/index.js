@@ -21,7 +21,7 @@ const FrontPage = ({ items, section, sort, letter, changeSortOrder }) => (
   <div className={'frontpage ' + section}>
     { section === 'artists'
     ? getColumns(items, 3, section)
-    : getColumns(items, 4, section) }
+    : getColumns(items, 6, section) }
   </div>
 )
 

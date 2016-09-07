@@ -6,6 +6,11 @@
   padding: 0;
   text-align: center;
   box-sizing: border-box;
+  opacity: .9;
+}
+
+.frontpage .item:hover {
+  opacity: 1;
 }
 
 .frontpage.artists .item {
@@ -14,7 +19,7 @@
 
 .frontpage.albums .item,
 .frontpage.playlists .item {
-  width: 147px;
+  width: 128px;
 }
 
 .frontpage .item div.hover {

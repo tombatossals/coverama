@@ -12,7 +12,7 @@ const OrderList = ({ sort, letter, changeSortOrder }) => {
       : null }
       <ul className="selectorlist">
         <li className={sort === 'name' ? 'active' : ''} onClick={handleAlphaSorterClick}>Alphabetical</li>
-        <li className={sort === 'latest' ? 'active' : ''} onClick={handleLatestSorterClick}>Latest Added</li>
+        <li className={sort === 'added' ? 'active last' : 'last'} onClick={handleLatestSorterClick}>Latest Added</li>
       </ul>
     </div>
   )

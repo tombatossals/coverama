@@ -1,4 +1,4 @@
-.frontpage .orderlist {
+.TopMenu .orderlist {
   background-color: #ce442f;
   font-size: 14px;
   font-weight: bold;
@@ -8,31 +8,37 @@
   padding: 0 0 0 1em;
   display: flex;
   text-align: right;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-.frontpage .orderlist .selectorlist {
+.TopMenu .orderlist .selectorlist {
   text-align: right;
   margin: 0;
   padding: 0;
   flex: 1;
 }
 
-.frontpage .orderlist .selectorlist li {
+.TopMenu .orderlist .selectorlist li {
   text-align: right;
   list-style: none;
   display: inline-block;
-  padding: 6px 1em 6px 0;
+  padding: 6px 1em;
   cursor: pointer;
 }
 
-.frontpage .orderlist .selectorlist li {
+.TopMenu .orderlist .selectorlist li {
   color: #DDD;
 }
 
-.frontpage .orderlist .selectorlist li.active {
-  background: #ce442f;
+.TopMenu .orderlist .selectorlist li.active {
+  background: #ba3827;
 }
 
-.frontpage .orderlist .selectorlist li:hover {
+.TopMenu .orderlist .selectorlist li.active.last {
+  border-bottom-right-radius: 5px;
+}
+
+.TopMenu .orderlist .selectorlist li:hover {
   color: yellow;
 }

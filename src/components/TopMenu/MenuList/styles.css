@@ -1,4 +1,4 @@
-.frontpage  ul.menulist {
+.TopMenu  ul.menulist {
   text-align: left;
   width: 100%;
   background-color: #DC7563;
@@ -7,27 +7,32 @@
   color: #EEE;
   margin: 0;
   padding: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-.frontpage ul.menulist li {
+.TopMenu ul.menulist li {
   list-style: none;
   display: inline-block;
   padding: 6px 1em;
-  border-right: 1px solid white;
 }
 
-.frontpage ul.menulist li a {
+.TopMenu ul.menulist li a {
   color: #DDD;
 }
 
-.frontpage ul.menulist li.active a {
+.TopMenu ul.menulist li.active a {
   color: white;
 }
 
-.frontpage ul.menulist li.active {
+.TopMenu ul.menulist li.active {
   background: #ce442f;
 }
 
-.frontpage ul.menulist li a:hover {
+.TopMenu ul.menulist li.active.first {
+  border-top-left-radius: 5px;
+}
+
+.TopMenu ul.menulist li a:hover {
   color: white;
 }

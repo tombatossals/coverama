@@ -1,4 +1,9 @@
-.frontpage {
+.Frontpage {
+  margin: auto;
+  text-align: center;
+}
+
+.Frontpage .Columns {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -6,7 +11,9 @@
   padding-bottom: 4em;
 }
 
-.frontpage .column {
+.FrontPage .Columns .Column {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex: 1;
   flex-direction: column;

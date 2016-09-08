@@ -6,9 +6,9 @@ const getItemColumn = (items, columns, number) =>
   items.filter((item, index) => index % columns === number)
 
 const getColumns = (items, columns, section) => (
-  <div className={'frontpage ' + section}>
+  <div className="Columns">
     {Array(columns).fill().map((empty, index) =>
-      <div key={index} className="column">
+      <div key={index} className="Column">
       {getItemColumn(items, columns, index).map(item =>
         <Item key={item.id} item={item} />
       )}
@@ -18,7 +18,7 @@ const getColumns = (items, columns, section) => (
 )
 
 const FrontPage = ({ items, section, sort, letter, changeSortOrder }) => (
-  <div className={'frontpage ' + section}>
+  <div className={'Frontpage ' + section}>
     { section === 'artists'
     ? getColumns(items, 3, section)
     : getColumns(items, 6, section) }

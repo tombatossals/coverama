@@ -1,4 +1,4 @@
-.frontpage .item {
+.Frontpage .Item {
   position:relative;
   list-style: none;
   display: inline-block;
@@ -9,20 +9,20 @@
   opacity: .9;
 }
 
-.frontpage .item:hover {
+.Frontpage .Item:hover {
   opacity: 1;
 }
 
-.frontpage.artists .item {
+.Frontpage.artists .Item {
   width: 196px;
 }
 
-.frontpage.albums .item,
-.frontpage.playlists .item {
+.Frontpage.albums .Item,
+.Frontpage.playlists .Item {
   width: 128px;
 }
 
-.frontpage .item div.hover {
+.Frontpage .Item div.hover {
   transition: background-color 0.05s ease 0s;
   position: absolute;
   top: 0;
@@ -31,42 +31,23 @@
   right: 0;
 }
 
-.frontpage .item div.hover:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.frontpage.playlists .item div.hover:hover > img,
-.frontpage.albums .item div.hover:hover > img {
+.Frontpage.playlists .Item div.hover:hover > img,
+.Frontpage.albums .Item div.hover:hover > img {
   opacity: 0.5;
 }
 
-.frontpage .item:hover {
+.Frontpage .Item:hover {
   box-shadow: 0 .5em 1em rgba(0,0,0,0.25);
   z-index: 1000;
 }
 
-.frontpage.albums .item div.hover:hover > img:hover,
-.frontpage.playlists .item div.hover:hover > img:hover {
-  opacity: 1;
-}
-
-.frontpage .item .hover > img {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  margin-left: -24px;
-  margin-bottom: -24px;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out 0s;
-}
-
-.frontpage .item a {
+.Frontpage .Item a {
   text-decoration: none;
   color: #A7AAAD;
   font-size: .8em;
 }
 
-.frontpage .item img.cover {
+.Frontpage .Item img.Cover {
   position: absolute;
   top: 0;
   left: 0;
@@ -74,7 +55,7 @@
   width: 100%;
 }
 
-.frontpage .item .info {
+.Frontpage .Item .Info {
   position:absolute;
   bottom: -40px;
   left: 0;
@@ -89,26 +70,7 @@
   display: none;
 }
 
-.frontpage .item:hover .info {
+.Frontpage .Item:hover .Info {
   display: inline;
   box-shadow: 0 .5em 1em rgba(0,0,0,0.5);
-}
-
-.frontpage .item .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  margin: 0;
-  color: #38404C;
-  background: #FAFAFA;
-  height: 32px;
-  text-align: left;
-  display: none;
-}
-
-.frontpage .item .footer img {
-  margin: 5px;
-  float: right;
 }

@@ -6,13 +6,15 @@
 .Frontpage .Columns {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 	margin: 0 auto;
+  text-align: center;
   padding-bottom: 4em;
 }
 
 .FrontPage .Columns .Column {
-  margin: 0;
   padding: 0;
   display: flex;
   flex: 1;

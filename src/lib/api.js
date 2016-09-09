@@ -36,8 +36,8 @@ const getPlaylists = (sort, letter) => new Promise((resolve, reject) =>
     return list.filter(playlist => playlist.name.indexOf(letter) === 0)
   }).defaultIfEmpty().subscribe(playlists => resolve(playlists), err => reject(err)))
 
-const getAlbums = (sort, letter) => new Promise((resolve, reject) =>
-  horizon('albums').order(sort).fetch().defaultIfEmpty().subscribe(albums => resolve(albums), err => reject(err)))
+const getAlbums = (sort, letter, limit, offset) => new Promise((resolve, reject) =>
+  horizon('albums').order(sort).limit(limit).fetch().defaultIfEmpty().subscribe(albums => resolve(albums), err => reject(err)))
 
 const getArtists = (sortColumn, filterLetter) => new Promise((resolve, reject) =>
   horizon('artists').order(sortColumn).fetch().defaultIfEmpty().subscribe(artists => resolve(artists), err => reject(err)))

@@ -20,7 +20,7 @@ class FrontPage extends React.Component {
     items: [],
     section: 'playlists',
     sort: 'added',
-    letter: undefined,
+    letter: '',
     ready: false
   }
 
@@ -45,25 +45,11 @@ class FrontPage extends React.Component {
 
   updateState = (props) => {
     const section = props.location.pathname.substring(1, props.location.pathname.length)
-
     const sort = props.location.query && props.location.query.sort ? props.location.query.sort : 'added'
     const letter = props.location.query && props.location.query.letter ? props.location.query.letter : ''
 
     if (this.changedView(section, sort, letter) ||
         props[section].status === AsyncStatus.IDLE) {
-      switch (section) {
-        case 'playlists':
-          this.props.getPlaylists(sort, letter)
-          break
-        case 'artists':
-          this.props.getArtists(sort, letter)
-          break
-        case 'albums':
-          this.props.getAlbums(sort, letter)
-          break
-        default:
-          break
-      }
 
       this.setState({
         ready: false,
@@ -71,6 +57,17 @@ class FrontPage extends React.Component {
         sort,
         letter
       })
+
+      switch (section) {
+        case 'playlists':
+          return this.props.getPlaylists(sort, letter)
+        case 'artists':
+          return this.props.getArtists(sort, letter)
+        case 'albums':
+          return this.props.getAlbums(sort, letter)
+        default:
+          break
+      }
     }
 
     if (props[section].status === AsyncStatus.SUCCESS) {
@@ -85,13 +82,15 @@ class FrontPage extends React.Component {
     if (!this.state.ready) {
       return <Loading type="spin" width={96} height={96} />
     }
-    return <FrontPageComponent
-      items={this.state.items}
-      section={this.state.section}
-      sort={this.state.sort}
-      letter={this.state.letter}
-      changeSortOrder={this.changeSortOrder}
-    />
+
+    return (
+      <FrontPageComponent
+        items={this.state.items}
+        section={this.state.section}
+        sort={this.state.sort}
+        letter={this.state.letter}
+        changeSortOrder={this.changeSortOrder}
+      />)
   }
 }
 

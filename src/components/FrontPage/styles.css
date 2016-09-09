@@ -20,3 +20,12 @@
   flex: 1;
   flex-direction: column;
 }
+
+.Frontpage-appear {
+   opacity: 0.01;
+}
+
+.Frontpage-appear.Frontpage-appear-active {
+   opacity: 1;
+   transition: opacity 500ms ease-in;
+}

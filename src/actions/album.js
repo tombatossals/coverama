@@ -21,7 +21,7 @@ export const getAlbumBySlug = (slug, artistSlug) =>
     })))
   }
 
-export const getAlbums = (sort, letter) =>
+export const getAlbums = (sort, letter, offset) =>
   dispatch => {
     const getAlbumsAction = createAction(AlbumActions.GET_ALBUMS)
 
@@ -29,7 +29,7 @@ export const getAlbums = (sort, letter) =>
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getAlbums(sort, letter).then(data => {
+    return API.getAlbums(sort, letter, 20, offset).then(data => {
       dispatch(getAlbumsAction({
         status: AsyncStatus.SUCCESS,
         data

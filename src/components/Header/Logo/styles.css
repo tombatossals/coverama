@@ -16,3 +16,17 @@ div.Header div.Logo a.Image img {
 div.Header div.Logo h1 a:hover {
   color: #CCC;
 }
+
+.Logo:hover .SVGLogo {
+    animation-name: logo;
+    animation-duration: 15s;
+}
+
+@keyframes logo {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

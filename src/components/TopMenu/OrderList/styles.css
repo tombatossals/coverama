@@ -33,6 +33,7 @@
 
 .TopMenu .orderlist .selectorlist li.active {
   background: #ba3827;
+  transition: background 0.5s;
 }
 
 .TopMenu .orderlist .selectorlist li.active.last {

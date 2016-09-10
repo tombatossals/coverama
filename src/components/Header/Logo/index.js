@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 const Logo = ({ children }) => (
   <div className="Logo">
     <h1>
-      <Link className="Image" to="/"><img src={logo} role="presentation" /></Link>
+      <Link className="Image" to="/"><img className="SVGLogo" src={logo} role="presentation" /></Link>
       <Link to="/">{ children }</Link>
     </h1>
   </div>

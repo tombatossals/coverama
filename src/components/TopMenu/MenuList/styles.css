@@ -21,18 +21,19 @@
   color: #DDD;
 }
 
+.TopMenu ul.menulist li a:hover {
+  color: yellow;
+}
+
 .TopMenu ul.menulist li.active a {
   color: white;
 }
 
 .TopMenu ul.menulist li.active {
   background: #ce442f;
+  transition: background 0.5s;
 }
 
 .TopMenu ul.menulist li.active.first {
   border-top-left-radius: 5px;
-}
-
-.TopMenu ul.menulist li a:hover {
-  color: white;
 }

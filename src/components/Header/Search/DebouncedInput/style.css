@@ -1,0 +1,16 @@
+.Header .InputSearch {
+  position: relative;
+}
+
+.Header .InputSearch img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+
+.Header .Search input {
+  border-radius: 15px;
+  padding-left: 1.7em;
+  border: 0;
+}

@@ -1,4 +1,6 @@
 import React from 'react'
+import searchImg from './search.svg'
+import './style.css'
 
 export default class DebouncedInput extends React.Component {
   static propTypes = {
@@ -59,13 +61,16 @@ export default class DebouncedInput extends React.Component {
 
   render () {
     return (
-      <input
-        type="text"
-        {...this.props}
-        value={this.state.value}
-        onChange={this.changeTerm}
-        placeholder={this.props.placeholder}
-        onFocus={this.handleFocus} />
+      <div className="InputSearch">
+        <img src={searchImg} role="presentation" />
+        <input
+          type="text"
+          {...this.props}
+          value={this.state.value}
+          onChange={this.changeTerm}
+          placeholder={this.props.placeholder}
+          onFocus={this.handleFocus} />
+      </div>
     )
   }
 }

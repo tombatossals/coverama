@@ -1,44 +1,27 @@
 .Frontpage .Item {
-  position:relative;
+  break-inside: avoid;
+  position: relative;
   list-style: none;
-  display: inline-block;
+  display: flex;
+  flex: 0 0 auto;
   cursor: pointer;
   padding: 0;
   text-align: center;
   box-sizing: border-box;
   opacity: .9;
+  width: 20%;
+}
+
+.Frontpage.albums img, .Frontpage.playlists .Item {
+  width: 100%;
+}
+
+.Frontpage.artists .Item {
+  width: 33.3%;
 }
 
 .Frontpage .Item:hover {
   opacity: 1;
-}
-
-.Frontpage.artists .Item {
-  width: 196px;
-}
-
-.Frontpage.albums .Item,
-.Frontpage.playlists .Item {
-  width: 128px;
-}
-
-.Frontpage .Item div.hover {
-  transition: background-color 0.05s ease 0s;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.Frontpage.playlists .Item div.hover:hover > img,
-.Frontpage.albums .Item div.hover:hover > img {
-  opacity: 0.5;
-}
-
-.Frontpage .Item:hover {
-  box-shadow: 0 .5em 1em rgba(0,0,0,0.25);
-  z-index: 1000;
 }
 
 .Frontpage .Item a {
@@ -47,20 +30,12 @@
   font-size: .8em;
 }
 
-.Frontpage .Item img.Cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-}
-
 .Frontpage .Item .Info {
   position:absolute;
-  bottom: -40px;
+  bottom: -80px;
   left: 0;
   right: 0;
-  height: 40px;
+  height: 80px;
   padding: 10px;
   background: #2A2F38;
   color: #EEE;

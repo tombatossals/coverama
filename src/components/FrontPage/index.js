@@ -8,28 +8,25 @@ const getItemColumn = (items, columns, number) =>
 
 const getColumns = (items, columns, section) => (
   <ReactCSSTransitionGroup
-    className="Columns"
+    className={'Frontpage ' + section}
+    component="div"
     transitionName="Frontpage"
     transitionAppear
     transitionAppearTimeout={500}
     transitionEnterTimeout={500}
     transitionLeaveTimeout={300}>
     {Array(columns).fill().map((empty, index) =>
-      <div key={index} className="Column">
-      {getItemColumn(items, columns, index).map(item =>
+      getItemColumn(items, columns, index).map(item =>
         <Item key={item.id} item={item} />
-      )}
-      </div>
+      )
     )}
   </ReactCSSTransitionGroup>
 )
 
 const FrontPage = ({ items, section, sort, letter, changeSortOrder }) => (
-  <div className={'Frontpage ' + section}>
-    { section === 'artists'
-    ? getColumns(items, 3, section)
-    : getColumns(items, 6, section) }
-  </div>
+  section === 'artists'
+  ? getColumns(items, 3, section)
+  : getColumns(items, 4, section)
 )
 
 FrontPage.propTypes = {

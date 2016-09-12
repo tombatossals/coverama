@@ -1,24 +1,10 @@
 .Frontpage {
   margin: auto;
   text-align: center;
-}
-
-.Frontpage .Columns {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-	margin: 0 auto;
-  text-align: center;
-  padding-bottom: 4em;
-}
-
-.FrontPage .Columns .Column {
-  padding: 0;
-  display: flex;
-  flex: 1;
   flex-direction: column;
+  flex-wrap: wrap;
+  height: 100vh;
 }
 
 .Frontpage-appear {

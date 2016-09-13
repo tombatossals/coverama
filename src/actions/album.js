@@ -29,7 +29,7 @@ export const getAlbums = (sort, letter, offset) =>
       status: AsyncStatus.REQUEST
     }))
 
-    return API.getAlbums(sort, letter, 20, offset).then(data => {
+    return API.getAlbums(sort, letter, 10, offset).then(data => {
       dispatch(getAlbumsAction({
         status: AsyncStatus.SUCCESS,
         data

@@ -1,12 +1,3 @@
-.Frontpage {
-  margin: auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 100vh;
-}
-
 .Frontpage-appear {
    opacity: 0.01;
 }
@@ -14,4 +5,21 @@
 .Frontpage-appear.Frontpage-appear-active {
    opacity: 1;
    transition: opacity 500ms ease-in;
+}
+
+.Frontpage.albums, .Frontpage.playlists {
+  column-count: 4;
+  column-gap: 0;
+}
+
+.Frontpage.artists {
+  column-count: 3;
+  column-gap: 0;
+}
+
+.Frontpage .Column {
+  margin: 0;
+  padding: 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }

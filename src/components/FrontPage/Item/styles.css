@@ -9,11 +9,7 @@
   text-align: center;
   box-sizing: border-box;
   opacity: .9;
-  width: 25%;
-}
-
-.Frontpage.artists .Item {
-  width: 33.3%;
+  width: 100%;
 }
 
 .Frontpage .Item:hover {

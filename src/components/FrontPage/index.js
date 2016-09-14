@@ -4,7 +4,7 @@ import Item from './Item'
 import './styles.css'
 
 const getItemColumn = (items, columns, number) =>
-  items.filter((item, index) => index % (columns - 1) === number)
+  items.filter((item, index) => index % columns === number)
 
 const getColumns = (items, columns, section) => (
   <ReactCSSTransitionGroup
@@ -15,11 +15,13 @@ const getColumns = (items, columns, section) => (
     transitionAppearTimeout={500}
     transitionEnterTimeout={500}
     transitionLeaveTimeout={300}>
-    {Array(columns).fill().map((empty, index) =>
-      getItemColumn(items, columns, index).map(item =>
-        <Item key={item.id} item={item} />
-      )
-    )}
+    {Array(columns).fill().map((empty, index) => (
+      <div className="Column">
+        {getItemColumn(items, columns, index).map(item =>
+          <Item key={item.id} item={item} />
+        )}
+      </div>
+    ))}
   </ReactCSSTransitionGroup>
 )
 

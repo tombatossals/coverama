@@ -4,7 +4,7 @@ import Item from './Item'
 import './styles.css'
 
 const getItemColumn = (items, columns, number) =>
-  items.filter((item, index) => index % columns === number)
+  items.filter((item, index) => index % (columns - 1) === number)
 
 const getColumns = (items, columns, section) => (
   <ReactCSSTransitionGroup

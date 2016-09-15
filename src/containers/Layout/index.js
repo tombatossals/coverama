@@ -3,7 +3,6 @@ import Header from '../../components/Header'
 import TopMenu from '../../components/TopMenu'
 import Footer from '../../components/Footer'
 import { withRouter } from 'react-router'
-import './style.css'
 
 class Layout extends React.Component {
   static propTypes = {
@@ -44,7 +43,7 @@ class Layout extends React.Component {
 
   render () {
     return (
-      <div className="Page">
+      <div className="container">
         <Header title="Covers" />
         <TopMenu
           items={this.state.items}

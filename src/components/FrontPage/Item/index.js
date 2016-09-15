@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import './styles.css'
 
 const Item = ({ item }) => {
-  const style = { height: item.image_height }
   return (
     <div className="Item">
       <Link to={item.url}>

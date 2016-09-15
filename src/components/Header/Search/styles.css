@@ -1,5 +1,12 @@
-.Header .Search {
-  margin-top: 20px;
+.form.search {
+  margin-top: 40px;
   text-align: right;
+  position: relative;
+}
+
+.search__image {
+  position: absolute;
+  top: 25px;
+  left: 10px;
 }
 

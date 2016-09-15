@@ -3,6 +3,7 @@ import './styles.css'
 import API from '../../../lib/api'
 import DebouncedInput from './DebouncedInput'
 import ResultBox from './ResultBox'
+import searchImg from './search.svg'
 
 class Search extends React.Component {
   state = {
@@ -32,10 +33,11 @@ class Search extends React.Component {
 
   render () {
     return (
-      <form className="form Search" onBlur={this.handleBlur}>
+      <div className="form search" onBlur={this.handleBlur}>
+        <img className="search__image" src={searchImg} role="presentation" />
         <DebouncedInput onChange={this.searchByKey} placeholder="Search..." />
         <ResultBox data={this.state.data} visible={this.state.data.length > 0} />
-      </form>
+      </div>
     )
   }
 }

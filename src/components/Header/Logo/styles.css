@@ -1,32 +1,32 @@
-div.Header div.Logo {
+.logo {
   margin: 0;
   white-space: nowrap;
 }
 
-div.Header div.Logo h1 {
+.logo__title {
   display: inline-block;
   color:  white;
 }
 
-div.Header div.Logo a.Image img {
+.logo__image {
   width: 1.5em;
   margin-right: .5em;
 }
 
-div.Header div.Logo h1 a:hover {
+.logo__title a:hover {
   color: #CCC;
 }
 
-.Logo:hover .SVGLogo {
-    animation-name: logo;
-    animation-duration: 15s;
+.logo:hover .logo__image {
+  animation-name: logo;
+  animation-duration: 15s;
 }
 
 @keyframes logo {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -16,7 +16,7 @@ const getColumns = (items, columns, section) => (
     transitionEnterTimeout={500}
     transitionLeaveTimeout={300}>
     {Array(columns).fill().map((empty, index) => (
-      <div className="Column">
+      <div className="Column" key={index}>
         {getItemColumn(items, columns, index).map(item =>
           <Item key={item.id} item={item} />
         )}

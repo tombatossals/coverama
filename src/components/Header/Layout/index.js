@@ -4,7 +4,7 @@ import Search from '../Search'
 import './styles.css'
 
 const Layout = (props) => (
-  <div className="row Header">
+  <div className="row header">
     <Logo className="col">{props.title}</Logo>
     <div className="col" />
     <Search className="col" />

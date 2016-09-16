@@ -5,7 +5,7 @@ import './styles.css'
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
 const AlphabeticalChooser = ({ letter, changeSortOrder }) => (
-  <ul className="alphabeticalchooser">
+  <ul className="topmenu__alphabeticalchooser">
     {alphabet.map(l => (
       <Item
         key={l}

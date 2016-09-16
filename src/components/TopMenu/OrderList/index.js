@@ -6,11 +6,11 @@ const OrderList = ({ sort, letter, changeSortOrder }) => {
   const handleAlphaSorterClick = () => changeSortOrder('name')
   const handleLatestSorterClick = () => changeSortOrder('added')
   return (
-    <div className="orderlist">
+    <div className="topmenu__orderlist">
       {sort === 'name'
       ? <AlphabeticalChooser letter={letter} changeSortOrder={changeSortOrder} />
       : null }
-      <ul className="selectorlist">
+      <ul className="topmenu__selectorlist">
         <li className={sort === 'name' ? 'active' : ''} onClick={handleAlphaSorterClick}>Alphabetical</li>
         <li className={sort === 'added' ? 'active last' : 'last'} onClick={handleLatestSorterClick}>Latest Added</li>
       </ul>

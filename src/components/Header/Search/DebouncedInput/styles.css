@@ -1,5 +1,4 @@
-form .search__input {
-  border-radius: 15px;
-  margin-left: 1.7em;
-  border: 1px solid black;
+.form input.search__input {
+  padding-left: 1.7em;
+  border: 0;
 }

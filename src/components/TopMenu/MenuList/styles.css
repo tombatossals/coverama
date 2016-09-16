@@ -1,4 +1,4 @@
-.TopMenu  ul.menulist {
+.topmenu__menulist {
   text-align: left;
   width: 100%;
   background-color: #DC7563;
@@ -11,29 +11,29 @@
   border-top-right-radius: 5px;
 }
 
-.TopMenu ul.menulist li {
+.topmenu__menulist li {
   list-style: none;
   display: inline-block;
   padding: 6px 1em;
 }
 
-.TopMenu ul.menulist li a {
+.topmenu__menulist li a {
   color: #DDD;
 }
 
-.TopMenu ul.menulist li a:hover {
+.topmenu__menulist li a:hover {
   color: yellow;
 }
 
-.TopMenu ul.menulist li.active a {
+.topmenu__menulist li.active a {
   color: white;
 }
 
-.TopMenu ul.menulist li.active {
+.topmenu__menulist li.active {
   background: #ce442f;
   transition: background 0.5s;
 }
 
-.TopMenu ul.menulist li.active.first {
+.topmenu__menulist li.active.first {
   border-top-left-radius: 5px;
 }

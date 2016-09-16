@@ -66,7 +66,6 @@ export default class DebouncedInput extends React.Component {
         {...this.props}
         value={this.state.value}
         onChange={this.changeTerm}
-        placeholder={this.props.placeholder}
         onFocus={this.handleFocus} />
     )
   }

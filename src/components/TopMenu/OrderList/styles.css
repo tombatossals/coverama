@@ -1,4 +1,4 @@
-.TopMenu .orderlist {
+.topmenu__orderlist {
   background-color: #ce442f;
   font-size: 14px;
   font-weight: bold;
@@ -12,14 +12,14 @@
   border-bottom-right-radius: 5px;
 }
 
-.TopMenu .orderlist .selectorlist {
+.topmenu__selectorlist {
   text-align: right;
   margin: 0;
   padding: 0;
   flex: 1;
 }
 
-.TopMenu .orderlist .selectorlist li {
+.topmenu__selectorlist li {
   text-align: right;
   list-style: none;
   display: inline-block;
@@ -27,19 +27,19 @@
   cursor: pointer;
 }
 
-.TopMenu .orderlist .selectorlist li {
+.topmenu__selectorlist li {
   color: #DDD;
 }
 
-.TopMenu .orderlist .selectorlist li.active {
+.topmenu__selectorlist li.active {
   background: #ba3827;
   transition: background 0.5s;
 }
 
-.TopMenu .orderlist .selectorlist li.active.last {
+.topmenu__selectorlist li.active.last {
   border-bottom-right-radius: 5px;
 }
 
-.TopMenu .orderlist .selectorlist li:hover {
+.topmenu__selectorlist li:hover {
   color: yellow;
 }

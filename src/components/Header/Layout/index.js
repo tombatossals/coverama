@@ -5,9 +5,9 @@ import './styles.css'
 
 const Layout = (props) => (
   <div className="row header">
-    <Logo className="col">{props.title}</Logo>
+    <Logo>{props.title}</Logo>
     <div className="col" />
-    <Search className="col" />
+    <Search />
   </div>
 )
 

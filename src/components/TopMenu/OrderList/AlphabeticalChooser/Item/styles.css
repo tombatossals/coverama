@@ -1,4 +1,4 @@
-.TopMenu .orderlist .alphabeticalchooser li {
+.topmenu__alphabeticalchooser li {
   padding: 6px 2px;
   list-style: none;
   display: inline-block;
@@ -6,6 +6,6 @@
   color: #DDD;
 }
 
-.TopMenu .orderlist .alphabeticalchooser li:hover {
+.topmenu__alphabeticalchooser li:hover {
   color: yellow;
 }

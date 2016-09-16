@@ -4,7 +4,7 @@ import './styles.css'
 
 const Item = ({ item }) => {
   return (
-    <div className="Item">
+    <div className="masonry__item">
       <Link to={item.url}>
         <img className="Cover" src={item.image_url} alt={item.name} />
         <div className="Info">{item.name}</div>

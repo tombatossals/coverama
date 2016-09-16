@@ -1,23 +1,28 @@
-.Frontpage-appear {
+.masonry-appear {
    opacity: 0.01;
 }
 
-.Frontpage-appear.Frontpage-appear-active {
+.masonry-appear.masonry-appear-active {
    opacity: 1;
    transition: opacity 500ms ease-in;
 }
 
-.Frontpage.albums, .Frontpage.playlists {
+.masonry--playlists {
   column-count: 4;
   column-gap: 0;
 }
 
-.Frontpage.artists {
+.masonry--albums {
+  column-count: 5;
+  column-gap: 0;
+}
+
+.masonry--artists {
   column-count: 3;
   column-gap: 0;
 }
 
-.Frontpage .Column {
+.masonry__column {
   margin: 0;
   padding: 0;
   page-break-inside: avoid;

@@ -1,4 +1,4 @@
-.Frontpage .Item {
+.masonry__item {
   break-inside: avoid;
   position: relative;
   list-style: none;
@@ -12,17 +12,17 @@
   width: 100%;
 }
 
-.Frontpage .Item:hover {
+.masonry__item:hover {
   opacity: 1;
 }
 
-.Frontpage .Item a {
+.masonry__item a {
   text-decoration: none;
   color: #A7AAAD;
   font-size: .8em;
 }
 
-.Frontpage .Item .Info {
+.masonry__item .Info {
   position:absolute;
   bottom: -80px;
   left: 0;
@@ -37,7 +37,7 @@
   display: none;
 }
 
-.Frontpage .Item:hover .Info {
+.masonry__item:hover .Info {
   display: inline;
   box-shadow: 0 .5em 1em rgba(0,0,0,0.5);
 }

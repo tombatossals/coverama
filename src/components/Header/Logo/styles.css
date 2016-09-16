@@ -1,23 +1,26 @@
-.logo {
+.header__logo {
   margin: 0;
   white-space: nowrap;
 }
 
-.logo__title {
+.header__logo__title {
   display: inline-block;
+}
+
+.header__logo__title__link {
   color:  white;
 }
 
-.logo__image {
-  width: 1.5em;
-  margin-right: .5em;
+.header__logo__image {
+  width: 2.5em;
+  margin-right: .1em;
 }
 
-.logo__title a:hover {
+.header__logo__title__link:hover {
   color: #CCC;
 }
 
-.logo:hover .logo__image {
+.header__logo:hover .header__logo__image {
   animation-name: logo;
   animation-duration: 15s;
 }

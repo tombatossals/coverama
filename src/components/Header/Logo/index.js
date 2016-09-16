@@ -4,10 +4,10 @@ import logo from './logo.svg'
 import { Link } from 'react-router'
 
 const Logo = ({ children }) => (
-  <div className="col logo">
-    <h1 className="logo__title">
-      <Link to="/"><img className="logo__image" src={logo} role="presentation" /></Link>
-      <Link to="/">{ children }</Link>
+  <div className="header__logo col">
+    <Link className="header__logo__title__link" to="/"><img className="header__logo__image" src={logo} role="presentation" /></Link>
+    <h1 className="header__logo__title">
+      <Link className="header__logo__title__link" to="/">{ children }</Link>
     </h1>
   </div>
 )

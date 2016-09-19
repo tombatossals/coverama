@@ -7,19 +7,20 @@
    transition: opacity 500ms ease-in;
 }
 
+.masonry {
+  column-gap: 15px;
+}
+
 .masonry--playlists {
   column-count: 4;
-  column-gap: 0;
 }
 
 .masonry--albums {
   column-count: 5;
-  column-gap: 0;
 }
 
 .masonry--artists {
   column-count: 3;
-  column-gap: 0;
 }
 
 .masonry__column {
@@ -27,5 +28,6 @@
   padding: 0;
   page-break-inside: avoid;
   break-inside: avoid;
+  padding-top: 1em;
   padding-bottom: 8em;
 }

@@ -8,7 +8,7 @@ const getItemColumn = (items, columns, number) =>
 
 const getColumns = (items, columns, section) => (
   <ReactCSSTransitionGroup
-    className={'masonry--' + section}
+    className={'masonry masonry--' + section}
     component="div"
     transitionName="masonry"
     transitionAppear

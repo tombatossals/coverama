@@ -1,10 +1,12 @@
 .header__logo {
   margin: 0;
   white-space: nowrap;
+  position: relative;
 }
 
 .header__logo__title {
-  display: inline-block;
+  margin-left: 1.7em;
+  font-size: 32px;
 }
 
 .header__logo__title__link {
@@ -12,8 +14,10 @@
 }
 
 .header__logo__image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 2.5em;
-  margin-right: .1em;
 }
 
 .header__logo__title__link:hover {

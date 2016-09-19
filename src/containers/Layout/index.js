@@ -29,7 +29,7 @@ class Layout extends React.Component {
   }
 
   updateState = (props) => {
-    if (!props.location) return;
+    if (!props.location) return
     const section = props.location.pathname.substring(1, props.location.pathname.length)
     const sort = props.location.query && props.location.query.sort ? props.location.query.sort : 'added'
     const letter = props.location.query && props.location.query.letter ? props.location.query.letter : ''

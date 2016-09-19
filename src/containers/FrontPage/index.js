@@ -50,7 +50,6 @@ class FrontPage extends React.Component {
 
     if (this.changedView(section, sort, letter) ||
         props[section].status === AsyncStatus.IDLE) {
-
       this.setState({
         ready: false,
         section,

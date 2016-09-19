@@ -33,7 +33,7 @@ class Search extends React.Component {
 
   render () {
     return (
-      <div className="col form search" onBlur={this.handleBlur}>
+      <div className="search form" onBlur={this.handleBlur}>
         <img className="search__image" src={searchImg} role="presentation" />
         <DebouncedInput onChange={this.searchByKey} placeholder="Search..." />
         <ResultBox data={this.state.data} visible={this.state.data.length > 0} />

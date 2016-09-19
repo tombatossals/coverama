@@ -1,10 +1,10 @@
-.Footer {
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
   color: white;
-  font-weight: bold;
-  height: 40px;
-  line-height: 40px;
-  margin-top: 10em;
-  padding: 0 1em;
   box-sizing: border-box;
-  text-align: right;
 }

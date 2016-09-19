@@ -1,15 +1,18 @@
 html {
-  min-height: 100%;
-  overflow-y: scroll;
-}
-
-body {
+  height: 100%;
   background: #24C6DC;
   background: -webkit-linear-gradient(to left, #24C6DC , #514A9D);
   background: linear-gradient(to left, #24C6DC , #514A9D);
   background-repeat: no-repeat;
+  overflow-y: scroll; /* Always active scrollbar */
+}
+
+body {
+  background: inherit;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   min-height: 100%;
+  padding-bottom: 6rem;
+  position: relative;
 }
 
 .container {

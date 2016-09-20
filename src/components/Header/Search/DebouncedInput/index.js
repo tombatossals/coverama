@@ -61,8 +61,8 @@ export default class DebouncedInput extends React.Component {
   render () {
     return (
       <input
-        className="search__input"
-        type="text"
+        className='search__input'
+        type='text'
         {...this.props}
         value={this.state.value}
         onChange={this.changeTerm}

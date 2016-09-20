@@ -79,7 +79,7 @@ class FrontPage extends React.Component {
 
   render () {
     if (!this.state.ready) {
-      return <Loading type="spin" width={96} height={96} />
+      return <Loading type='spin' width={96} height={96} />
     }
 
     return (

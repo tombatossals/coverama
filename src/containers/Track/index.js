@@ -72,7 +72,7 @@ class Track extends React.Component {
   render () {
     if (this.props.track.status !== AsyncStatus.SUCCESS ||
         this.props.artist.status !== AsyncStatus.SUCCESS) {
-      return <Loading type="spin" width={96} height={96} />
+      return <Loading type='spin' width={96} height={96} />
     }
 
     return (

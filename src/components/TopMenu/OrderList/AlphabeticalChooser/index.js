@@ -5,11 +5,11 @@ import './styles.css'
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
 const AlphabeticalChooser = ({ letter, changeSortOrder }) => (
-  <ul className="topmenu__alphabeticalchooser">
+  <ul className='topmenu__alphabeticalchooser flex-center'>
     {alphabet.map(l => (
       <Item
         key={l}
-        className={l === letter ? 'active' : null}
+        className={l === letter ? 'topmenu__alphabeticalchooser__item topmenu__alphabeticalchooser__item--active' : 'topmenu__alphabeticalchooser__item'}
         changeSortOrder={changeSortOrder}
         letter={l}
       />

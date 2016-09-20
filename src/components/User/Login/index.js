@@ -53,23 +53,23 @@ export default class Login extends React.Component {
 
   render () {
     return (
-      <div className="login-oauth">
+      <div className='login-oauth'>
         <h2>Log-in with an Oauth provider</h2>
         <div>
-          <button className="login-button" onClick={this.handleGoogleLogin}>
+          <button className='login-button' onClick={this.handleGoogleLogin}>
             Google Sign in
           </button>
           &nbsp;
-          <button className="login-button" onClick={this.handleGithubLogin}>
+          <button className='login-button' onClick={this.handleGithubLogin}>
             Github Sign in
           </button>
           {this.state.status === AsyncStatus.REQUEST &&
             <div>
-              <img role="presentation" src={loading} />
+              <img role='presentation' src={loading} />
             </div>
           }
           {this.state.message &&
-            <div className="login-error">
+            <div className='login-error'>
               { this.state.message }
             </div>
           }

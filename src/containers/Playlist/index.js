@@ -32,7 +32,7 @@ class Playlist extends React.Component {
 
   render () {
     if (this.props.playlist.status !== AsyncStatus.SUCCESS) {
-      return <Loading type="spin" width={96} height={96} />
+      return <Loading type='spin' width={96} height={96} />
     }
 
     return <PlaylistComponent playlist={this.props.playlist.data} />

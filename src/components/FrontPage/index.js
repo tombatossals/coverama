@@ -9,14 +9,14 @@ const getItemColumn = (items, columns, number) =>
 const getColumns = (items, columns, section) => (
   <ReactCSSTransitionGroup
     className={'masonry masonry--' + section}
-    component="div"
-    transitionName="masonry"
+    component='div'
+    transitionName='masonry'
     transitionAppear
     transitionAppearTimeout={500}
     transitionEnterTimeout={500}
     transitionLeaveTimeout={300}>
     {Array(columns).fill().map((empty, index) => (
-      <div className="masonry__column" key={index}>
+      <div className='masonry__column' key={index}>
         {getItemColumn(items, columns, index).map(item =>
           <Item key={item.id} item={item} />
         )}

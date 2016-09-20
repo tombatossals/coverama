@@ -19,13 +19,13 @@ class AudioPlayer extends React.Component {
         <div onClick={media.playPause}>
           {Player}
         </div>
-        <nav className="media-controls">
-          <PlayPause className="media-control media-control--play-pause" />
-          <CurrentTime className="media-control media-control--current-time" />
-          <SeekBar className="media-control media-control--volume-range" />
-          <Duration className="media-control media-control--duration" />
-          <MuteUnmute className="media-control media-control--mute-unmute" />
-          <Volume className="media-control media-control--volume" />
+        <nav className='media-controls'>
+          <PlayPause className='media-control media-control--play-pause' />
+          <CurrentTime className='media-control media-control--current-time' />
+          <SeekBar className='media-control media-control--volume-range' />
+          <Duration className='media-control media-control--duration' />
+          <MuteUnmute className='media-control media-control--mute-unmute' />
+          <Volume className='media-control media-control--volume' />
         </nav>
       </div>
     )

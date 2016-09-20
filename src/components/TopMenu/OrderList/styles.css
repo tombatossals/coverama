@@ -5,41 +5,42 @@
   width: 100%;
   color: #EEE;
   margin: 0;
-  padding: 0 0 0 1em;
+  padding: 0;
   display: flex;
-  text-align: right;
+}
+
+.topmenu__orderlist--borderdown {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.topmenu__selectorlist {
-  text-align: right;
-  margin: 0;
-  padding: 0;
-  flex: 1;
+.topmenu__line {
+  background-color: #ce442f;
+  padding: .6rem .1rem;
 }
 
-.topmenu__selectorlist li {
-  text-align: right;
+.topmenu__orderlist__item {
+  text-align: center;
   list-style: none;
   display: inline-block;
   padding: 6px 1em;
   cursor: pointer;
-}
-
-.topmenu__selectorlist li {
   color: #DDD;
 }
 
-.topmenu__selectorlist li.active {
+.topmenu__orderlist__item--active {
   background: #ba3827;
   transition: background 0.5s;
 }
 
-.topmenu__selectorlist li.active.last {
+.topmenu__orderlist__item--last {
   border-bottom-right-radius: 5px;
 }
 
-.topmenu__selectorlist li:hover {
+.topmenu__orderlist__item--first {
+  border-bottom-left-radius: 5px;
+}
+
+.topmenu__orderlist__item:hover {
   color: yellow;
 }

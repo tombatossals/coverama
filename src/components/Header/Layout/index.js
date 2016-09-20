@@ -6,16 +6,16 @@ import MediaQuery from 'react-responsive'
 
 const Layout = (props) => (
   <div>
-    <MediaQuery minWidth={768} className="header flex-left">
-      <div className="unit">
+    <MediaQuery minWidth={768} className='header flex-left'>
+      <div className='unit'>
         <Logo>{props.title}</Logo>
       </div>
-      <div className="unit">
+      <div className='unit'>
         <Search />
       </div>
     </MediaQuery>
     <MediaQuery maxWidth={767}>
-      <div className="header">
+      <div className='header'>
         <Logo>{props.title}</Logo>
         <Search />
       </div>

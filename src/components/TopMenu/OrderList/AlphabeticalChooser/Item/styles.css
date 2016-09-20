@@ -1,11 +1,11 @@
-.topmenu__alphabeticalchooser li {
-  padding: 6px 2px;
+.topmenu__alphabeticalchooser__item {
+  font-size: 1.4rem;
   list-style: none;
   display: inline-block;
   cursor: pointer;
   color: #DDD;
 }
 
-.topmenu__alphabeticalchooser li:hover {
+.topmenu__alphabeticalchooser__item:hover {
   color: yellow;
 }

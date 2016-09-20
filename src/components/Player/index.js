@@ -9,64 +9,64 @@ const Player = ({ playlist }) => {
     return null
   }
   return (
-    <div className="Player">
+    <div className='Player'>
       { !playlist.playlist && !playlist.artist &&
-        <Loading align="left" type="spin" width={64} height={64} color="#EEE" />
+        <Loading align='left' type='spin' width={64} height={64} color='#EEE' />
       }
       { playlist.playlist
-      ? <div className="main">
-        <div className="info">
+      ? <div className='main'>
+        <div className='info'>
           { playlist.playlist
           ? <h1>
             <Link to={playlist.playlist.url}>
               {playlist.playlist.name}&nbsp;
-              <span className="subtitle">playlist</span>
+              <span className='subtitle'>playlist</span>
             </Link>
           </h1> : null }
           { playlist.artist
           ? <h2>
             <Link to={playlist.artist.url}>
               {playlist.artist.name}&nbsp;
-              <span className="subtitle">artist</span>
+              <span className='subtitle'>artist</span>
             </Link>
           </h2> : null }
           { playlist.album
           ? <h3>
             <Link to={playlist.album.url}>
               {playlist.album.name}&nbsp;
-              <span className="subtitle">album</span>
+              <span className='subtitle'>album</span>
             </Link>
           </h3> : null }
-          <div className="player">
+          <div className='player'>
             <AudioPlayer tracks={playlist} src={playlist[0].url} />
           </div>
         </div>
-        <Link className="cover" to={playlist.playlist.url}>
+        <Link className='cover' to={playlist.playlist.url}>
           <img src={playlist.playlist.image_url} alt={playlist.playlist.name} />
         </Link>
       </div> : null }
       { !playlist.playlist && playlist.artist
-      ? <div className="main">
-        <div className="info">
+      ? <div className='main'>
+        <div className='info'>
           { playlist.artist
           ? <h2>
             <Link to={playlist.artist.url}>
               {playlist.artist.name}&nbsp;
-              <span className="subtitle">artist</span>
+              <span className='subtitle'>artist</span>
             </Link>
           </h2> : null }
           { playlist.album
           ? <h3>
             <Link to={playlist.album.url}>
               {playlist.album.name}&nbsp;
-              <span className="subtitle">album</span>
+              <span className='subtitle'>album</span>
             </Link>
           </h3> : null }
-          <div className="player">
+          <div className='player'>
             <AudioPlayer tracks={playlist} src={playlist[0].url} />
           </div>
         </div>
-        <Link className="cover" to={playlist.artist.url}>
+        <Link className='cover' to={playlist.artist.url}>
           <img src={playlist.album.image_url} alt={playlist.album.name} />
         </Link>
       </div> : null }

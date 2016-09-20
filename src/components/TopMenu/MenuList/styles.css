@@ -1,5 +1,4 @@
 .topmenu__menulist {
-  text-align: left;
   width: 100%;
   background-color: #DC7563;
   font-size: 14px;
@@ -11,30 +10,35 @@
   border-top-right-radius: 5px;
 }
 
-.topmenu__menulist li {
+.topmenu__menulist__item {
   list-style: none;
+  text-align: center;
   display: inline-block;
   padding: 6px 1em;
 }
 
-.topmenu__menulist li a {
+.topmenu__menulist__item a {
   color: #DDD;
   display: block;
 }
 
-.topmenu__menulist li a:hover {
+.topmenu__menulist__item a:hover {
   color: yellow;
 }
 
-.topmenu__menulist li.active a {
+.topmenu__menulist__item--active a {
   color: white;
 }
 
-.topmenu__menulist li.active {
+.topmenu__menulist__item--active {
   background: #ce442f;
   transition: background 0.5s;
 }
 
-.topmenu__menulist li.active.first {
+.topmenu__menulist__item--first {
   border-top-left-radius: 5px;
+}
+
+.topmenu__menulist__item--last {
+  border-top-right-radius: 5px;
 }

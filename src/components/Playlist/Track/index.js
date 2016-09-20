@@ -5,17 +5,17 @@ import play from './play.32.png'
 
 const Track = ({ track, playlist }) => {
   return (
-    <div className="track">
+    <div className='track'>
       <Link to={`/playlists/${playlist.slug}/artists/${track.artist_slug}/tracks/${track.slug}`}>
-        <img className="cover" src={track.image_url} alt={track.name} />
-        <div className="info">
+        <img className='cover' src={track.image_url} alt={track.name} />
+        <div className='info'>
           {track.name}
           <hr />
           {track.artist_name}
         </div>
-        <div className="footer">Playlist name</div>
-        <div className="hover">
-          <img src={play} role="presentation" />
+        <div className='footer'>Playlist name</div>
+        <div className='hover'>
+          <img src={play} role='presentation' />
         </div>
       </Link>
     </div>

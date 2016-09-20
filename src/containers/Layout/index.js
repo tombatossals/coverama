@@ -43,8 +43,8 @@ class Layout extends React.Component {
 
   render () {
     return (
-      <div className="container">
-        <Header title="Covers" />
+      <div className='container'>
+        <Header title='Covers' />
         <TopMenu
           items={this.state.items}
           section={this.state.section}

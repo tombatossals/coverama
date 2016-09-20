@@ -5,15 +5,15 @@ import play from './play.32.png'
 
 const Album = ({ album }) => {
   return (
-    <div className="album">
+    <div className='album'>
       <Link to={album.url}>
-        <img className="cover" src={album.image_url} alt={album.name} />
-        <div className="info">
+        <img className='cover' src={album.image_url} alt={album.name} />
+        <div className='info'>
           {album.name}
         </div>
-        <div className="footer">Album name</div>
-        <div className="hover">
-          <img src={play} role="presentation" />
+        <div className='footer'>Album name</div>
+        <div className='hover'>
+          <img src={play} role='presentation' />
         </div>
       </Link>
     </div>

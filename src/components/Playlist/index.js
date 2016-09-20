@@ -3,15 +3,15 @@ import Track from './Track'
 import './styles.css'
 
 const Playlist = ({ playlist }) => (
-  <div className="detail">
-    <div className="playlist">
-      <div className="info">
-        <div className="cover">
+  <div className='detail'>
+    <div className='playlist'>
+      <div className='info'>
+        <div className='cover'>
           <img src={playlist.image_url} alt={playlist.name} />
         </div>
         <h1>{playlist.name}</h1>
       </div>
-      <div className="tracks">
+      <div className='tracks'>
         <h2>Tracks</h2>
         {playlist.tracks.map(track =>
           <Track key={track.id} track={track} playlist={playlist} />

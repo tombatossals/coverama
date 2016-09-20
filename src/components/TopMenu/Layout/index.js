@@ -4,7 +4,7 @@ import OrderList from '../OrderList'
 import './styles.css'
 
 const TopMenu = ({ section, sort, letter, changeSortOrder }) => (
-  <div className="topmenu">
+  <div className='topmenu'>
     <MenuList section={section} />
     <OrderList changeSortOrder={changeSortOrder} sort={sort} letter={letter} />
   </div>

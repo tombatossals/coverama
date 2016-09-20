@@ -63,8 +63,8 @@ export default class DebouncedInput extends React.Component {
   render () {
     return (
       <input
-        type="text"
-        className="form-control"
+        type='text'
+        className='form-control'
         {...this.props}
         value={this.state.value}
         onChange={this.handleChangeTerm} />

@@ -1,12 +1,12 @@
 .form.search {
-  margin-top: 20px;
+  margin-top: 4rem;
   text-align: right;
   position: relative;
 }
 
 .search__image {
   position: absolute;
-  top: 1.3em;
-  left: .5em;
+  top: 1rem;
+  left: .8rem;
 }
 

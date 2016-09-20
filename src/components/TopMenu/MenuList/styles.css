@@ -19,6 +19,7 @@
 
 .topmenu__menulist li a {
   color: #DDD;
+  display: block;
 }
 
 .topmenu__menulist li a:hover {

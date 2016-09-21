@@ -1,7 +1,7 @@
 .topmenu {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   border-radius: 5px;
-  margin-bottom: 2em;
+  margin-bottom: 2vw;
   opacity: .9;
   transition: all 250ms ease;
 }

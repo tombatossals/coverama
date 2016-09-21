@@ -17,11 +17,11 @@ const OrderList = ({ sort, letter, changeSortOrder }) => {
         <div className='flex-right unit-0'>
           <div className={
             sort === 'name'
-            ? 'topmenu__orderlist__item topmenu__orderlist__item--active unit-0'
+            ? 'topmenu__orderlist__item topmenu__orderlist__item--active'
             : 'topmenu__orderlist__item unit'} onClick={handleAlphaSorterClick}>Alphabetical</div>
           <div className={
             sort === 'added'
-            ? 'topmenu__orderlist__item topmenu__orderlist__item--active topmenu__orderlist__item--last unit-0'
+            ? 'topmenu__orderlist__item topmenu__orderlist__item--active topmenu__orderlist__item--last'
             : 'topmenu__orderlist__item topmenu__orderlist__item--last unit'} onClick={handleLatestSorterClick}>Latest Added</div>
         </div>
       </MediaQuery>
